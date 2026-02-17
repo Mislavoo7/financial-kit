@@ -1,0 +1,21 @@
+<li data-legal-pages-id="<%= dom_id(legal_page) %>" data-sortable-id="<%= legal_page.id %>" class=" w-5/4 pb-4" data-legal-pages-id="<%= dom_id(legal_page) %>" data-sortable-id="<%= legal_page.id %>"> 
+  <div class="flex items-center space-x-2">
+    <h2> <%= legal_page.translate.title %>  </h2>
+    <div class="text-gray-500" data-sortable-handle>
+      <a class="button is-white has-icon-right">
+        <%= phosphor_icon 'sort-descending' %>
+      </a>
+    </div>
+    <div class="text-gray-500">
+      <%= render "admin/legal_pages/visible_bttn", legal_page: legal_page %>
+    </div>
+    <div class="text-gray-500">
+      <%= link_to t('edit'), edit_admin_legal_page_path(legal_page), class: "button is-white has-icon-right" %>
+    </div>
+    <div class="text-gray-500">
+      <%= link_to t('delete'), admin_legal_page_path(legal_page), class: "button is-white has-icon-right", method: :delete, data: { confirm: t('are_you_sure') }, remote: true %>
+    </div>
+  </div>
+
+  <%= strip_tags(legal_page.translate.content).truncate(100) %>
+</li>

@@ -1,0 +1,19 @@
+.card {
+  @apply
+  flex 
+  min-h-full 
+  flex-col 
+  justify-center 
+  items-center
+  px-6 
+  py-64 
+  pb-10
+  lg:px-8;
+}
+
+.card-title {
+  @apply
+  sm:mx-auto 
+  sm:w-full 
+  sm:max-w-sm;
+}

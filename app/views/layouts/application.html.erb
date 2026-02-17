@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= content_for(:title) || "Financial Kit" %> | <%= t("title") %> </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <% if Rails.env.production? %>
+      <!--
+      <script defer src="https://cloud.umami.is/script.js" data-website-id="27695d2a-9d52-4927-a123-042625d4bac0"></script>
+      -->
+    <% end %>
+
+    <% canonical_url = request.base_url + request.path %>
+    <link rel="canonical" href="<%= canonical_url %>" />
+    <link rel="alternate" href="https://financialkit.eu/en" hreflang="en" />
+    <link rel="alternate" href="https://financialkit.eu/hr" hreflang="hr" />
+    <link rel="alternate" href="https://financialkit.eu/de" hreflang="de" />
+
+    <%# canonical_url =
+      if request.path.start_with?('/hr')
+        "https://financialkit.eu#{request.fullpath}"
+      else
+        "https://financialkit.eu/hr#{request.fullpath}"
+      end
+    %>
+
+
+  <meta name="author" content="<%= content_for?(:author) ? yield(:author) : Seo.default_author %>"/>
+  <meta name="description" content="<%= content_for?(:description) ? truncate(yield(:description), length: 300, separator: ' ') : Seo.default_description %>"/>
+  <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : Seo.default_keywords %>"/>
+  <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : Seo.default_title %>"/>
+  <meta property="og:type" content="<%= content_for?(:type) ? yield(:type) : 'website' %>"/>
+  <meta property="og:url" content="<%= content_for?(:url) ? yield(:url) : @absolute_url %>"/>
+  <meta property="og:description" content="<%= content_for?(:description) ? truncate(yield(:description), length: 300, separator: ' ')  : Seo.default_description %>"/>
+  <meta property="og:image" content="<%= content_for?(:image) ? seo_image_path(yield(:image)) : "#{@web_url}#{image_path(Seo.default_image)}" %>"/>
+  <%= yield :head %>
+
+  <link rel="icon" href="<%= asset_url("favicon.ico") %>"> 
+
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload", "data-no-cache": Time.now.to_i %>
+
+  <%= javascript_include_tag "turbo", type: "module" %>
+  <%#= javascript_importmap_tags %>
+
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+
+<%= tag.script type: "application/ld+json" do %>
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "IMENKO",
+  "url": "https://financialkit.eu",
+  "description": "Financial Kit je projekt nastao s ciljem pružanja točnih i transparentnih financijskih izračuna.",
+  "inLanguage": ["hr", "en", "de"],
+}
+<% end %>
+  </head>
+
+  <body>
+    <div data-controller="notices">
+      <% unless notice.blank? %>
+        <p class="notice" data-notices-target="message"><%= notice %></p>
+      <% end %>
+
+      <% unless alert.blank? %>
+        <p class="alert" data-notices-target="message"><%= alert %></p>
+      <% end %>
+    </div>
+    <main class="bg-white">
+      <%= render "layouts/header" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </main>
+  </body>
+</html>

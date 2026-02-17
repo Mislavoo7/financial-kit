@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="nav-wrapper">
+    <nav class="nav" aria-label="Global">
+      <%= link_to root_path, class: "flex gap-4 flex-shrink-0" do %>
+        <span class="sr-only"><%= @home_page.translate.title %></span>
+        <%= image_tag "logo.png", 
+          class: "nav-logo", 
+          title: "logo",
+          alt: "logo" %>
+
+        <!--
+        <h1 class="text-primary-500 text-5xl  "> Financial Kit </h1>
+        -->
+      <% end %>
+
+      <%= render "layouts/desktop_nav" %>
+      <%= render "layouts/mobile_nav" %>
+    </nav>
+      <%= render "shared/social_share" %>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+@import 'actiontext.scss';
+/*@import 'trix/dist/trix.css'*/
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "global/base/root.scss";
+@import "global/base/typography.scss";
+
+@import "global/components/buttons.scss";
+@import "global/components/notices.scss";
+
+@import "admin/base/root.scss";
+@import "admin/layouts/pages.scss";
+
+@import "admin/components/cards.scss";
+@import "admin/components/forms.scss";
+@import "admin/components/sortable.scss";
+@import "admin/components/sidebar.scss";
+@import "admin/components/main.scss";
+@import "admin/components/table.scss";
+@import "admin/components/header.scss";
+@import "admin/components/section.scss";
+@import "admin/components/tabs.scss";
+
+
+@import "izitoast/dist/css/iziToast.css";

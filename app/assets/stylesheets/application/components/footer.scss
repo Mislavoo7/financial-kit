@@ -1,0 +1,31 @@
+.footer {
+  @apply
+    block 
+    mx-auto 
+    mt-2 
+    max-w-7xl 
+    px-6 
+    sm:mt-6 
+    lg:px-8 
+    justify-start;
+}
+
+.footer-title {
+  @apply
+    text-sm/6 
+    font-semibold 
+    text-gray-900;
+}
+
+.footer-list {
+  @apply
+    flex 
+    gap-16;
+}
+
+.footer-link {
+  @apply
+    text-sm/6 
+    text-gray-600 
+    hover:text-gray-900;
+}

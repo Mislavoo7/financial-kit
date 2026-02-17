@@ -1,0 +1,12 @@
+.share-btn {
+  @apply px-1 py-1 rounded-lg text-white text-sm font-medium hover:opacity-80 transition;
+}
+.fb { @apply bg-blue-600; }
+.tw { @apply bg-black; }
+.in { @apply bg-blue-800; }
+.wa { @apply bg-green-600; }
+.tg { @apply bg-sky-500; }
+.share-icon {
+  @apply w-10 h-10 rounded-xl flex items-center justify-center text-white text-xl
+         hover:scale-110 transition shadow-lg;
+}

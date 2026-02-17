@@ -1,0 +1,41 @@
+<% url   = CGI.escape("https://financialkit.eu#{request.fullpath}") %>
+<% title = CGI.escape(content_for?(:title) ? yield(:title) : "Financial Kit") %>
+
+<div class="flex items-center gap-3 mt-6">
+
+  <!-- Facebook -->
+  <a target="_blank" rel="noopener"
+     href="https://www.facebook.com/sharer/sharer.php?u=<%= url %>"
+     class="share-icon bg-blue-600">
+    <%= phosphor_icon "facebook-logo", options: { class: 'size-5 shrink-0' } %>
+  </a>
+
+  <!-- X -->
+  <a target="_blank" rel="noopener"
+     href="https://twitter.com/intent/tweet?url=<%= url %>&text=<%= title %>"
+     class="share-icon bg-black">
+    <%= phosphor_icon "x-logo", options: { class: 'size-5 shrink-0' } %>
+  </a>
+
+  <!-- LinkedIn -->
+  <a target="_blank" rel="noopener"
+     href="https://www.linkedin.com/sharing/share-offsite/?url=<%= url %>"
+     class="share-icon bg-blue-800">
+    <%= phosphor_icon "linkedin-logo", options: { class: 'size-5 shrink-0' } %>
+  </a>
+
+  <!-- WhatsApp -->
+  <a target="_blank" rel="noopener"
+     href="https://wa.me/?text=<%= title %>%20<%= url %>"
+     class="share-icon bg-green-600">
+    <%= phosphor_icon "whatsapp-logo", options: { class: 'size-5 shrink-0' } %>
+  </a>
+
+  <!-- Telegram -->
+  <a target="_blank" rel="noopener"
+     href="https://t.me/share/url?url=<%= url %>&text=<%= title %>"
+     class="share-icon bg-sky-500">
+    <%= phosphor_icon "telegram-logo", options: { class: 'size-5 shrink-0' } %>
+  </a>
+
+</div>

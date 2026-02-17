@@ -1,0 +1,9 @@
+var element = document.querySelector(`[data-legal-pages-id="<%= dom_id(@legal_page) %>"]`);
+if (element) {
+  element.style.transition = "opacity 0.2s ease-out"; // fast equivalent
+  element.style.opacity = 0;
+
+  setTimeout(function() {
+    element.remove();
+  }, 200); // match "fast" timing
+}

@@ -1,0 +1,6 @@
+<div class="text-gray-500" id="<%= dom_id(legal_page) %>">
+  <%= link_to visibility_admin_legal_page_path(legal_page), remote: true, method: :patch, class: "button is-white has-icon-right", data: { confirm: legal_page.is_visible ? t("legal_page.invisible_confirmation") : t("legal_page.visible_confirmation"), tooltip: legal_page.is_visible ? t("legal_page.is_now_visible") : t("legal_page.is_now_invisible")  } do %>
+    <%= legal_page.is_visible ? phosphor_icon('eye') : phosphor_icon('eye-slash') %>
+  <% end %>
+
+</div>

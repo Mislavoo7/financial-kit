@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" role="img" aria-label="Loading">
+  <!-- Financial Kit spinner: blue→green gradient segments with rotation -->
+  <g transform="translate(19 19)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.9s" repeatCount="indefinite"/>
+
+      <!-- 12 rounded segments -->
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#0b5cff" transform="rotate(0)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#156be8" transform="rotate(30)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#207ad1" transform="rotate(60)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#2a88b9" transform="rotate(90)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#3497a2" transform="rotate(120)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#3ea68b" transform="rotate(150)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#49b574" transform="rotate(180)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#53c45d" transform="rotate(210)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#5dd346" transform="rotate(240)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#67e12e" transform="rotate(270)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#72f017" transform="rotate(300)"/>
+      <rect x="-2" y="-17" width="4" height="9" rx="2" fill="#7cff00" transform="rotate(330)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+// Replace the element based on the data attribute (without jQuery)
+document.querySelectorAll(`#<%= dom_id(@page) %>_visible_bttn`).forEach(element => {
+  // Create a new temporary div to hold the rendered HTML
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = `<%= j render 'admin/pages/visible_bttn' %>`;
+
+
+  // Replace the old element with the new content
+  element.replaceWith(tempDiv.firstElementChild);
+});
+
+// Dispatch the custom event for the toast message
+document.dispatchEvent(new CustomEvent('dispatch-toast', { 
+  detail: { 
+    message: '<%= @page.is_visible ? t("page.is_now_visible") : t("page.is_now_invisible") %>', 
+    type: 'success' 
+  } 
+}));

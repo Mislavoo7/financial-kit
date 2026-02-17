@@ -1,0 +1,17 @@
+[data-sortable-handle] {
+  cursor: grab;
+}
+
+[data-sortable-handle]:active {
+  cursor: grabbing;
+}
+
+.sortable-ghost {
+}
+
+.sortable-drag {
+  @apply
+  border
+  border-gray-300
+  border-dashed;
+}

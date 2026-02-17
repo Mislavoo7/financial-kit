@@ -1,0 +1,13 @@
+<div class="sm:flex sm:items-center">
+  <div class="sm:flex-auto">
+    <h1 class="text-5xl ont-semibold text-gray-900"><%= title %></h1>
+  </div>
+
+  <% if defined?(new_url) and defined?(new_title) %>
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <%= link_to new_url, class: "button is-primary" do %>
+        <%= new_title %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="form-field__row">
+  <div class="form-field">
+    <%= f.label image, class: 'label' %>
+    <%= image_field f, image,  accept: accept_file_extensions_for(f.object.class.uploaders[image]), data: { max_file_size: max_file_size }  %>
+    <%= f.hidden_field image_cache %>
+  </div>
+</div>

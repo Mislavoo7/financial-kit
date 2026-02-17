@@ -1,0 +1,11 @@
+de:
+  admin_nav:
+    home: "Startseite"
+    admins: "Admins"
+    legal_pages: "Rechtliche Seiten"
+    seos: "SEO"
+    users: "Benutzer"
+  public_nav:
+    legal_pages: "Rechtliche Seiten"
+  user_nav:
+    lists: "Deine Listen"

@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: seo_translations
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  keywords    :string
+#  locale      :string
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  seo_id      :integer
+#
+one:
+  title: MyString
+  description: MyText
+  keywords: MyString
+  seo_id: 1
+  locale: MyString
+
+two:
+  title: MyString
+  description: MyText
+  keywords: MyString
+  seo_id: 1
+  locale: MyString

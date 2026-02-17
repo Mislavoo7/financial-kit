@@ -1,0 +1,24 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: sections
+#
+#  id               :bigint           not null, primary key
+#  is_visible       :boolean          default(TRUE)
+#  position         :integer          default(1000)
+#  section_type     :string           default("simple")
+#  sectionable_type :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  sectionable_id   :integer
+#
+one:
+  section_type: MyString
+  sectionable_type: MyString
+  sectionable_id: 1
+
+two:
+  section_type: MyString
+  sectionable_type: MyString
+  sectionable_id: 1

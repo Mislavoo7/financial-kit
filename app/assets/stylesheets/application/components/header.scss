@@ -1,0 +1,168 @@
+.header {
+  @apply
+  bg-white 
+  shadow-sm 
+  sticky 
+  top-0 
+  pb-2
+  z-50;
+}
+
+.nav-wrapper {
+  @apply
+  max-w-7xl 
+  mx-auto 
+  px-4 
+  sm:px-6 
+  mb-2
+  lg:px-8;
+}
+
+.nav {
+  @apply
+  flex 
+  items-center 
+  justify-between 
+  pt-4;
+}
+
+.nav-logo {
+  @apply
+  w-auto;
+  height: 4.8rem;
+}
+
+.desktop-nav {
+  @apply
+  hidden 
+  lg:flex 
+  lg:items-center 
+  lg:gap-8;
+}
+
+.desktop-nav-link {
+  @apply
+  text-lg 
+  font-medium 
+  text-gray-700 
+  hover:text-gray-900 
+  transition-colors 
+  duration-200 
+  px-3 
+  py-2 
+  rounded-md 
+  hover:bg-gray-50;
+}
+
+.desktop-nav-button {
+  @apply
+  flex 
+  items-center 
+  gap-2 
+  px-4 
+  py-2 
+  text-lg 
+  font-medium 
+  text-gray-700 
+  bg-gray-100 
+  rounded-lg 
+  hover:bg-gray-200 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-offset-2 
+  focus:ring-blue-500 
+  transition-colors 
+  duration-200;
+}
+
+.desktop-nav-language { 
+  @apply
+  block 
+  px-4 
+  py-2 
+  text-lg 
+  text-gray-700 
+  hover:bg-blue-50 
+  hover:text-blue-700 
+  transition-colors 
+  duration-200;
+}
+
+.mobile-nav {
+  @apply
+  lg:hidden;
+}
+
+.hamburger-label {
+  @apply
+  flex 
+  flex-col 
+  justify-center 
+  items-center 
+  w-10 
+  h-10 
+  cursor-pointer 
+  space-y-1.5;
+}
+
+.hamburger-content {
+  @apply
+  hidden 
+  peer-checked:block 
+  absolute 
+  top-full 
+  left-0 
+  right-0 
+  bg-white 
+  shadow-lg 
+  border-t 
+  border-gray-200;
+}
+
+.hamburger-link {
+  @apply
+  block 
+  text-lg 
+  font-medium 
+  text-gray-700 
+  hover:text-gray-900 
+  hover:bg-gray-50 
+  px-4 
+  py-3 
+  rounded-md 
+  transition-colors 
+  duration-200;
+}
+
+.language-wrapper {
+  @apply
+  border-t 
+  border-gray-200 
+  pt-2 
+  mt-2;
+}
+.language-title {
+  @apply
+  px-4 
+  py-2 
+  text-sm 
+  font-semibold 
+  text-gray-500 
+  uppercase 
+  tracking-wide;
+}
+
+.language-link {
+  @apply
+  block 
+  text-lg 
+  font-medium 
+  text-gray-700 
+  hover:text-gray-900 
+  hover:bg-gray-50 
+  px-4 
+  py-3 
+  rounded-md 
+  transition-colors 
+  duration-200;
+}

@@ -1,0 +1,56 @@
+#!/bin/bash
+export PORT="${PORT:-3000}"
+chmod +x bin/overmind
+
+function start_overmind {
+  # Create a temporary tmux settings file to enable mouse support
+  bin/overmind start -D -f Procfile.dev -F <(echo "setw -g mouse on") &
+
+  # Wait for Overmind to start all processes
+  echo "Waiting for Overmind to start processes..."
+  bin/overmind status &> /dev/null
+  while [ $? -ne 0 ]; do
+      sleep 1
+      bin/overmind status &> /dev/null
+  done
+
+  # Connect to the "web" tagged process, which is the only one we care about - the rest are background workers
+  # change "web" to the name of the process you want to connect to if your Procfile.dev is different
+  bin/overmind connect web
+}
+
+if command -v bin/overmind &> /dev/null && [ "$(uname -s)" != "Darwin" ]; then
+  if ! command -v tmux &> /dev/null; then
+    echo "Tmux is not installed. Running 'sudo apt-get install tmux'..."
+    sudo apt-get install tmux
+  fi
+
+  if [ -z "$(bin/overmind status | grep "web")" ]; then
+    start_overmind
+  else
+    read -p "App is already running, do you want to restart it? (y/n): " restart
+
+    if [ "$restart" == "y" ]; then
+      bin/overmind kill
+      # Wait for Overmind to stop all processes
+      echo "Waiting for Overmind to stop processes..."
+      while [ -n "$(bin/overmind status)" ]; do
+        sleep 1
+      done
+      start_overmind
+    else
+      echo "Exiting..."
+    fi
+  fi
+else
+  if ! gem list foreman -i --silent; then
+    echo "Installing foreman..."
+    gem install foreman
+  fi
+
+  foreman start -f Procfile.dev "$@"
+fi
+
+
+
+

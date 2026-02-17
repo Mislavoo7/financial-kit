@@ -1,0 +1,37 @@
+<div class="mobile-nav">
+  <input id="menu-toggle" type="checkbox" class="hidden peer" />
+  
+  <!-- hamburger -->
+  <label for="menu-toggle" class="hamburger-label">
+    <% hamburger_lines = "block w-8 h-0.5 bg-gray-700 transition-all duration-300" %>
+    <span class="<%= hamburger_lines %> peer-checked:rotate-45 peer-checked:translate-y-2"></span>
+    <span class="<%= hamburger_lines %> peer-checked:opacity-0"></span>
+    <span class="<%= hamburger_lines %> peer-checked:-rotate-45 peer-checked:-translate-y-2"></span>
+  </label>
+
+  <div class="hamburger-content">
+    <ul class="py-4 px-4 space-y-2">
+      <li>
+        <%= link_to raw(@about_page.translate.title), 
+          page_path(@about_page.slug), 
+          aria: { current: path_is_active?(@about_page.page_translations.map { |slug| page_path(slug) }) },
+          class: "hamburger-link",
+          role: "menuitem" %>
+      </li>
+      
+      <% if I18n.available_locales.size > 1 %>
+        <li class="language-wrapper">
+          <div class="language-title">
+            <%= t("language") %>
+          </div>
+          <% I18n.available_locales.reject { |locale| locale == I18n.locale }.each do |locale| %>
+            <%= link_to locale.upcase, 
+              prepare_url(locale),
+              class: "language-link",
+              role: "menuitem" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

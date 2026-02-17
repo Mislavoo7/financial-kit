@@ -1,0 +1,5 @@
+<div class="admin-section-wrapper" id="<%= dom_id(section) %>" data-sections-id="<%= dom_id(section) %>" data-sortable-id="<%= section.id %>">
+  <div class="admin-section-inner <%= "bg-gray-100" if section.section_type == "gray-box" %>"   >
+    <%= render "admin/sections/section_types/#{section.to_partial}", section: section %>
+  </div>
+</div>

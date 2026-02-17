@@ -1,0 +1,15 @@
+<section class="w-full py-6 xl:py-6 px-4 bg-gray-200 overflow-hidden " data-section="<%= section.to_partial %>">
+  <div class="container max-w-xl xl:max-w-7xl w-full mx-auto text-center justify-items-center items-center justify-between xl:flex-row gap-8">
+    <div class="w-full max-w-xl  gap-6 xl:gap-8">
+      <div class="flex">
+        <h2 class="application-section-title">
+          <%= raw section.translate.title %>
+        </h2>
+        <%= render "admin/sections/btns", section: section %>
+      </div>
+      <div class="prose prose-lg" >
+        <%= raw section.translate.content %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: seos
+#
+#  id           :bigint           not null, primary key
+#  image        :string
+#  position     :integer          default(0)
+#  seoable_type :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  seoable_id   :integer
+#
+one:
+  image: MyString
+  seoable_type: MyString
+  seoable_id: 1
+  position: 1
+
+two:
+  image: MyString
+  seoable_type: MyString
+  seoable_id: 1
+  position: 1

@@ -1,0 +1,26 @@
+<% if defined?(seo) %>
+  <% title = seo[:title] %>
+  <% description = seo[:description] %>
+  <% keywords = seo[:keywords] %>
+  <% image = seo[:image] %>
+<% elsif !@seo.blank? %>
+  <% translation = @seo.translate %>
+  <% title = translation.title %>
+  <% description = translation.description %>
+  <% keywords = translation.keywords %>
+  <% image = seo_image_path(@seo.image_url(:medium)) unless @seo.image.blank? %>
+<% end %>
+
+<% content_for :title, title %>
+<% content_for :description, seo_description(description) %>
+<% content_for :type, "website" %>
+<% content_for :url, @absolute_url %>
+<% content_for :keywords, seo_keywords(keywords) %>
+<% unless image.blank? %>
+  <% content_for :image, image %>
+  <% content_for :fb_image, image %>
+<% end %>
+
+<% if defined?(author) %>
+  <% content_for :author, author %>
+<% end %>

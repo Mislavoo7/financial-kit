@@ -1,0 +1,104 @@
+en:
+  activerecord:
+    attributes:
+      name:
+        description: "Description"
+        gender: "Gender"
+        name: "Name"
+        times_saved: "Numbers of saving"
+        genders:
+          m: "Male"
+          f: "Female"
+          u: "Unisex"
+        regions:
+          western_europe: "Western Europe"
+          nordic: "Nordic Countries"
+          anglo: "Anglo Countries"
+          southern_europe: "Southern Europe"
+          slavic: "Balkans"
+          eastern_europe: "Eastern Europe"
+          middle_east: "Middle East"
+          islamic: "Islamic Countries"
+          asia_pacific: "Asia-Pacific"
+      user:
+        currencies: 
+          $: "Dollar"
+          €: "Euro"
+        languages:
+          hr: "Croatian"
+          en: "English"
+          de: "German"
+        themes:
+          dark: "Dark"
+          light: "Light"
+        email: "Email"
+        currency: "Selected currency"
+        language: "Selected language"
+        theme: "Selected theme"
+      list:
+        shop_name: "Shop name"
+        taken_at: "Taken at"
+        total_price_in_cent: "Total Price in Cent"
+        total_price: "Total Price"
+      product:
+        company: "Company"
+        price_in_cent: "Price in Cent"
+        price: "Price"
+        product_name: "Product name"
+        app_id: "App ID"
+      page:
+        image: "Image"
+        remove_image: "Remove image"
+        is_visible: "Page is visible?"
+      page_translation:
+        title: "Title"
+      section:
+        section_type: "Section type"
+        section_types: 
+          simple: "Simple"
+          gray_box: "Gray box"
+        is_visible: "Section is visible?"
+      section_translation:
+        title: "Title"
+        content: "Text"
+      admin:
+        email: "Email"
+      legal_page:
+        is_visible: "Page is visible?"
+      legal_page_translation:
+        title: "Title"
+        content: "Text"
+      seo:
+        image: "SEO Image"
+        imageu: "SEO Image"
+        generate_seo: "Generate SEO"
+      seo_translation:
+        title: "SEO Title"
+        description: "SEO Description"
+        keywords: "SEO Keywords"
+    errors:
+      models:
+        admin:
+          attributes:
+            current_password:
+              blank: "Enter your password"
+              invalid: "The password in invalid"
+            password_confirmation:
+              confirmation: "Password confirmation and password do not match."
+            reset_password_token:
+              expired: "The password reset token has expired, please request a new one."
+              invalid: "Invalid password token, request a new one."
+            email:
+              not_found: "No account found with this email address."
+        section_translation:
+          attributes:
+            title:
+              blank: "Title can't be blank"
+        page_translation:
+          attributes:
+            title:
+              blank: "Title can't be blank"
+        legal_page_translation:
+          attributes:
+            title:
+              blank: "Title can't be blank"

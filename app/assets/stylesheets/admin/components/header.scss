@@ -1,0 +1,63 @@
+.header {
+  @apply
+  relative
+  isolate 
+  overflow-hidden
+  bg-gray-900
+  py-24 
+  mt-6
+  sm:py-32;
+}
+
+.header-overlay {
+  @apply
+  absolute 
+  inset-0 
+  bg-black/50 
+  -z-10;
+}
+
+.header-title-container {
+  @apply
+  mx-auto 
+  max-w-2xl 
+  lg:mx-0;
+}
+
+.header-title {
+  @apply
+  text-5xl 
+  font-semibold 
+  tracking-tight 
+  text-white 
+  sm:text-7xl
+}
+
+.header-bttn-container {
+  @apply
+  flex 
+  gap-x-4 
+  rounded-xl 
+  p-6;
+}
+.header-bttn {
+  @apply
+  inline-flex 
+  items-center 
+  gap-x-2 
+  rounded-lg 
+  bg-white/20 
+  px-4 
+  py-2 
+  text-white 
+  hover:bg-white/20;
+}
+
+.header-image {
+  @apply
+  absolute 
+  inset-0 
+  -z-10 
+  size-full 
+  object-cover;
+}

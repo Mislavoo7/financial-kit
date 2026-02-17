@@ -1,0 +1,10 @@
+<h3 class="footer-title"><%= t("public_nav.legal_pages") %></h3>
+<ul role="list" class="footer-list">
+  <% @legal_pages.each do |legal_page| %>
+    <li class="pr-6"> 
+      <%= link_to legal_page_path(legal_page), class: "footer-link" do %>
+        <%= legal_page.translate.title %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,104 @@
+de:
+  activerecord:
+    attributes:
+      name:
+        description: "Beschreibung"
+        gender: "Geschlecht"
+        name: "Name"
+        times_saved: "Anzahl der Speicherungen"
+        genders:
+          m: "Männlich"
+          f: "Weiblich"
+          u: "Unisex"
+        regions:
+          western_europe: "Westeuropa"
+          nordic: "Nordische Länder"
+          anglo: "Angelsächsische Länder"
+          southern_europe: "Südeuropa"
+          slavic: "Balkan"
+          eastern_europe: "Osteuropa"
+          middle_east: "Naher Osten"
+          islamic: "Islamische Länder"
+          asia_pacific: "Asien-Pazifik"
+      user:
+        currencies: 
+          $: "Dollar"
+          €: "Euro"
+        languages:
+          hr: "Kroatisch"
+          en: "Englisch"
+          de: "Deutsch"
+        themes:
+          dark: "Dunkel"
+          light: "Hell"
+        email: "E-Mail"
+        currency: "Ausgewählte Währung"
+        language: "Ausgewählte Sprache"
+        theme: "Ausgewähltes Thema"
+      list:
+        shop_name: "Geschäftsname"
+        taken_at: "Aufgenommen am"
+        total_price_in_cent: "Gesamtpreis in Cent"
+        total_price: "Gesamtpreis"
+      product:
+        company: "Firma"
+        price_in_cent: "Preis in Cent"
+        price: "Preis"
+        product_name: "Product"
+        app_id: "App-ID"
+      page:
+        image: "Bild"
+        remove_image: "Bild entfernen"
+        is_visible: "Seite ist sichtbar?"
+      page_translation:
+        title: "Titel"
+      section:
+        section_type: "Abschnittstyp"
+        section_types: 
+          simple: "Einfach"
+          gray_box: "Grauer Kasten"
+        is_visible: "Abschnitt ist sichtbar?"
+      section_translation:
+        title: "Titel"
+        content: "Text"
+      admin:
+        email: "E-Mail"
+      legal_page:
+        is_visible: "Seite ist sichtbar?"
+      legal_page_translation:
+        title: "Titel"
+        content: "Text"
+      seo:
+        image: "SEO-Bild"
+        imageu: "SEO-Bild"
+        generate_seo: "SEO generieren"
+      seo_translation:
+        title: "SEO-Titel"
+        description: "SEO-Beschreibung"
+        keywords: "SEO-Schlüsselwörter"
+    errors:
+      models:
+        admin:
+          attributes:
+            current_password:
+              blank: "Geben Sie Ihr Passwort ein"
+              invalid: "Das Passwort ist ungültig"
+            password_confirmation:
+              confirmation: "Passwortbestätigung und Passwort stimmen nicht überein."
+            reset_password_token:
+              expired: "Das Passwort-Reset-Token ist abgelaufen, bitte fordern Sie ein neues an."
+              invalid: "Ungültiges Passwort-Token, bitte fordern Sie ein neues an."
+            email:
+              not_found: "Kein Konto mit dieser E-Mail-Adresse gefunden."
+        section_translation:
+          attributes:
+            title:
+              blank: "Titel darf nicht leer sein"
+        page_translation:
+          attributes:
+            title:
+              blank: "Titel darf nicht leer sein"
+        legal_page_translation:
+          attributes:
+            title:
+              blank: "Titel darf nicht leer sein"

@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: names
+#
+#  id             :bigint           not null, primary key
+#  countries      :string           default([]), is an Array
+#  description_de :text
+#  description_en :text
+#  description_hr :text
+#  gender         :string
+#  name           :string
+#  popularity     :integer          default(0)
+#  times_saved    :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+one:
+  name: MyString
+  description_en: MyString
+  text: MyString
+  usage: MyString
+  times_saved: 1
+
+two:
+  name: MyString
+  description_en: MyString
+  text: MyString
+  usage: MyString
+  times_saved: 1

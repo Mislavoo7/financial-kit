@@ -1,0 +1,32 @@
+<div class="header">
+  <% unless @page.image.blank? %>
+    <%= image_tag @page.image_url(:medium), class: "header-image"  %>
+    <div class="header-overlay"></div>
+  <% end %>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="header-title-container">
+      <h2 class="header-title"><%= @page.translate.title %></h2>
+    </div>
+
+    <div class="header-bttn-container">
+      <span>
+        <%= link_to edit_admin_page_path(@page), class: "header-bttn" do %>
+          <%= phosphor_icon 'pencil-simple', options: { class: 'size-5' } %>
+          <span class="inline-block">
+            <%= t("edit") %>
+          </span>
+        <% end %>
+      </span>
+      <%= render "admin/pages/visible_bttn" %>
+      <span>
+        <%= link_to new_admin_page_section_path(@page), class: "header-bttn" do %>
+          <%= phosphor_icon 'pencil-simple', options: { class: 'size-5' } %>
+          <span class="inline-block">
+            <%= t("section.add") %>
+          </span>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

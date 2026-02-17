@@ -1,0 +1,60 @@
+.enhanced-action-btn {
+  @apply inline-flex items-center justify-center p-2 rounded-lg text-gray-700 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.enhanced-action-btn-small {
+  @apply inline-flex items-center justify-center p-1.5 rounded-md text-gray-600 transition-all duration-200 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.mobile-product-card {
+  transition: all 0.2s ease;
+}
+
+.mobile-product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-action-btn {
+  @apply inline-flex items-center justify-center p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1;
+}
+
+.mobile-add-product {
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .enhanced-action-btn {
+    @apply p-2 text-sm;
+  }
+  
+  li[data-lists-id] {
+    @apply block w-full;
+  }
+  
+  .mobile-product-card {
+    @apply mb-3 last:mb-0;
+  }
+}
+
+@media (min-width: 641px) {
+  tbody .table-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}

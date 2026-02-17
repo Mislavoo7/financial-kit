@@ -1,0 +1,26 @@
+.table {
+  @apply
+  w-full 
+  divide-y 
+  mt-10
+  divide-gray-300;
+}
+
+.thead-th {
+  @apply
+  px-3 
+  py-3.5 
+  text-left 
+  text-sm 
+  font-semibold 
+  text-gray-900;
+}
+
+.tbody-td {
+  @apply
+  px-3 
+  py-4 
+  text-sm 
+  whitespace-nowrap 
+  text-gray-500;
+}

@@ -1,0 +1,17 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: t("admin_nav.legal_pages"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+<div class="page">
+  <%= render "admin/shared/header", 
+    title: t('admin_nav.legal_pages'), 
+    new_url: new_admin_legal_page_path, 
+    new_title:  t('new') %>
+
+  <ul data-controller="sort-with-update" class="pt-6" data-sortable-update-path="<%= sort_admin_legal_pages_path %>">
+    <% @legal_pages.each do |legal_page| %>
+      <%= render "admin/legal_pages/legal_page", legal_page: legal_page %>
+    <% end %>
+  </ul>
+</div>

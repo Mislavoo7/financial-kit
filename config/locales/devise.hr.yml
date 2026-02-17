@@ -1,0 +1,73 @@
+hr:
+  devise:
+    login: "Prijava"
+    register: "Registracija"
+    logout: "Odjava"
+    edit: "Izmijeni račun"
+    change_your_email: "Možete promijeniti svoju e-mail adresu tako da upišete novu i potvrdite svoj izbor unosom svoje postojeće lozinke."
+    confirmations:
+      confirmed: "Vaša e-mail adresa je uspješno potvrđena."
+      send_instructions: "U roku od nekoliko minuta primit ćete e-mail s uputama za potvrdu vaše e-mail adrese."
+      send_paranoid_instructions: "Ako vaša e-mail adresa postoji u našoj bazi, u roku od nekoliko minuta primit ćete e-mail s uputama za potvrdu vaše e-mail adrese."
+    failure:
+      already_authenticated: "Već ste prijavljeni."
+      inactive: "Vaš račun još nije aktiviran."
+      invalid: "Neispravan %{authentication_keys} ili lozinka."
+      locked: "Vaš račun je zaključan."
+      last_attempt: "Imate još jedan pokušaj prije nego što vaš račun bude zaključan."
+      not_found_in_database: "Neispravan %{authentication_keys} ili lozinka."
+      timeout: "Vaša sesija je istekla. Prijavite se ponovno za nastavak."
+      unauthenticated: "Morate se prijaviti ili registrirati prije nastavka."
+      unconfirmed: "Morate potvrditi svoju e-mail adresu prije nastavka."
+    mailer:
+      confirmation_instructions:
+        subject: "Upute za potvrdu"
+      reset_password_instructions:
+        subject: "Upute za resetiranje lozinke"
+      unlock_instructions:
+        subject: "Upute za otključavanje"
+      email_changed:
+        subject: "E-mail promijenjen"
+      password_change:
+        subject: "Lozinka promijenjena"
+    omniauth_callbacks:
+      failure: "Ne možemo vas autentificirati putem %{kind} jer \"%{reason}\"."
+      success: "Uspješno ste autentificirani putem %{kind} računa."
+    passwords:
+      no_token: "Ne možete pristupiti ovoj stranici bez dolaska iz e-maila za resetiranje lozinke. Ako ste došli iz takvog e-maila, provjerite jeste li koristili puni URL."
+      send_instructions: "U roku od nekoliko minuta primit ćete e-mail s uputama za resetiranje lozinke."
+      send_paranoid_instructions: "Ako vaša e-mail adresa postoji u našoj bazi, u roku od nekoliko minuta primit ćete poveznicu za oporavak lozinke."
+      updated: "Vaša lozinka je uspješno promijenjena. Sada ste prijavljeni."
+      updated_not_active: "Vaša lozinka je uspješno promijenjena."
+    registrations:
+      min_char: "Minimalno %{num} znakova"
+      destroyed: "Doviđenja! Vaš račun je uspješno izbrisan. Nadamo se da ćemo vas uskoro ponovno vidjeti."
+      signed_up: "Dobrodošli! Uspješno ste se registrirali."
+      signed_up_but_inactive: "Uspješno ste se registrirali, ali vas nismo mogli prijaviti jer vaš račun još nije aktiviran."
+      signed_up_but_locked: "Uspješno ste se registrirali, ali vas nismo mogli prijaviti jer je vaš račun zaključan."
+      signed_up_but_unconfirmed: "Poruka s poveznicom za potvrdu poslana je na vašu e-mail adresu. Slijedite poveznicu kako biste aktivirali svoj račun."
+      update_needs_confirmation: "Uspješno ste ažurirali svoj račun, ali trebamo potvrditi vašu novu e-mail adresu. Provjerite svoj e-mail i slijedite poveznicu za potvrdu."
+      updated: "Vaš račun je uspješno ažuriran."
+      updated_but_not_signed_in: "Vaš račun je uspješno ažuriran, ali budući da je lozinka promijenjena, morate se ponovno prijaviti."
+    sessions:
+      destroy: "Odjava"
+      sign_in: "Prijavite se na svoj račun"
+      sign_in_button: "Prijava"
+      signed_in: "Uspješno ste prijavljeni."
+      signed_out: "Uspješno ste odjavljeni."
+      already_signed_out: "Uspješno ste odjavljeni."
+      forgot_password: "Zaboravili ste lozinku?"
+    unlocks:
+      send_instructions: "U roku od nekoliko minuta primit ćete e-mail s uputama za otključavanje vašeg računa."
+      send_paranoid_instructions: "Ako vaš račun postoji, u roku od nekoliko minuta primit ćete e-mail s uputama za otključavanje."
+      unlocked: "Vaš račun je uspješno otključan. Prijavite se za nastavak."
+  errors:
+    messages:
+      already_confirmed: "je već potvrđen, pokušajte se prijaviti"
+      confirmation_period_expired: "mora biti potvrđen u roku od %{period}, zatražite novi"
+      expired: "je istekao, zatražite novi"
+      not_found: "nije pronađeno"
+      not_locked: "nije bio zaključan"
+      not_saved:
+        one: "1 greška spriječila je spremanje %{resource}:"
+        other: "%{count} grešaka spriječilo je spremanje %{resource}:"

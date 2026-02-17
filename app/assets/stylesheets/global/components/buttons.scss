@@ -1,0 +1,41 @@
+.button {
+  @apply 
+  hover:cursor-pointer
+  block
+  rounded-md
+  px-3
+  py-2
+  text-center
+  text-sm
+  font-semibold
+  focus-visible:outline-primary-600
+  focus-visible:outline-2
+  focus-visible:outline-offset-2
+  text-gray-700;
+
+  &.is-primary {
+    @apply 
+    bg-primary-600
+    hover:bg-primary-500
+    text-white;
+
+  }
+
+  &.is-secondary {
+    @apply 
+    bg-secondary-600
+    hover:bg-secondary-500
+    text-white;
+  }
+
+  &.is-gray {
+    @apply 
+    hover:bg-secondary-500
+    text-white;
+  }
+
+  &.is-half {
+    @apply
+    w-1/2
+  }
+}

@@ -1,0 +1,57 @@
+.sidebar {
+  @apply
+  relative 
+  mr-16 
+  pt-4 
+  flex 
+  w-1/3 
+  h-full
+  max-w-xs 
+  flex-1 
+  border-r 
+  border-gray-200
+  bg-primary-50
+  z-10
+  h-screen;
+}
+
+.sidebar-body {
+  @apply
+  flex 
+  grow 
+  flex-col 
+  gap-y-5 
+  px-6 
+  pb-2;
+}
+
+.sidebar-logo {
+  @apply
+  relative 
+  mr-16 
+  pt-4 
+  flex 
+  w-full 
+  max-w-xs;
+}
+.sidebar-nav {
+  @apply
+  flex
+  flex-1
+  flex-col
+  sticky
+  top-0;
+}
+
+.sidebar-link {
+  @apply 
+  flex 
+  p-2 
+  hover:bg-secondary-50 
+  text-primary-600
+  gap-x-3 
+  rounded-md 
+  text-sm/6 
+  font-semibold; 
+}
+

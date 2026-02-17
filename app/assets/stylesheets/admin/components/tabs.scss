@@ -1,0 +1,72 @@
+.page-tabs {
+	@apply
+		border-b
+		border-gray-200
+		mb-6;
+
+	nav {
+		@apply
+			-mb-px
+			flex space-x-8;
+	}
+
+	svg {
+		@apply
+			-ml-0.5
+			mr-2
+			h-5 w-5;
+	}
+
+	a {
+		@apply
+			inline-flex
+			items-center
+			border-b-2
+			py-4
+			px-1
+			text-sm
+			font-medium;
+	}
+
+	a span {
+		@apply whitespace-nowrap;
+	}
+
+	a.is-inactive {
+		@apply
+			border-transparent
+			text-gray-500
+			hover:border-gray-300
+			hover:text-gray-700;
+
+	}
+	a.is-active svg {
+		@apply text-primary-400;
+	}
+
+	a.is-active {
+		@apply
+			border-primary-500
+			text-primary-600;
+	}
+
+	a.is-inactive svg {
+		@apply text-gray-400;
+	}
+}
+
+.page-navigation-tabs {
+	@apply
+		block
+		w-full
+		rounded-md
+		border-gray-300
+		py-2
+		pl-3
+		pr-10
+		text-base
+		focus:border-primary-500
+		focus:outline-none
+		focus:ring-primary-500
+		sm:text-sm mb-6;
+}

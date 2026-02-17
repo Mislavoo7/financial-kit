@@ -1,0 +1,11 @@
+hr:
+  admin_nav:
+    home: "Početna"
+    admins: "Administratori"
+    legal_pages: "Pravne stranice"
+    seos: "SEO"
+    users: "Korisnici"
+  public_nav:
+    legal_pages: "Pravne stranice"
+  user_nav:
+    lists: "Tvoje liste"

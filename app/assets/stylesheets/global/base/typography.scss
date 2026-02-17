@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold font-sans;
+}
+
+h1 {
+  @apply text-3xl sm:text-2xl;
+}
+
+h2 {
+  @apply text-2xl sm:text-xl;
+}
+
+h3 {
+  @apply text-xl sm:text-lg;
+}
+
+h4, h5, h6 {
+  @apply text-lg;
+}
+
+html {
+  font-family: "Monospace", system-ui, sans-serif;
+}

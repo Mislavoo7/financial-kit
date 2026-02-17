@@ -1,0 +1,8 @@
+<span id="<%= dom_id(@page) %>_visible_bttn">
+  <%= link_to visibility_admin_page_path(@page), class: "header-bttn", remote: true, method: :patch do %>
+    <%= @page.is_visible ? phosphor_icon('eye', options: { class: 'size-5' }) : phosphor_icon('eye-slash', options: { class: 'size-5' })  %>
+    <span class="inline-block">
+      <%= @page.is_visible ? t("hide") : t("show") %>
+    </span>
+  <% end %>
+</span>

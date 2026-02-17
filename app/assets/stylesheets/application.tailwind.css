@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "global/base/root.scss";
+@import "global/base/typography.scss";
+@import "global/components/flatpickr.scss";
+
+@import "global/components/buttons.scss";
+@import "global/components/tooltips.scss";
+@import "global/components/tables.scss";
+@import "global/components/notices.scss";
+
+@import "application/components/form.scss";
+@import "application/base/root.scss";
+@import "application/components/header.scss";
+@import "application/components/pages.scss";
+@import "application/components/footer.scss";
+@import "application/components/social.scss";

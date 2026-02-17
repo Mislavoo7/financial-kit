@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-title">
+    <%= image_tag "logo_with_text.png", class: "mx-auto w-auto", alt: "logo" %>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"><%= t("devise.sessions.sign_in") %></h2>
+  </div>
+
+
+  <div class="form-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form-body">
+        <%= render "admins/shared/error_messages", resource: resource %>
+
+        <div class="">
+          <%= f.label :email, class: "label" %><br />
+          <div class="mt-2">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex items-center justify-between">
+            <%= f.label :password, class: "label" %><br />
+          </div>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+
+          <div class="mt-2">
+            <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex items-center justify-between">
+            <%= f.label :password_confirmation, class: "label" %><br />
+          </div>
+
+          <div class="mt-2">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+          </div>
+        </div>
+
+
+        <div class="pt-6">
+          <%= f.submit t("devise.sessions.sign_in_button"), class: "button is-primary" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

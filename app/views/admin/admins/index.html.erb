@@ -1,0 +1,26 @@
+<div class="page">
+  <%= render "admin/shared/header", 
+    title: t('admin_nav.admins'), 
+    new_url: new_admin_admin_path, 
+    new_title:  t('new') %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="thead-th"><%= tf('admin.email') %></th>
+        <th class="thead-th"><%= t('actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @admins.each do |admin| %>
+        <tr>
+          <td class="tbody-td"><%= admin.email %></td>
+          <td class="tbody-td">
+            <%= link_to t('edit'), edit_admin_admin_path(admin), class: "table-button" %>
+            <%= link_to t('delete'), admin_admin_path(admin), class: "table-button", method: :delete, data: { confirm: t('are_you_sure') } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

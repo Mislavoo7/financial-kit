@@ -1,0 +1,13 @@
+[data-controller="notices"] .fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notice {
+  @apply bg-green-500 text-white px-6 py-4 text-center font-semibold shadow-md mb-0;
+}
+
+.alert {
+  @apply bg-primary-500 text-white px-6 py-4 text-center font-semibold shadow-md mb-0;
+}

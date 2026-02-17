@@ -1,0 +1,13 @@
+// Replace the element based on the data-id attribute (without jQuery)
+document.querySelectorAll('[data-id="visible-bttn-<%= dom_id(@section) %>"]').forEach(element => {
+  // Create a new temporary div to hold the rendered HTML
+  element.outerHTML = `<%= j render 'admin/sections/visible_bttn', section: @section %>`;
+});
+
+// Dispatch the custom event for the toast message
+document.dispatchEvent(new CustomEvent('dispatch-toast', { 
+  detail: { 
+    message: '<%= @section.is_visible ? t("section.is_now_visible") : t("section.is_now_invisible") %>', 
+    type: 'success' 
+  } 
+}));

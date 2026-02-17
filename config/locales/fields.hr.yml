@@ -1,0 +1,104 @@
+hr:
+  activerecord:
+    attributes:
+      name:
+        description: "Opis"
+        gender: "Spol"
+        name: "Ime"
+        times_saved: "Broj spremanja"
+        genders:
+          m: "Muško"
+          f: "Žensko"
+          u: "Uniseks"
+        regions:
+          western_europe: "Zapadna Europa"
+          nordic: "Nordijske zemlje"
+          anglo: "Anglosaksonske zemlje"
+          southern_europe: "Južna Europa"
+          slavic: "Balkan"
+          eastern_europe: "Istočna Europa"
+          middle_east: "Bliski istok"
+          islamic: "Islamske zemlje"
+          asia_pacific: "Azija i Pacifik"
+      user:
+        currencies: 
+          $: "Dollar"
+          €: "Dollar"
+        languages:
+          hr: "Hrvatski"
+          en: "Engleski"
+          de: "Njemački"
+        themes:
+          dark: "Tamna"
+          light: "Svjetla"
+        email: "Email"
+        currency: "Odabrana valuta"
+        language: "Odabrani jezik"
+        theme: "Odabrana tema"
+      list:
+        shop_name: "Naziv trgovine"
+        taken_at: "Stvoreno"
+        total_price_in_cent: "Ukupna cijena u centima"
+        total_price: "Ukupna cijena"
+      product:
+        company: "Tvrtka"
+        price_in_cent: "Cijena u centima"
+        price: "Cijena"
+        product_name: "Proizvod"
+        app_id: "ID iz aplikacije" 
+      page:
+        image: "Slika"
+        remove_image: "Ukloni sliku"
+        is_visible: "Je li stranica vidljiva?"
+      page_translation:
+        title: "Naslov"
+      section:
+        section_type: "Tip sekcije"
+        section_types: 
+          simple: "Jednostavno"
+          gray_box: "Siva kutija"
+        is_visible: "Je li sekcija vidljiva?"
+      section_translation:
+        title: "Naslov"
+        content: "Tekst"
+      admin:
+        email: "E-mail"
+      legal_page:
+        is_visible: "Je li stranica vidljiva?"
+      legal_page_translation:
+        title: "Naslov"
+        content: "Tekst"
+      seo:
+        image: "SEO slika"
+        imageu: "SEO slika"
+        generate_seo: "Generiraj SEO"
+      seo_translation:
+        title: "SEO naslov"
+        description: "SEO opis"
+        keywords: "SEO ključne riječi"
+    errors:
+      models:
+        admin:
+          attributes:
+            current_password:
+              blank: "Unesite svoju lozinku"
+              invalid: "Lozinka nije ispravna"
+            password_confirmation:
+              confirmation: "Potvrda lozinke i lozinka se ne podudaraju."
+            reset_password_token:
+              expired: "Token za resetiranje lozinke je istekao, zatražite novi."
+              invalid: "Neispravan token za lozinku, zatražite novi."
+            email:
+              not_found: "Nije pronađen račun s ovom e-mail adresom."
+        section_translation:
+          attributes:
+            title:
+              blank: "Naslov ne smije biti prazan"
+        page_translation:
+          attributes:
+            title:
+              blank: "Naslov ne smije biti prazan"
+        legal_page_translation:
+          attributes:
+            title:
+              blank: "Naslov ne smije biti prazan"

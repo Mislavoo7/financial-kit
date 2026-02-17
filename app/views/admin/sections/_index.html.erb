@@ -1,0 +1,8 @@
+<div class="flex flex-col gap-8 pt-8" data-controller="sort-with-update" data-sortable-update-path="<%= sort_admin_page_sections_path(@page) %>"
+
+  <% unless @sections.blank? %>
+    <% @sections.each_with_index do |section, index| %>
+      <%= render "admin/sections/section", section: section %>
+    <% end %>
+  <% end %>
+</div>

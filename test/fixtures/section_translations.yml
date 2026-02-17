@@ -1,0 +1,20 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: section_translations
+#
+#  id         :bigint           not null, primary key
+#  locale     :string
+#  title      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  section_id :integer
+#
+one:
+  title: MyString
+  section_id: 1
+
+two:
+  title: MyString
+  section_id: 1

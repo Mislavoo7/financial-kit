@@ -1,0 +1,18 @@
+// Replace the element based on the data attribute (without jQuery)
+document.querySelectorAll(`[data-legal-pages-id="<%= dom_id(@legal_page) %>"]`).forEach(element => {
+  // Create a new temporary div to hold the rendered HTML
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = `<%= j render 'admin/legal_pages/legal_page', legal_page: @legal_page %>`;
+
+  // Replace the old element with the new content
+  element.replaceWith(tempDiv.firstElementChild);
+});
+
+
+// Dispatch the custom event for the toast message
+document.dispatchEvent(new CustomEvent('dispatch-toast', { 
+  detail: { 
+    message: '<%= @legal_page.is_visible ? t("legal_page.is_now_visible") : t("legal_page.is_now_invisible") %>', 
+    type: 'success' 
+  } 
+}));

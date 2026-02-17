@@ -1,0 +1,11 @@
+en:
+  admin_nav:
+    home: "Home"
+    admins: "Admins"
+    legal_pages: "Legals Pages"
+    seos: "SEO"
+    users: "Users"
+  public_nav:
+    legal_pages: "Legals Pages"
+  user_nav:
+    lists: "Your Lists"

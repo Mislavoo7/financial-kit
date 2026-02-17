@@ -1,0 +1,6 @@
+<%= link_to visibility_admin_page_section_path(@page.id, section), remote: true, method: :patch, class: "section-bttn", data: { id: "visible-bttn-#{dom_id(section)}" , confirm: section.is_visible ? t("section.invisible_confirmation") : t("section.visible_confirmation"), tooltip: section.is_visible ? t("section.is_now_visible") : t("section.is_now_invisible")  } do %>
+  <%= section.is_visible ? phosphor_icon('eye') : phosphor_icon('eye-slash') %>
+  <span class="sr-only">
+    <%= section.is_visible ? t("hide") : t("show") %>
+  </span>
+<% end %>

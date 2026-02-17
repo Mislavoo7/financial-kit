@@ -1,0 +1,18 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: @page.translate.title, url: admin_page_path(@page)},
+    {title: t("editing"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+<div class="page-wrapper">
+  <div class="page-page">
+    <div class="page-page__title">
+      <h1><%= t('admin_nav.pages') %></h1>
+      <p><%= t('editing') %></p>
+    </div>
+  </div>
+
+  <div class="max-w-2xl">
+      <%= render 'admin/pages/form' %>
+  </div>
+</div>

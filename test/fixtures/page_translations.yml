@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: page_translations
+#
+#  id         :bigint           not null, primary key
+#  locale     :string
+#  slug       :string
+#  title      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  page_id    :integer
+#
+one:
+  title: MyString
+  page_id: 1
+
+two:
+  title: MyString
+  page_id: 1

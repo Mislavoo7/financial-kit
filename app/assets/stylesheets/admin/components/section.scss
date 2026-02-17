@@ -1,0 +1,32 @@
+
+.section-bttn-container {
+  @apply
+  flex 
+  gap-x-1
+  p-1
+  pl-4
+  rounded-xl;
+}
+.section-bttn {
+  @apply
+  inline-flex 
+  items-center 
+  gap-x-1 
+  rounded-lg 
+  bg-primary-400 
+  px-2 
+  py-1 
+  text-black
+  hover:bg-primary-500;
+}
+
+.admin-section-wrapper {
+  @apply
+  w-3/4;
+}
+
+.application-section-title {
+  @apply
+  text-3xl;
+
+}

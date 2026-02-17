@@ -1,0 +1,28 @@
+<%= render "shared/seo" %>
+<div class="page">
+  <div class="featured-section">
+    <% unless @page.image.blank? %>
+      <%= image_tag @page.image_url(:medium), 
+        class: "featured-bg-image",
+        title: "featured-bg-image",
+        alt: "featured-bg-image" %>
+    <% end %>
+
+    <div class="featured-content-wrapper">
+      <div class="content-wrapper">
+        <h2 class="featured-title"> <%= @featured_section.translate.title %> </h2>
+        <div class="featured-content">
+          <%= raw @featured_section.translate.content %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- sections -->
+  <div class="section-wrapper">
+    <% @other_sections.each do |section| %>
+      <%= render "sections/#{section.to_partial}", section: section %>
+    <% end %>
+  </div>
+
+</div>

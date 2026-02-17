@@ -1,0 +1,47 @@
+<div class="sidebar">
+  <div class="sidebar-body">
+    <div class="sidebar-logo">
+      <%= image_tag "logo.png", class: "w-auto", alt: "logo" %>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul role="list" class="gap-y-7">
+        <li>
+          <%= link_to admin_admins_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "users", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.admin") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_root_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "house", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.home") %>
+          <% end %>
+        </li>
+
+        <% @pages.each do |page| %>
+          <% next if page.name == "home" %>
+          <li>
+            <%= link_to admin_page_path(page), class: "sidebar-link" do %>
+              <%= phosphor_icon "clipboard-text", options: { class: 'size-5 shrink-0' } %>
+              <%= page.translate.title %>
+            <% end %>
+          </li>
+        <% end %>
+
+        <li>
+          <%= link_to admin_legal_pages_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "scales", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.legal_pages") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_admin_session_path, class: "sidebar-link", method: :delete do %>
+            <%= phosphor_icon "sign-out", options: { class: 'size-5 shrink-0' } %>
+            <%= t("devise.sessions.destroy") %>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+30
+User-agent: 008
+Disallow: /
+User-agent: *
+Disallow: /admin/
+Disallow: /admin/*
+Sitemap: https://financialkit.eu/sitemap.xml.gz

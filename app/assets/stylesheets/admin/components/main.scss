@@ -1,0 +1,18 @@
+.main {
+  @apply
+  px-6 
+  bg-white
+  w-2/3;
+}
+
+.alert {
+  background-color: red;
+  color: white;
+  z-index: 99;
+}
+
+.notice {
+  background-color: green;
+  color: white;
+  z-index: 99;
+}

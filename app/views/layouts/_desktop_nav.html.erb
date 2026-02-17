@@ -1,0 +1,41 @@
+<div class="desktop-nav">
+  <!-- links -->
+  <%= link_to raw(@about_page.translate.title), 
+    page_path(@about_page.slug), 
+    aria: { current: path_is_active?(@about_page.page_translations.map { |slug| page_path(slug) }) },
+    class: "desktop-nav-link" %>
+
+  <!-- language switcher -->
+  <% if I18n.available_locales.size > 1 %>
+    <div class="relative">
+      <button type="button"
+              class="desktop-nav-button"
+              id="locale-menu-button"
+              aria-expanded="false"
+              aria-haspopup="true"
+              onclick="document.getElementById('locale-menu').classList.toggle('hidden')">
+        <%= I18n.locale.upcase %>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      <div id="locale-menu"
+           class="hidden absolute right-0  mt-2 w-32 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;"
+           role="menu"
+           aria-orientation="vertical"
+           aria-labelledby="locale-menu-button"
+           tabindex="-1">
+        <div class="py-1">
+          <% I18n.available_locales.reject { |locale| locale == I18n.locale }.each do |locale| %>
+            <%= link_to locale.upcase, 
+              prepare_url(locale),
+              class: "desktop-nav-language",
+              role: "menuitem",
+              tabindex: "-1" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
