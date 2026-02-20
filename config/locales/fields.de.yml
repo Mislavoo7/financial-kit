@@ -63,6 +63,28 @@ de:
         content: "Text"
       admin:
         email: "E-Mail"
+      credit:
+        interest_year: "Finanzaufwendungen (Zinsen)"
+        calculation_method: "Berechnungsmethode"
+        calculation_methods:
+          equal_annuities: "Gleichbleibende Annuitäten"
+          equal_installments: "Gleichbleibende Raten"
+        amount_in_cent: "Kreditbetrag"
+        interest_ratio: "Zinssatz (jährlich)"
+        repayment_year: "Rückzahlungsdauer (Jahre, ohne Karenzzeit)"
+        months_one: "Anzahl der Monate in der Rückzahlung"
+        months_two: "Anzahl der Monate in der Rückzahlung 2"
+        start: "Karenzzeit (Monate)"
+        number_of_installments: "Anzahl der Raten"
+        time_horizon: "Zeithorizont"
+        start_at: "Startdatum des Kredits"
+        months:
+          date: "Datum"
+          month: "Monat"
+          installment: "Rate/Annuität"
+          principal: "Tilgung"
+          interest: "Zinsen"
+          debt_rest: "Restschuld"
       legal_page:
         is_visible: "Seite ist sichtbar?"
       legal_page_translation:
@@ -78,6 +100,28 @@ de:
         keywords: "SEO-Schlüsselwörter"
     errors:
       models:
+        credit:
+          attributes:
+            calculation_method:
+              blank: "Die Berechnungsmethode darf nicht leer sein!"
+              inclusion: "Die Berechnungsmethode muss einer der zulässigen Werte sein!"
+            amount_in_cent:
+              blank: "Der Betrag darf nicht leer sein!"
+              greater_than: "Der Betrag muss größer als 0 sein!"
+            interest_ratio:
+              blank: "Der Zinssatz darf nicht leer sein!"
+              greater_than_or_equal_to: "Der Zinssatz muss größer oder gleich 0 sein!"
+            repayment_year:
+              blank: "Die Rückzahlungsdauer darf nicht leer sein!"
+              greater_than: "Die Rückzahlungsdauer muss größer als 0 sein!"
+            months_one:
+              blank: "Die Anzahl der Monate darf nicht leer sein!"
+              greater_than: "Die Anzahl der Monate muss größer als 0 sein!"
+            start:
+              blank: "Die Karenzzeit darf nicht leer sein!"
+              greater_than: "Die Karenzzeit muss größer als 0 sein!"
+            start_at:
+              blank: "Das Datum darf nicht leer sein!"
         admin:
           attributes:
             current_password:

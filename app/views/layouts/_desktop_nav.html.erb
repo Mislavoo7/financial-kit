@@ -5,6 +5,24 @@
     aria: { current: path_is_active?(@about_page.page_translations.map { |slug| page_path(slug) }) },
     class: "desktop-nav-link" %>
 
+  <% if current_user.blank? %>
+    <%= link_to t("devise.login"), new_user_session_path,
+      class: "desktop-nav-link" %>
+
+    <%= link_to t("devise.register"), new_user_registration_path,
+      class: "desktop-nav-link" %>
+  <% else %>
+    <%= link_to t("dashboard"), user_root_path,
+      class: "desktop-nav-link" %>
+
+    <%= link_to t("devise.edit"), user_accounts_path,
+      class: "desktop-nav-link" %>
+
+    <%= link_to t("devise.logout"), destroy_user_session_path,
+    data: { turbo_method: :delete },
+    class: "desktop-nav-link" %>
+<% end %>
+
   <!-- language switcher -->
   <% if I18n.available_locales.size > 1 %>
     <div class="relative">

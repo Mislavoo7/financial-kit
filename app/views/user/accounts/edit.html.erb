@@ -1,0 +1,17 @@
+<div class="card">
+  <% content_for :links do %>
+    <%= raw([
+      {title: @user.email, url: "javascript:void(0);"},
+      {title: t("editing"), url: "javascript:void(0);"},
+    ].to_json) %>
+<% end %>
+
+<div class="card-title items-center">
+  <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"><%= t("user_nav.users") %></h2>
+</div>
+<p><%= t('edit_record') %></p>
+
+<div class="max-w-2xl">
+  <%= render 'form' %>
+</div>
+</div>

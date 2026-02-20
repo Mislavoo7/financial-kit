@@ -1,4 +1,9 @@
 hr:
+  language: "Jezici"
+  calculator:
+    credit:
+      title: "Obračuna kredita"
+      description: "Kredit (zajam) je posuđeni novac koji se mora vratiti tijekom vremena uz kamatu, obično u redovitim ratama prema dogovorenim uvjetima."
   title: "Koje ime odabrati?"
   hi: "Bok"
   dashboard: "Moje kupnje"

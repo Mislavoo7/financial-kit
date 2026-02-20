@@ -1,0 +1,189 @@
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.calculation_method") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="px-3 py-2">
+      <label class="form-toggle">
+        <%= f.check_box :calculation_method,
+          {
+            class: "sr-only peer",
+            data: {
+              excel_formulas_target: "methodToggle",
+              calculation_method: true,
+              action: "change->excel-formulas#creditCalculate"
+            }
+          },
+          "equal-annuities",
+          "equal-installments"
+        %>
+
+        <span class="form-toggle-option form-toggle-option--active
+                     peer-checked:bg-white peer-checked:text-secondary-800">
+          <%= tf("credit.calculation_methods.equal_installments") %>
+        </span>
+
+        <span class="form-toggle-divider"><%= t("or") %></span>
+
+        <span class="form-toggle-option
+                     peer-checked:text-white peer-checked:bg-primary-500">
+          <%= tf("credit.calculation_methods.equal_annuities") %>
+        </span>
+      </label>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.amount_in_cent") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= money_field f, :amount_in_cent, class: 'form-table-input',
+        data: {
+          "amount_in_cent" => true,
+          "amount_in_cent_input" => true, action: "input->excel-formulas#creditCalculate"
+        } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.interest_ratio") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= ratio_field f, :interest_ratio, class: 'form-table-input',
+        data: {
+          "interest_ratio" => true,
+          action: "input->excel-formulas#creditCalculate"
+        } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.repayment_year") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :repayment_year, class: 'form-table-input', placeholder: '0', data: {
+        "repayment_year" => true,
+        action: "input->excel-formulas#creditCalculate"
+      } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.months_one") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :months_one, class: 'form-table-input', placeholder: '0', data: {
+        "months_one" => true,
+        action: "input->excel-formulas#creditCalculate"
+      } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.start") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :start, class: 'form-table-input', placeholder: '0', data: {
+        "start" => true,
+        action: "input->excel-formulas#creditCalculate"
+      } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.number_of_installments") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell--readonly">
+      <%= f.number_field :number_of_installments, class: 'form-table-input readonly-indicator', placeholder: '0',
+        readonly: true,
+        data: {
+          "number_of_installments" => true,
+          action: "input->excel-formulas#creditCalculate"
+        } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.time_horizon") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell--readonly">
+      <%= f.number_field :time_horizon, class: 'form-table-input readonly-indicator', placeholder: '0',
+        readonly: true,
+        data: {
+          "time_horizon" => true,
+          action: "input->excel-formulas#creditCalculate"
+        } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("credit.start_at") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.text_field :start_at, class: 'form-table-input',
+        value: (f.object.start_at.blank? ? Date.today : f.object.start_at ),
+        data: {
+          "start_at" => true,
+          controller: 'datepicker',
+          action: "input->excel-formulas#creditCalculate"
+        } %>
+      <%= phosphor_icon "pencil-simple-line", class: "edit-icon" %>
+    </div>
+  </td>
+</tr>

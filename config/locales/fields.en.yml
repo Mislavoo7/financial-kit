@@ -63,6 +63,28 @@ en:
         content: "Text"
       admin:
         email: "Email"
+      credit:
+        interest_year: "Financial expenses (interest)"
+        calculation_method: "Calculation method"
+        calculation_methods:
+          equal_annuities: "Equal annuities"
+          equal_installments: "Equal installments"
+        amount_in_cent: "Loan amount"
+        interest_ratio: "Interest (annual)"
+        repayment_year: "Repayment period (years, without grace)"
+        months_one: "Number of months in repayment"
+        months_two: "Number of months in repayment 2"
+        start: "Grace period (months)"
+        number_of_installments: "Number of installments"
+        time_horizon: "Time horizon"
+        start_at: "Loan start date"
+        months:
+          date: "Date"
+          month: "Month"
+          installment: "Installment/Annuity"
+          principal: "Principal"
+          interest: "Interest"
+          debt_rest: "Remaining debt"
       legal_page:
         is_visible: "Page is visible?"
       legal_page_translation:
@@ -78,6 +100,28 @@ en:
         keywords: "SEO Keywords"
     errors:
       models:
+        credit:
+          attributes:
+            calculation_method:
+              blank: "Calculation method cannot be blank!"
+              inclusion: "Calculation method must be one of the allowed values!"
+            amount_in_cent:
+              blank: "Amount cannot be blank!"
+              greater_than: "Amount must be greater than 0!"
+            interest_ratio:
+              blank: "Interest rate cannot be blank!"
+              greater_than_or_equal_to: "Interest rate must be greater than or equal to 0!"
+            repayment_year:
+              blank: "Repayment period cannot be blank!"
+              greater_than: "Repayment period must be greater than 0!"
+            months_one:
+              blank: "Number of months cannot be blank!"
+              greater_than: "Number of months must be greater than 0!"
+            start:
+              blank: "Grace period cannot be blank!"
+              greater_than: "Grace period must be greater than 0!"
+            start_at:
+              blank: "Date cannot be blank!"
         admin:
           attributes:
             current_password:

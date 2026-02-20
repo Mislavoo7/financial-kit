@@ -1,0 +1,36 @@
+<%#= render "admins/shared/links" %>
+
+<div class="card">
+  <div class="card-title">
+    <%= image_tag "logo.png", class: "mx-auto w-auto", alt: "logo" %>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"><%= t("devise.sessions.sign_in") %></h2>
+  </div>
+
+  <div class="form-container">
+    <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+      <div class="form-body">
+        <div class="">
+          <%= f.label :email, class: "label" %><br />
+          <div class="mt-2">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex items-center justify-between">
+            <%= f.label :password, class: "label" %><br />
+            <%= render "admins/shared/forgot_password" %>
+          </div>
+          <div class="mt-2">
+            <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <%= f.submit t("devise.sessions.sign_in_button"), class: "button is-primary" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

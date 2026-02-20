@@ -1,4 +1,9 @@
 de:
+  language: "Sprachen"
+  calculator:
+  credit:
+    title: "Kreditberechnung"
+    description: "Ein Kredit ist geliehenes Geld, das über einen bestimmten Zeitraum mit Zinsen zurückgezahlt wird, in der Regel in regelmäßigen Raten gemäß den vereinbarten Bedingungen."
   title: "Welchen Namen soll ich wählen?"
   hi: "Hi"
   dashboard: "Meine Einkäufe"

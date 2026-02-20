@@ -18,6 +18,36 @@
           class: "hamburger-link",
           role: "menuitem" %>
       </li>
+
+      <% if current_user.blank? %>
+        <li>
+          <%= link_to t("devise.login"), new_user_session_path,
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+        <li>
+          <%= link_to t("devise.register"), new_user_registration_path,
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to t("dashboard"), user_root_path,
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+        <li>
+          <%= link_to t("devise.edit"), user_accounts_path,
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+        <li>
+          <%= link_to t("devise.logout"), destroy_user_session_path,
+            data: { turbo_method: :delete },
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+      <% end %>
       
       <% if I18n.available_locales.size > 1 %>
         <li class="language-wrapper">

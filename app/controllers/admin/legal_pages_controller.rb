@@ -22,7 +22,7 @@ class Admin::LegalPagesController < Admin::BaseController
     if @legal_page.update(legal_page_params)
       redirect_to admin_legal_pages_path, notice: t('message.updated')
     else
-      render :show
+      render :edit
     end
   end
 

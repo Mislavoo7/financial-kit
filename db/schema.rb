@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_29_112850) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_20_224805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,6 +64,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_29_112850) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "credits", force: :cascade do |t|
+    t.string "calculation_method", default: "equal-installments"
+    t.integer "amount_in_cent", default: 0
+    t.decimal "interest_ratio", precision: 5, scale: 4, default: "0.0"
+    t.integer "repayment_year", default: 0
+    t.integer "months_one", default: 0
+    t.integer "start", default: 0
+    t.integer "number_of_installments"
+    t.integer "time_horizon"
+    t.integer "user_id"
+    t.date "start_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "legal_page_translations", force: :cascade do |t|
     t.string "title"
     t.string "locale"
@@ -80,31 +95,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_29_112850) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.datetime "taken_at"
-    t.string "shop_name"
-    t.boolean "is_visible", default: true
-    t.integer "position", default: 1000
-    t.integer "user_id"
-    t.integer "total_price_in_cent", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "currency", default: "€"
-  end
-
-  create_table "names", force: :cascade do |t|
-    t.string "name"
-    t.text "description_en"
-    t.text "description_hr"
-    t.text "description_de"
-    t.string "countries", default: [], array: true
-    t.integer "times_saved"
-    t.string "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "popularity", default: 0
-  end
-
   create_table "page_translations", force: :cascade do |t|
     t.string "title"
     t.integer "page_id"
@@ -117,18 +107,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_29_112850) do
   create_table "pages", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.boolean "is_visible", default: true
-    t.integer "position", default: 1000
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.integer "list_id"
-    t.integer "app_id"
-    t.integer "price_in_cent", default: 0
-    t.string "product_name"
-    t.string "company"
     t.boolean "is_visible", default: true
     t.integer "position", default: 1000
     t.datetime "created_at", null: false
@@ -180,12 +158,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_29_112850) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "api_token"
-    t.datetime "blocked_at"
-    t.string "theme", default: "dark"
-    t.string "language_id", default: "en"
-    t.string "currency", default: "€"
-    t.index ["api_token"], name: "index_users_on_api_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

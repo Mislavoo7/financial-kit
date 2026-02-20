@@ -63,6 +63,28 @@ hr:
         content: "Tekst"
       admin:
         email: "E-mail"
+      credit:
+        interest_year: "Financijski rashodi (kamate)"
+        calculation_method: "Način obračuna"
+        calculation_methods: 
+          equal_annuities: "Jednaki anuiteti" 
+          equal_installments: "Jednake rate"
+        amount_in_cent: "Iznos kredita"
+        interest_ratio: "Kamata  (godišnje)"
+        repayment_year: "Rok vraćanja (broj godina, bez počeka)"
+        months_one: "Broj mjeseci u otplati"
+        months_two: "Broj mjeseci u otplati 2"
+        start: "Poček (broj mjeseci)"
+        number_of_installments: "Broj rata"
+        time_horizon: "Vremenski horizont"
+        start_at: "Datum početka kredita"
+        months: 
+          date: "Datum"
+          month: "Mjesec"
+          installment: "Rate/Anuitet"
+          principal: "Glavnica"
+          interest: "Kamata"
+          debt_rest: "Ostatak Duga"
       legal_page:
         is_visible: "Je li stranica vidljiva?"
       legal_page_translation:
@@ -78,6 +100,28 @@ hr:
         keywords: "SEO ključne riječi"
     errors:
       models:
+        credit:
+          attributes:
+            calculation_method:
+              blank: "Metoda računanja ne može biti prazna!"
+              inclusion: "Metoda mora biti jedna od dopuštenih vrijednosti!"
+            amount_in_cent:
+              blank: "Iznos ne može biti prazan!"
+              greater_than: "Iznos mora biti veći od 0!"
+            interest_ratio: 
+              blank: "Kamata ne može biti prazana!"
+              greater_than_or_equal_to: "Kamata mora biti veći ili jednaka 0!"
+            repayment_year:
+              blank: "Rok vraćanja ne može biti prazan!"
+              greater_than: "Rok vraćanja mora biti veći od 0!"
+            months_one:
+              blank: "Broj mjeseci ne može biti prazan!"
+              greater_than: "Broj mjeseci mora biti veći od 0!"
+            start:
+              blank: "Početak ne može biti prazan!"
+              greater_than: "Početak mora biti veći od 0!"
+            start_at:
+              blank: "Datum ne može biti prazan!"
         admin:
           attributes:
             current_password:
