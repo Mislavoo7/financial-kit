@@ -20,32 +20,6 @@ en:
           middle_east: "Middle East"
           islamic: "Islamic Countries"
           asia_pacific: "Asia-Pacific"
-      user:
-        currencies: 
-          $: "Dollar"
-          €: "Euro"
-        languages:
-          hr: "Croatian"
-          en: "English"
-          de: "German"
-        themes:
-          dark: "Dark"
-          light: "Light"
-        email: "Email"
-        currency: "Selected currency"
-        language: "Selected language"
-        theme: "Selected theme"
-      list:
-        shop_name: "Shop name"
-        taken_at: "Taken at"
-        total_price_in_cent: "Total Price in Cent"
-        total_price: "Total Price"
-      product:
-        company: "Company"
-        price_in_cent: "Price in Cent"
-        price: "Price"
-        product_name: "Product name"
-        app_id: "App ID"
       page:
         image: "Image"
         remove_image: "Remove image"
@@ -63,6 +37,8 @@ en:
         content: "Text"
       admin:
         email: "Email"
+      user:
+        email: "E-mail"
       credit:
         interest_year: "Financial expenses (interest)"
         calculation_method: "Calculation method"

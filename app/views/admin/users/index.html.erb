@@ -1,0 +1,20 @@
+<div class="page">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="thead-th"><%= tf('user.email') %></th>
+        <th class="thead-th"><%= t('actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="tbody-td"><%= user.email %></td>
+          <td class="tbody-td">
+            <%= link_to t('delete'), admin_user_path(user), class: "table-button", method: :delete, data: { confirm: t('are_you_sure') } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
