@@ -1,0 +1,76 @@
+@layer components {
+  .calc-nav {
+    @apply mx-auto w-full max-w-6xl px-4 py-8;
+  }
+
+  .calc-nav__grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  /* CARD */
+  .calc-card {
+    /* 2 reda: (1) ikone gore (2) tekst dolje. Arrow je apsolutni */
+    @apply relative grid rounded-2xl border border-slate-200 bg-white
+           px-6 py-6 shadow-sm transition
+           hover:-translate-y-0.5 hover:shadow-md
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2
+           min-h-[190px];
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
+  /* Ako unutar linka ima "random" direktnih child elemenata (kao tvoj users icon),
+     sve osim content/arrow tretiraj kao dio gornjeg reda s ikonama. */
+  .calc-card > :not(.calc-card__content):not(.calc-card__arrow) {
+    @apply row-start-1;
+  }
+
+  /* ICON ROW (box + moguće dodatne ikone) */
+  .calc-card__icon {
+    @apply row-start-1 inline-flex items-center justify-center
+           h-16 w-16 rounded-2xl border border-slate-200 bg-slate-50;
+  }
+
+  /* PHOSPHOR ICON (i za <i> i za svg iz helpera) */
+  .calc-card__ph,
+  .calc-card__icon svg,
+  .calc-card__icon i {
+    @apply text-slate-700;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Ako se desi da imaš helper ikonu izvan .calc-card__icon (kao sad),
+     neka bude iste veličine i neka se poravna uz icon box. */
+  .calc-card > svg,
+  .calc-card > i,
+  .calc-card > .ph {
+    @apply row-start-1 justify-self-start text-slate-700;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* CONTENT (drugi red) */
+  .calc-card__content {
+    @apply row-start-2 mt-4 min-w-0;
+  }
+
+  .calc-card__title {
+    @apply text-base font-semibold leading-snug text-slate-900;
+  }
+
+  .calc-card__subtitle {
+    @apply mt-2 text-sm leading-snug text-slate-500;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 3 reda max da grid ostane uredan */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ARROW (ne smije utjecati na layout) */
+  .calc-card__arrow {
+    @apply pointer-events-none absolute right-5 top-5
+           text-xl text-slate-300 transition group-hover:text-slate-500;
+  }
+}

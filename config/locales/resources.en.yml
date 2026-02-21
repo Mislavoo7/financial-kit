@@ -1,35 +1,17 @@
 en:
-  wizard:
-    read_more: "More info"
-    progress: "Step"
-    select_gender: "Select Gender"
-    male: "Male"
-    female: "Female"
-    boy_names: "Boy names"
-    girl_names: "Girl names"
-    reset: "Start Over"
-    you_selected: "You selected"
-    back: "Back"
-    select_type: "Select Name Style"
-    modern: "Modern"
-    modern_description: "Contemporary and trendy"
-    traditional: "Traditional"
-    traditional_description: "Classic and timeless"
-    select_region: "Choose Cultural Origin"
-    western: "Western"
-    latino: "Latino"
-    african: "African"
-    arabic: "Arabic"
-    chinese: "Chinese"
-    japanese: "Japanese"
-    indian: "Indian"
-    slavic: "Slavic"
-    please_wait: "Please wait"
-    save_name: "Save"
-    saved: "Saved"
-  name_list:
-    chosen_names: "Chosen names"
-    no_names: "No saved names yet"
+  calculators:
+    credit:
+      title: "Credit calculator"
+      description: "Comparison of equal annuities and equal installments, total interest and repayment period."
+    salary:
+      title: "Salary calculator"
+      description: "Gross to net and net to gross with tax rates, surtax and personal allowances."
+    author:
+      title: "Author income calculator"
+      description: "Calculation of taxes and contributions for author income, costs and net payout."
+    contract:
+      title: "Service contract calculator"
+      description: "Calculation of taxes and contributions for a service contract, gross/net and total cost."
   user:
     add: "Add user"
     blocked_confirmation: "Are you sure you want to block the user?"
@@ -38,24 +20,6 @@ en:
     is_now_blocked: "User has been blocked"
     blocked: "Blocked"
     not_blocked: "Not blocked"
-  product:
-    add: "Add product"
-    invisible_confirmation: "Are you sure you want to hide the product from the list?"
-    visible_confirmation: "Are you sure you want to display the product on the list?"
-    is_now_visible: "Product is now visible"
-    is_now_invisible: "Product is now hidden"
-    no_legal_pages: "No existing products"
-    visible: "Visible"
-    not_visible: "Not visible"
-  list:
-    add: "Add list"
-    invisible_confirmation: "Are you sure you want to hide this list from your web pages?"
-    visible_confirmation: "Are you sure you want to show this list on your web pages?"
-    is_now_visible: "List is visible"
-    is_now_invisible: "List is hidden"
-    no_legal_pages: "No existing lists"
-    visible: "Visible"
-    not_visible: "Not visible"
   page:
     add: "Add page"
     invisible_confirmation: "Are you sure you want to hide this page from your web pages?"

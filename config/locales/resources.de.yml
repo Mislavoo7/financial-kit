@@ -1,35 +1,17 @@
 de:
-  wizard:
-    read_more: "Infos"
-    progress: "Schritt"
-    select_gender: "Geschlecht auswählen"
-    male: "Männlich"
-    female: "Weiblich"
-    boy_names: "Jungennamen"
-    girl_names: "Mädchennamen"
-    reset: "Von vorn beginnen"
-    you_selected: "Ihre Wahl"
-    back: "Zurück"
-    select_type: "Namensstil auswählen"
-    modern: "Modern"
-    modern_description: "Zeitgenössisch und trendig"
-    traditional: "Traditionell"
-    traditional_description: "Klassisch und zeitlos"
-    select_region: "Kulturelle Herkunft auswählen"
-    western: "Western"
-    latino: "Latino"
-    african: "Afrikanisch"
-    arabic: "Arabisch"
-    chinese: "Chinesisch"
-    japanese: "Japanisch"
-    indian: "Indian"
-    slavic: "Slawisch"
-    please_wait: "Bitte warten"
-    save_name: "Speichern"
-    saved: "Gespeichert"
-  name_list:
-    chosen_names: "Ausgewählte Namen"
-    no_names: "Noch keine gespeicherten Namen"
+  calculators:
+    credit:
+      title: "Kreditrechner"
+      description: "Vergleich von Annuitäten- und Tilgungsraten, Gesamtzinsen und Laufzeit."
+    salary:
+      title: "Gehaltsrechner"
+      description: "Brutto-Netto- und Netto-Brutto-Berechnung mit Steuersätzen, Zuschlägen und persönlichen Freibeträgen."
+    author:
+      title: "Honorareinkommen-Rechner"
+      description: "Berechnung von Steuern und Abgaben für Honorareinkommen, Kosten und Nettoauszahlung."
+    contract:
+      title: "Werkvertrags-Rechner"
+      description: "Berechnung von Steuern und Abgaben für Werkverträge, Brutto/Netto und Gesamtkosten."
   user:
     add: "Benutzer hinzufügen"
     blocked_confirmation: "Sind Sie sicher, dass Sie den Benutzer sperren möchten?"
@@ -38,24 +20,6 @@ de:
     is_now_blocked: "Benutzer wurde gesperrt"
     blocked: "Gesperrt"
     not_blocked: "Nicht gesperrt"
-  product:
-    add: "Produkt hinzufügen"
-    invisible_confirmation: "Sind Sie sicher, dass Sie das Produkt aus der Liste verstecken möchten?"
-    visible_confirmation: "Sind Sie sicher, dass Sie das Produkt in der Liste anzeigen möchten?"
-    is_now_visible: "Produkt ist jetzt sichtbar"
-    is_now_invisible: "Produkt ist jetzt versteckt"
-    no_legal_pages: "Keine vorhandenen Produkte"
-    visible: "Sichtbar"
-    not_visible: "Nicht sichtbar"
-  list:
-    add: "Neue Liste hinzufügen"
-    invisible_confirmation: "Sind Sie sicher, dass Sie diese Liste verbergen möchten?"
-    visible_confirmation: "Sind Sie sicher, dass Sie diese Liste anzeigen möchten?"
-    is_now_visible: "Liste ist sichtbar"
-    is_now_invisible: "Liste ist verborgen"
-    no_legal_pages: "Keine vorhandenen Listen"
-    visible: "Sichtbar"
-    not_visible: "Nicht sichtbar"
   page:
     add: "Seite hinzufügen"
     invisible_confirmation: "Sind Sie sicher, dass Sie diese Seite auf Ihrer Website verbergen möchten?"

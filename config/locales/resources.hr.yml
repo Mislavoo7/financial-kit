@@ -1,35 +1,17 @@
 hr:
-  wizard:
-    read_more: "Više info"
-    progress: "Korak"
-    select_gender: "Odaberi spol"
-    male: "Muško"
-    female: "Žensko"
-    boy_names: "Muška imena"
-    girl_names: "Ženska imena"
-    reset: "Počni ponovno"
-    you_selected: "Vi ste odabrali"
-    back: "Natrag"
-    select_type: "Odaberite stil imena"
-    modern: "Moderno"
-    modern_description: "Popularno i moderno"
-    traditional: "Tradicionalno"
-    traditional_description: "Klasično i bezvremensko"
-    select_region: "Odaberite kulturno podrijetlo"
-    western: "Zapadno"
-    latino: "Latino"
-    african: "Afričko"
-    arabic: "Arapsko"
-    chinese: "Kinesko"
-    japanese: "Japansko"
-    indian: "Indijsko"
-    slavic: "Slavensko"
-    please_wait: "Molimo pričekajte"
-    save_name: "Spremi"
-    saved: "Spremljeno"
-  name_list:
-    chosen_names: "Odabrana imena"
-    no_names: "Još nema imena na listi"
+  calculators:
+    credit:
+      title: "Izračun kredita"
+      description: "Usporedba jednakih anuiteta i jednakih rata, ukupna kamata i rok otplate."
+    salary: 
+      title: "Izračun plaće"
+      description: "Bruto u neto i neto u bruto uz porezne stope, prirez i osobne olakšice."
+    author: 
+      title: "Izračun autorskog dohotka"
+      description: "Obračun poreza i doprinosa za autorski dohodak, troškovi i neto isplata."
+    contract: 
+      title: "Izračun ugovora o djelu"
+      description: "Obračun poreza i doprinosa za ugovor o djelu, bruto/neto i ukupni trošak."
   user:
     add: "Dodaj korisnika"
     blocked_confirmation: "Jeste li sigurni da želite blokirati korisnika?"
@@ -38,24 +20,6 @@ hr:
     is_now_blocked: "Korisnik je blokiran"
     blocked: "Blokirano"
     not_blocked: "Nije blokirano"
-  product:
-    add: "Dodaj proizvod"
-    invisible_confirmation: "Jeste li sigurni da želite sakriti proizvod s liste?"
-    visible_confirmation: "Jeste li sigurni da želite prikazati proizvod na listi?"
-    is_now_visible: "Proizvod je vidljiv"
-    is_now_invisible: "Proizvod je skriven"
-    no_legal_pages: "Nema postojećih proizvoda"
-    visible: "Vidljivo"
-    not_visible: "Nije vidljivo"
-  list:
-    add: "Dodaj listu"
-    invisible_confirmation: "Jeste li sigurni da želite sakriti ovu listu s vaše web stranice?"
-    visible_confirmation: "Jeste li sigurni da želite prikazati ovu listu na vašoj web stranici?"
-    is_now_visible: "Lista je vidljiva"
-    is_now_invisible: "Lista je skrivena"
-    no_legal_pages: "Nema postojećih lista"
-    visible: "Vidljivo"
-    not_visible: "Nije vidljivo"
   page:
     add: "Dodaj stranicu"
     invisible_confirmation: "Jeste li sigurni da želite sakriti ovu stranicu s vaše web stranice?"

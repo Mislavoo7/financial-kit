@@ -1,0 +1,27 @@
+<section class="calc-nav">
+  <div class="calc-nav__grid">
+
+    <% [
+      {key: "credit", url: new_credit_path, icon: "bank"},
+      {key: "salary", url: "#", icon: "calculator"},
+      {key: "author", url: "#", icon: "pen-nib"},
+      {key: "contract", url: "#", icon: "file-text"},
+    ].each do |item| %>
+    <%= link_to item[:url], class: "calc-card group" do %>
+      <div class="calc-card__icon" aria-hidden="true">
+        <%= phosphor_icon item[:icon], options: { class: "calc-card__ph" } %>
+      </div>
+
+      <div class="calc-card__content">
+        <h4 class="calc-card__title"> <%= t("calculators.#{item[:key]}.title") %> </h4>
+        <p class="calc-card__subtitle"> <%= t("calculators.#{item[:key]}.description") %> </p>
+      </div>
+
+      <span class="calc-card__arrow" aria-hidden="true">
+        <%= phosphor_icon "arrow-right", options: { class: "calc-card__arrow-icon" } %>
+      </span>
+    <% end %>
+  <% end %>
+
+  </div>
+</section>

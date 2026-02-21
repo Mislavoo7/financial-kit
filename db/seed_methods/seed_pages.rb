@@ -65,27 +65,6 @@ def seed_home
   )
   page.sections << s1
 
-  s2 = Section.create!(
-    section_translations_attributes: {
-      0 => {
-        title: "Dostupni kalkulatori",
-        content: "<ul><li><strong>Izračun kredita</strong> – usporedba jednakih anuiteta i jednakih rata.</li><li><strong>Izračun plaće</strong> – bruto u neto i neto u bruto uz porezne stope i osobne olakšice.</li><li><strong>Autorski honorar</strong> – obračun poreza i doprinosa.</li><li><strong>Ugovor o radu</strong> – detaljan izračun primanja prema važećim propisima.</li></ul>",
-        locale: "hr"
-      },
-      1 => {
-        title: "Available Calculators",
-        content: "<ul><li><strong>Loan Calculator</strong> – comparison of annuity and fixed principal repayment models.</li><li><strong>Salary Calculator</strong> – gross to net and net to gross calculation including tax allowances.</li><li><strong>Copyright Income Calculator</strong> – tax and contribution calculation.</li><li><strong>Employment Contract Calculator</strong> – detailed income breakdown based on current regulations.</li></ul>",
-        locale: "en"
-      },
-      2 => {
-        title: "Verfügbare Rechner",
-        content: "<ul><li><strong>Kreditrechner</strong> – Vergleich von Annuitäten- und Tilgungsmodellen.</li><li><strong>Gehaltsrechner</strong> – Brutto- und Nettoberechnung inklusive Steuerfreibeträgen.</li><li><strong>Honorarechner</strong> – Berechnung von Steuern und Abgaben.</li><li><strong>Arbeitsvertragsrechner</strong> – detaillierte Einkommensberechnung gemäß aktuellen Vorschriften.</li></ul>",
-        locale: "de"
-      },
-    },
-    position: 1
-  )
-  page.sections << s2
 end
 
 
@@ -146,4 +125,26 @@ def seed_about
     position: 0
   )
   page.sections << s1
+
+  s2 = Section.create!(
+    section_translations_attributes: {
+      0 => {
+        title: "Dostupni kalkulatori",
+        content: "<ul><li><strong>Izračun kredita</strong> – usporedba jednakih anuiteta i jednakih rata.</li><li><strong>Izračun plaće</strong> – bruto u neto i neto u bruto uz porezne stope i osobne olakšice.</li><li><strong>Autorski honorar</strong> – obračun poreza i doprinosa.</li><li><strong>Ugovor o radu</strong> – detaljan izračun primanja prema važećim propisima.</li></ul>",
+        locale: "hr"
+      },
+      1 => {
+        title: "Available Calculators",
+        content: "<ul><li><strong>Loan Calculator</strong> – comparison of annuity and fixed principal repayment models.</li><li><strong>Salary Calculator</strong> – gross to net and net to gross calculation including tax allowances.</li><li><strong>Copyright Income Calculator</strong> – tax and contribution calculation.</li><li><strong>Employment Contract Calculator</strong> – detailed income breakdown based on current regulations.</li></ul>",
+        locale: "en"
+      },
+      2 => {
+        title: "Verfügbare Rechner",
+        content: "<ul><li><strong>Kreditrechner</strong> – Vergleich von Annuitäten- und Tilgungsmodellen.</li><li><strong>Gehaltsrechner</strong> – Brutto- und Nettoberechnung inklusive Steuerfreibeträgen.</li><li><strong>Honorarechner</strong> – Berechnung von Steuern und Abgaben.</li><li><strong>Arbeitsvertragsrechner</strong> – detaillierte Einkommensberechnung gemäß aktuellen Vorschriften.</li></ul>",
+        locale: "de"
+      },
+    },
+    position: 1
+  )
+  page.sections << s2
 end

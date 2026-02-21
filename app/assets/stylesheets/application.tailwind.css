@@ -16,4 +16,5 @@
 @import "application/components/header.scss";
 @import "application/components/pages.scss";
 @import "application/components/footer.scss";
+@import "application/components/calculators.scss";
 @import "application/components/social.scss";
