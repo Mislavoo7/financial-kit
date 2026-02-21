@@ -12,9 +12,9 @@
           {
             class: "sr-only peer",
             data: {
-              excel_formulas_target: "methodToggle",
+              credit_target: "methodToggle",
               calculation_method: true,
-              action: "change->excel-formulas#creditCalculate"
+              action: "change->credit#creditCalculate"
             }
           },
           "equal-annuities",
@@ -49,7 +49,7 @@
       <%= money_field f, :amount_in_cent, class: 'form-table-input',
         data: {
           "amount_in_cent" => true,
-          "amount_in_cent_input" => true, action: "input->excel-formulas#creditCalculate"
+          "amount_in_cent_input" => true, action: "input->credit#creditCalculate"
         } %>
     </div>
   </td>
@@ -67,7 +67,7 @@
       <%= ratio_field f, :interest_ratio, class: 'form-table-input',
         data: {
           "interest_ratio" => true,
-          action: "input->excel-formulas#creditCalculate"
+          action: "input->credit#creditCalculate"
         } %>
     </div>
   </td>
@@ -84,7 +84,7 @@
     <div class="form-table-cell">
       <%= f.number_field :repayment_year, class: 'form-table-input', placeholder: '0', data: {
         "repayment_year" => true,
-        action: "input->excel-formulas#creditCalculate"
+        action: "input->credit#creditCalculate"
       } %>
     </div>
   </td>
@@ -101,7 +101,7 @@
     <div class="form-table-cell">
       <%= f.number_field :months_one, class: 'form-table-input', placeholder: '0', data: {
         "months_one" => true,
-        action: "input->excel-formulas#creditCalculate"
+        action: "input->credit#creditCalculate"
       } %>
     </div>
   </td>
@@ -118,7 +118,7 @@
     <div class="form-table-cell">
       <%= f.number_field :start, class: 'form-table-input', placeholder: '0', data: {
         "start" => true,
-        action: "input->excel-formulas#creditCalculate"
+        action: "input->credit#creditCalculate"
       } %>
     </div>
   </td>
@@ -137,7 +137,7 @@
         readonly: true,
         data: {
           "number_of_installments" => true,
-          action: "input->excel-formulas#creditCalculate"
+          action: "input->credit#creditCalculate"
         } %>
     </div>
   </td>
@@ -156,7 +156,7 @@
         readonly: true,
         data: {
           "time_horizon" => true,
-          action: "input->excel-formulas#creditCalculate"
+          action: "input->credit#creditCalculate"
         } %>
     </div>
   </td>
@@ -176,7 +176,7 @@
         data: {
           "start_at" => true,
           controller: 'datepicker',
-          action: "input->excel-formulas#creditCalculate"
+          action: "input->credit#creditCalculate"
         } %>
     </div>
   </td>

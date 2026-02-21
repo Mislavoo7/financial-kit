@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class CreditController extends Controller {
+  static targets = [ "methodToggle" ]
+
   connect() {
     console.log("credit controller connected");
     this.creditCalculate()
