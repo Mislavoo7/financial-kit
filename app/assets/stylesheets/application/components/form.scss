@@ -68,3 +68,20 @@
 #error_explanation ul {
   @apply list-disc space-y-1 pl-5;
 }
+
+.form-toggle {
+  @apply inline-flex items-center bg-gray-100 rounded-lg p-1 cursor-pointer;
+}
+
+.form-toggle-option {
+  @apply px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-200;
+  @apply text-secondary-800 bg-white shadow-sm;
+}
+
+.form-toggle-option--active {
+  @apply text-white bg-primary-500 shadow-sm;
+}
+
+.form-toggle-divider {
+  @apply px-3 text-xs font-semibold text-secondary-400 uppercase;
+}
