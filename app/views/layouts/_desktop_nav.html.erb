@@ -15,7 +15,7 @@
     <%= link_to t("dashboard"), user_root_path,
       class: "desktop-nav-link" %>
 
-    <%= link_to t("devise.edit"), user_accounts_path,
+    <%= link_to t("devise.edit"), edit_user_accounts_path(id: current_user),
       class: "desktop-nav-link" %>
 
     <%= link_to t("devise.logout"), destroy_user_session_path,

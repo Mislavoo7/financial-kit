@@ -40,6 +40,9 @@ en:
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
     registrations:
+      sign_up_button: "Sign up"
+      update_button: "Update"
+      sign_up: "Sign Up"
       min_char: "%{num} characters minimum"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."

@@ -6,6 +6,11 @@ class User::BaseController < ApplicationController
   private
 
   def set_pages
-    @pages = Page.all
+    @pages = Page.where(name: [
+      "home", "about"    
+    ]).index_by(&:name)
+
+    @home_page = @pages["home"]
+    @about_page = @pages["about"]
   end
 end

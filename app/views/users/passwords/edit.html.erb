@@ -1,25 +1,31 @@
-<h2>Change your password</h2>
+<div class="devise-card">
+  <h2 class="devise-title"><%= t("devise.passwords.edit.change_your_password") %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "devise-form" }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    <div class="devise-field">
+      <%= f.label :password, t("devise.passwords.edit.new_password"), class: "devise-label" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <% if @minimum_password_length %>
+        <div class="devise-help">
+          <%= t("devise.passwords.edit.password_length_hint", count: @minimum_password_length) %>
+        </div>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "devise-input" %>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div class="devise-field">
+      <%= f.label :password_confirmation, t("devise.passwords.edit.confirm_new_password"), class: "devise-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-input" %>
+    </div>
+
+    <div class="devise-actions">
+      <%= f.submit t("devise.passwords.edit.change_my_password"), class: "devise-button" %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>

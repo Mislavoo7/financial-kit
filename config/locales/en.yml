@@ -6,6 +6,8 @@ en:
       description: "A credit (loan) is borrowed money that must be repaid over time with interest, usually in regular installments according to agreed terms."
   title: "Which name to choose?"
   hi: "Hi"
+  cancel: "Cancel"
+  edit_record: "Edit"
   dashboard: "My purchases"
   croatian: "Croatian"
   english: "English"

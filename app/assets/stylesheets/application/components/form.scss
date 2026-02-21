@@ -1,107 +1,70 @@
-.form-page {
-  @apply
-  pt-10 
-  bg-gradient-to-b 
-  from-primary-50 
-  to-white 
-  flex 
-  items-center 
-  justify-center 
-  px-4 
-  sm:px-6 
-  lg:px-8;
+/* Devise shared layout bits */
+.card {
+  @apply mx-auto mt-10 w-full max-w-md rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200;
 }
 
-.form-outer {
-  @apply 
-  bg-white 
-  rounded-2xl 
-  shadow-xl 
-  border 
-  border-primary-100 
-  overflow-hidden;
+.card-title {
+  @apply mb-6 text-center;
 }
 
-.form-wrapper {
-  @apply
-  px-8 
-  py-8;
+.form-container {
+  @apply mt-6;
 }
 
-.form {
-  @apply
-  space-y-6;
+.form-body {
+  @apply space-y-6;
 }
 
-.login-input {
-  @apply 
-  block 
-  w-full 
-  rounded-lg 
-  border 
-  border-gray-300 
-  px-4 
-  py-3 
-  text-secondary-900 
-  placeholder-gray-400 
-  shadow-sm 
-  focus:border-primary-500 
-  focus:ring-2 
-  focus:ring-primary-500 
-  focus:outline-none 
-  transition-colors 
-  duration-200;
+/* Form elements */
+.label {
+  @apply block text-sm font-medium text-gray-900;
 }
 
-.login-label {
-  @apply
-  block 
-  text-sm 
-  font-semibold 
-  text-secondary-800;
+.input {
+  @apply block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm;
+  @apply placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20;
 }
 
-.login-submit {
-  @apply
-  w-full 
-  flex 
-  justify-center 
-  items-center 
-  rounded-lg 
-  bg-primary-500 
-  px-4 
-  py-3 
-  text-base 
-  font-semibold 
-  text-white 
-  shadow-md 
-  hover:bg-primary-600 
-  focus:outline-none 
-  focus:ring-2 
-  focus:ring-offset-2 
-  focus:ring-primary-500 
-  transition-all 
-  duration-200 
-  transform 
-  hover:scale-[1.02] 
-  active:scale-[0.98];
+.help-text {
+  @apply mt-1 text-xs text-gray-500;
 }
 
-.login-logo {
-  @apply
-  px-8 
-  pb-8 
-  bg-gradient-to-b 
-  from-primary-50 
-  to-white;
+.button {
+  @apply inline-flex w-full items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold;
+  @apply focus:outline-none focus:ring-2 focus:ring-indigo-500/30;
 }
 
-.login-title {
-  @apply
-  mt-8 
-  text-center 
-  text-3xl 
-  font-bold 
-  tracking-tight 
-  text-secondary-900;
+.button.is-primary {
+  @apply bg-indigo-600 text-white hover:bg-indigo-500;
+}
+
+/* Old Devise scaffolding (edit.html.erb originally used these) */
+.field {
+  @apply space-y-2;
+}
+
+.actions {
+  @apply pt-2;
+}
+
+/* Links block (shared/_links) */
+.devise-links {
+  @apply mt-6 space-y-2 text-center text-sm;
+}
+
+.devise-links a {
+  @apply text-indigo-600 hover:text-indigo-500 underline-offset-2 hover:underline;
+}
+
+/* Error explanation (shared/_error_messages) */
+#error_explanation {
+  @apply rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800;
+}
+
+#error_explanation h2 {
+  @apply mb-2 font-semibold;
+}
+
+#error_explanation ul {
+  @apply list-disc space-y-1 pl-5;
 }

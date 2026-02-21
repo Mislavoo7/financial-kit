@@ -1,8 +1,12 @@
 class User::PagesController < User::BaseController
+  layout "application" # optional if already set
+  prepend_view_path Rails.root.join("app/views/pages")
+
   def index
     @page = @pages["home"]
     @seo = @page.seo
     set_sections
+    render "pages/index"
   end
 
   def show
@@ -11,6 +15,7 @@ class User::PagesController < User::BaseController
     @page = translation.page
     @seo  = @page.seo || Seo.new
     set_sections
+    render "pages/show"
   end
 
   private

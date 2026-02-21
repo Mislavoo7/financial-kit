@@ -6,6 +6,8 @@ hr:
       description: "Kredit (zajam) je posuđeni novac koji se mora vratiti tijekom vremena uz kamatu, obično u redovitim ratama prema dogovorenim uvjetima."
   title: "Koje ime odabrati?"
   hi: "Bok"
+  cancel: "Odbaci"
+  edit_record: "Izmijeni"
   dashboard: "Moje kupnje"
   croatian: "Hrvatski"
   english: "Engleski"

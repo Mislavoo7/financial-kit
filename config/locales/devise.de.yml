@@ -40,6 +40,9 @@ de:
       updated: "Ihr Passwort wurde erfolgreich geändert. Sie sind jetzt angemeldet."
       updated_not_active: "Ihr Passwort wurde erfolgreich geändert."
     registrations:
+      sign_up_button: "Anmelden"
+      update_button: "Aktualisieren"
+      sign_up: "Anmelden"
       min_char: "Mindestens %{num} Zeichen"
       destroyed: "Auf Wiedersehen! Ihr Konto wurde erfolgreich gelöscht. Wir hoffen, Sie bald wiederzusehen."
       signed_up: "Willkommen! Sie haben sich erfolgreich registriert."
