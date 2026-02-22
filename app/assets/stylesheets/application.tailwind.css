@@ -17,5 +17,6 @@
 @import "application/components/pages.scss";
 @import "application/components/footer.scss";
 @import "application/components/calculators.scss";
+@import "application/components/calculations.scss";
 @import "application/components/table_forms.scss";
 @import "application/components/social.scss";

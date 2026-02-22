@@ -1,0 +1,63 @@
+@layer components {
+  /* ---- calculations/index ---- */
+  .calc-page {
+    @apply min-h-full;
+  }
+
+  .calc-container {
+    @apply max-w-7xl;
+  }
+
+  .calc-panel {
+    @apply p-4 bg-white rounded-t-lg;
+  }
+
+  .calc-panel-inner {
+    @apply py-4;
+  }
+
+  .calc-section {
+    @apply my-4 mb-6;
+  }
+
+  .calc-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  /* ---- calculations/_credits ---- */
+  .credit-card {
+    @apply bg-white border border-secondary-200 rounded-xl shadow-sm hover:shadow-md transition-shadow p-4 flex flex-col gap-3;
+  }
+
+  .credit-meta {
+    @apply flex flex-col gap-1 text-sm text-gray-700;
+  }
+
+  .credit-row {
+    @apply flex justify-between;
+  }
+
+  .credit-label {
+    @apply text-gray-400 text-xs uppercase tracking-wide;
+  }
+
+  .credit-value {
+    @apply font-semibold text-gray-800;
+  }
+
+  .credit-actions {
+    @apply flex justify-between items-center pt-2 border-t border-secondary-100;
+  }
+
+  .credit-action-edit {
+    @apply text-xs text-primary-600 hover:text-primary-800 font-medium flex items-center gap-1;
+  }
+
+  .credit-action-delete {
+    @apply text-xs text-gray-400 hover:text-red-500 font-medium flex items-center gap-1 transition-colors;
+  }
+
+  .credit-action-icon {
+    @apply w-4 h-4;
+  }
+}
