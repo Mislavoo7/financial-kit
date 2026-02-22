@@ -171,7 +171,7 @@
 
   <td>
     <div class="form-table-cell">
-      <%= f.text_field :start_at, class: 'form-table-input',
+      <%= f.text_field :start_at, class: 'form-table-input js-input-datepicker',
         value: (f.object.start_at.blank? ? Date.today : f.object.start_at ),
         data: {
           "start_at" => true,
@@ -181,3 +181,6 @@
     </div>
   </td>
 </tr>
+<script type="module">
+   window.initDatepicker()
+</script>
