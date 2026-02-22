@@ -1,0 +1,5 @@
+<% something_saved = !cookies["credit_id"].blank? %>
+<% if something_saved %>
+  <br>
+  <small> <strong> <%= t("sign_in_to_see") %> </strong> </small>
+<% end %>

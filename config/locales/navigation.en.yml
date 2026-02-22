@@ -5,7 +5,8 @@ en:
     legal_pages: "Legals Pages"
     seos: "SEO"
     users: "Users"
+    credits: "Loans"
   public_nav:
     legal_pages: "Legals Pages"
   user_nav:
-    lists: "Your Lists"
+    calculations: "Calculations"

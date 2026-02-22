@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     namespace :user do
       root 'pages#index'
+      resources :calculations, only: [:index]
       resources :credits, only: [:edit, :update, :destroy]
       resource :accounts, only: [:edit, :update], path: :accounts, as: :accounts
       get 'destroy-me', to: 'accounts#destroy_me'

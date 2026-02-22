@@ -1,4 +1,5 @@
 de:
+  sign_in_to_see: "Loggen Sie sich an, um Ihre gespeicherte Berechnung zu sehen!"
   language: "Sprachen"
   calculator:
   credit:
@@ -6,6 +7,7 @@ de:
     description: "Ein Kredit ist geliehenes Geld, das über einen bestimmten Zeitraum mit Zinsen zurückgezahlt wird, in der Regel in regelmäßigen Raten gemäß den vereinbarten Bedingungen."
   title: "Welchen Namen soll ich wählen?"
   hi: "Hi"
+  or: "oder"
   cancel: "Abbrechen"
   edit_record: "Aktualisieren"
   dashboard: "Meine Einkäufe"

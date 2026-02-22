@@ -23,7 +23,7 @@ module CalculationHelper
         value: ratio_to_percent(value) || 0,
         inputmode: "decimal",
         autocomplete: "off",
-        pattern: "[0-9.,]+",
+        pattern: "[0-9.,%]+",
         data: { ratio_field: true }
       }.merge(opts)
   end

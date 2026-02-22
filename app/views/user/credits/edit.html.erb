@@ -4,8 +4,8 @@
       <%= render "shared/title", step: "credit" %>
 
       <%= form_with model: @credit,
-        url: credits_path,
-        method: :post,
+        url: user_credit_path(@credit),
+        method: :patch,
         html: { class: 'form', id: 'investments-form' } do |f| %>
         <div class="py-4">
           <div data-controller="form-table-nested-fields">
@@ -21,7 +21,7 @@
                     </tr>
                   </thead>
                   <tbody id="investment-fields-wrapper" data-controller="credit" >
-                      <%= render 'credit_fields', f: f %>
+                      <%= render 'credits/credit_fields', f: f %>
                   </tbody>
                 </table>
               </div>

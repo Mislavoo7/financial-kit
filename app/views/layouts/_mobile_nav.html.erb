@@ -37,6 +37,11 @@
             role: "menuitem" %>
         </li>
         <li>
+          <%= link_to t("user_nav.calculations"), user_calculations_path,
+            class: "hamburger-link",
+            role: "menuitem" %>
+        </li>
+        <li>
           <%= link_to t("devise.edit"), edit_user_accounts_path(id: current_user),
             class: "hamburger-link",
             role: "menuitem" %>

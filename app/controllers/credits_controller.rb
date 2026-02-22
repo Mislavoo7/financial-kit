@@ -7,10 +7,18 @@ class CreditsController < BaseController
     @credit = Credit.new(credit_params)
 
     if @credit.save
-      redirect_to root_path, notice: t("message.created")
+      if current_user
+        current_user.credits << @credit
+      else
+        cookies['credit_id'] = @credit.slug
+      end
+      redirect_to user_calculations_path
     else
       render :new
     end
+  end
+
+  def show
   end
 
   private

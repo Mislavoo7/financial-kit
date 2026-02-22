@@ -40,6 +40,8 @@ de:
       user:
         email: "E-mail"
       credit:
+        parametar: "Parameter"
+        value: "Beträge"
         interest_year: "Finanzaufwendungen (Zinsen)"
         calculation_method: "Berechnungsmethode"
         calculation_methods:

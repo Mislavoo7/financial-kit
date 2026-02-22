@@ -15,6 +15,7 @@
 #  months_one             :integer          default(0)
 #  number_of_installments :integer
 #  repayment_year         :integer          default(0)
+#  slug                   :string           default("")
 #  start                  :integer          default(0)
 #  start_at               :date
 #  time_horizon           :integer

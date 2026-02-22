@@ -1,4 +1,5 @@
 hr:
+  sign_in_to_see: "Prijavite se kako bi vidjeli spremljeni izračun!"
   language: "Jezici"
   calculator:
     credit:
@@ -6,6 +7,7 @@ hr:
       description: "Kredit (zajam) je posuđeni novac koji se mora vratiti tijekom vremena uz kamatu, obično u redovitim ratama prema dogovorenim uvjetima."
   title: "Koje ime odabrati?"
   hi: "Bok"
+  or: "ili"
   cancel: "Odbaci"
   edit_record: "Izmijeni"
   dashboard: "Moje kupnje"

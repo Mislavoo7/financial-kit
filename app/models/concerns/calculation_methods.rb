@@ -1,18 +1,14 @@
 module CalculationMethods
-  def humanize_euro(value)
-    num = number_with_precision(
-      value.to_d,
-      precision: 2,
-      delimiter: ".",
-      separator: ","
-    )
-
-    return "#{num} €"
+  def humanize_euro(euro)
+    formatted = sprintf("%.2f", euro)
+    integer_part, decimal_part = formatted.split(".")
+    integer_part_with_dots = integer_part.gsub(/(\d)(?=(\d{3})+\z)/, '\1.')
+    "#{integer_part_with_dots},#{decimal_part} €"
   end
-  
+
   def cents_to_euro(cents)
     return "" if cents.blank?
-    sprintf("%.2f", cents.to_f / 100)
+    cents.to_f / 100
   end
 
   def euro_to_cent(euro)
@@ -26,7 +22,7 @@ module CalculationMethods
 
   def normalize_ratio(val)
     return nil if val.blank?
-    v = BigDecimal(val.to_s.tr(",", "."))
+    v = BigDecimal(val.to_s.tr(",", ".").delete("%").strip)
     v > 1 ? (v / 100) : v
   end
 end

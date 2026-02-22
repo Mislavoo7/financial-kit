@@ -40,6 +40,10 @@ en:
       user:
         email: "E-mail"
       credit:
+        parametar: "Parametar"
+        value: "Value"
+        parametar: ""
+        value: ""
         interest_year: "Financial expenses (interest)"
         calculation_method: "Calculation method"
         calculation_methods:

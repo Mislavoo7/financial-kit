@@ -40,7 +40,7 @@ hr:
       updated: "Vaša lozinka je uspješno promijenjena. Sada ste prijavljeni."
       updated_not_active: "Vaša lozinka je uspješno promijenjena."
     registrations:
-      sign_up_button: "Registriraj se"
+      sign_up_button: "Registrirajte se"
       update_button: "Izmijeni"
       sign_up: "Registracija"
       min_char: "Minimalno %{num} znakova"

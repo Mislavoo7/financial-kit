@@ -5,7 +5,9 @@ de:
     legal_pages: "Rechtliche Seiten"
     seos: "SEO"
     users: "Benutzer"
+    credits: "Kredite"
   public_nav:
     legal_pages: "Rechtliche Seiten"
   user_nav:
     lists: "Deine Listen"
+    calculations: "Berechnen"

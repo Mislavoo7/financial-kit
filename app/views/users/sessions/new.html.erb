@@ -2,6 +2,13 @@
   <div class="card-title">
     <%= image_tag "logo.png", class: "mx-auto w-auto", alt: "logo" %>
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"><%= t("devise.sessions.sign_in") %></h2>
+
+    <small>
+      <%= t("or") %>
+      <%= link_to t("devise.registrations.sign_up_button"), new_user_registration_path, class: "no-underline hover:underline" %>
+    </small>
+
+  <%= render "users/shared/items_saved" %>
   </div>
 
   <div class="form-container">
@@ -31,4 +38,5 @@
     <% end %>
 
   </div>
+
 </div>

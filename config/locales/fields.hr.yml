@@ -40,6 +40,8 @@ hr:
       user:
         email: "E-mail"
       credit:
+        parametar: "Parametar"
+        value: "Vrijednosti"
         interest_year: "Financijski rashodi (kamate)"
         calculation_method: "Način obračuna"
         calculation_methods: 

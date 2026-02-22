@@ -5,7 +5,8 @@ hr:
     legal_pages: "Pravne stranice"
     seos: "SEO"
     users: "Korisnici"
+    credits: "Krediti"
   public_nav:
     legal_pages: "Pravne stranice"
   user_nav:
-    lists: "Tvoje liste"
+    calculations: "Izračini"

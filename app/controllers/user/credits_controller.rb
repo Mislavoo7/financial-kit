@@ -6,14 +6,14 @@ class User::CreditsController < User::BaseController
 
   def update
     if @credit.update(credit_params)
-      redirect_to user_credits_path, notice: t('message.updated')
+      redirect_to user_calculations_path, notice: t('message.updated')
     else
       render :edit
     end
   end
 
   def destroy
-    @legal_page.destroy
+    @credit.destroy
     respond_to do |format|
       format.js
     end
@@ -28,6 +28,6 @@ class User::CreditsController < User::BaseController
   end
 
   def set_credit
-    @credit = current_user.find(:id)
+    @credit = current_user.credits.find_by_slug(params["id"])
   end
 end
