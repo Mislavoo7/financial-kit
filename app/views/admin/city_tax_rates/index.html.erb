@@ -1,0 +1,36 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: t("admin_nav.city_tax_rates"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+<div class="page">
+
+  <%= render "admin/shared/header", 
+    title: t('admin_nav.city_tax_rates'), 
+    new_url: new_admin_city_tax_rate_path, 
+    new_title:  t('new') %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="thead-th"><%= tf('city_tax_rate.title') %></th>
+        <th class="thead-th"><%= tf('city_tax_rate.lower_rate') %></th>
+        <th class="thead-th"><%= tf('city_tax_rate.higher_rate') %></th>
+        <th class="thead-th"><%= t('actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @city_tax_rates.each do |city_tax_rate| %>
+        <tr>
+          <td class="tbody-td"><%= city_tax_rate.title %></td>
+          <td class="tbody-td"><%= city_tax_rate.humanize_lower_rate  %></td>
+          <td class="tbody-td"><%= city_tax_rate.humanize_higher_rate  %></td>
+          <td class="tbody-td flex">
+              <%= link_to t('edit'), edit_admin_city_tax_rate_path(city_tax_rate), class: "button is-white has-icon-right" %>
+              <%= link_to t('delete'), admin_city_tax_rate_path(city_tax_rate), class: "button is-white has-icon-right", method: :delete, data: { confirm: t('are_you_sure') } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -25,6 +25,12 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_city_tax_rates_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "percent", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.city_tax_rates") %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_root_path, class: "sidebar-link" do %>
             <%= phosphor_icon "house", options: { class: 'size-5 shrink-0' } %>
             <%= t("admin_nav.home") %>

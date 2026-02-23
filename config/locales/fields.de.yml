@@ -68,6 +68,10 @@ de:
       legal_page_translation:
         title: "Titel"
         content: "Text"
+      city_tax_rate:
+        title: "Stadtname"
+        lower_rate: "Niedrigerer Steuersatz"
+        higher_rate: "Höherer Steuersatz"
       seo:
         image: "SEO-Bild"
         imageu: "SEO-Bild"
@@ -78,6 +82,16 @@ de:
         keywords: "SEO-Schlüsselwörter"
     errors:
       models:
+        city_tax_rate:
+          attributes:
+            title:
+              blank: "Titel darf nicht leer sein!"
+            higher_rate:
+              blank: "Höherer Steuersatz darf nicht leer sein!"
+              greater_than_or_equal_to: "Der höhere Steuersatz muss größer oder gleich 0 sein!"
+            lower_rate:
+              blank: "Niedriger Steuersatz darf nicht leer sein!"
+              greater_than_or_equal_to: "Der niedrigere Steuersatz muss größer oder gleich 0 sein!"
         credit:
           attributes:
             calculation_method:

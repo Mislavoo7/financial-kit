@@ -6,6 +6,7 @@ hr:
     seos: "SEO"
     users: "Korisnici"
     credits: "Krediti"
+    city_tax_rates: "Stope poreza na dohodak"
   public_nav:
     legal_pages: "Pravne stranice"
   user_nav:

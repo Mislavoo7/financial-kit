@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :admins, except: [:show]
       resources :users, only: [:index, :destroy]
       resources :credits, only: [:index, :destroy]
+      resources :city_tax_rates, except: [:show]
       resources :pages, only: [:edit, :update, :show] do
         collection do
           patch :sort

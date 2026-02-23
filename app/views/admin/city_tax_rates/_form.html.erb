@@ -1,0 +1,29 @@
+<%= form_for [:admin, @city_tax_rate], :html => { class: 'form' } do |f| %>
+  <div class="form-body">
+    <div class="pb-6">
+      <%= f.label :title, class: 'label' %>
+      <div class="mt-2">
+        <%= f.text_field :title, class: "input" %>
+      </div>
+    </div>
+
+    <div class="pb-6">
+      <%= f.label :lower_rate, class: 'label' %>
+      <div class="mt-2">
+        <%= ratio_field f, :lower_rate, class: 'input', data: {} %>
+      </div>
+    </div>
+
+    <div class="pb-6">
+      <%= f.label :higher_rate, class: 'label' %>
+      <div class="mt-2">
+        <%= ratio_field f, :higher_rate, class: 'input', data: {} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex pt-6">
+    <%= link_to t('cancel'), admin_legal_pages_path, class: 'button is-white' %>
+    <%= f.submit t("save"), data: { disable_with: t('please_wait') }, class: "button is-primary" %>
+  </div>
+<% end %>

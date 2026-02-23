@@ -68,6 +68,10 @@ hr:
       legal_page_translation:
         title: "Naslov"
         content: "Tekst"
+      city_tax_rate:
+        title: "Ime grada"
+        lower_rate: "Niža stopa"
+        higher_rate: "Viža stopa"
       seo:
         image: "SEO slika"
         imageu: "SEO slika"
@@ -78,6 +82,16 @@ hr:
         keywords: "SEO ključne riječi"
     errors:
       models:
+        city_tax_rate:
+          attributes:
+            title:
+              blank: "Naziv ne može biti prazan!"
+            higher_rate:
+              blank: "Viša stopa ne može biti prazna!"
+              greater_than_or_equal_to: "Viša stopa mora biti veća ili jednaka 0!"
+            lower_rate:
+              blank: "Niža stopa ne može biti prazna!"
+              greater_than_or_equal_to: "Niža stopa mora biti veća ili jednaka 0!"
         credit:
           attributes:
             calculation_method:

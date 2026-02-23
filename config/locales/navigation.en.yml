@@ -6,6 +6,7 @@ en:
     seos: "SEO"
     users: "Users"
     credits: "Loans"
+    city_tax_rates: "Income tax rates"
   public_nav:
     legal_pages: "Legals Pages"
   user_nav:

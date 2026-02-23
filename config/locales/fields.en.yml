@@ -70,6 +70,10 @@ en:
       legal_page_translation:
         title: "Title"
         content: "Text"
+      city_tax_rate:
+        title: "City Name"
+        lower_rate: "Lower Rate"
+        higher_rate: "Higher Rate"
       seo:
         image: "SEO Image"
         imageu: "SEO Image"
@@ -80,6 +84,16 @@ en:
         keywords: "SEO Keywords"
     errors:
       models:
+        city_tax_rate:
+          attributes:
+            title:
+              blank: "Title can't be blank!"
+            higher_rate:
+              blank: "Higher rate can't be blank!"
+              greater_than_or_equal_to: "Higher rate must be greater than or equal to 0!"
+            lower_rate:
+              blank: "Lower rate cannot be blank!"
+              greater_than_or_equal_to: "Lower rate must be greater than or equal to 0!"
         credit:
           attributes:
             calculation_method:
