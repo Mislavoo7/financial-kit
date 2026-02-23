@@ -23,4 +23,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :credits, dependent: :destroy
+  has_many :salary_calculators, dependent: :destroy
 end

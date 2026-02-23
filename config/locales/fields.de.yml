@@ -39,6 +39,34 @@ de:
         email: "E-Mail"
       user:
         email: "E-mail"
+      salary_calculator:
+        brut: "Bruttogehalt"
+        first_pillar: "I. Säule der Rentenversicherung"
+        second_pillar: "II. Säule der Rentenversicherung"
+        total_pillars: "Gesamte Rentenbeiträge"
+        taxation_base: "Steuerbemessungsgrundlage"
+        pdv_one: "Steuer zum niedrigeren Satz"
+        pdv_two: "Steuer zum höheren Satz"
+        income_tax: "Einkommensteuer"
+        health_insurance: "Krankenversicherungsbeitrag"
+        employer_to_pay: "Gesamtkosten für den Arbeitgeber"
+        net: "Nettogehalt"
+        parametar: "Parameter"
+        value: "Beträge"
+        amount_in_cent: "Betrag"
+        calculation_type: "Berechnungsart"
+        calculation_types:
+          brut_to_net: "Brutto zu netto"
+          net_to_brut: "Netto zu brutto"
+        dependents_num: "Anzahl der unterhaltsberechtigten Personen"
+        disability: "Behinderungen"
+        disabilities:
+          no: "Keine Behinderung"
+          partial: "Teilweise Behinderung"
+          total: "100% Behinderung"
+        kids_num: "Anzahl der Kinder"
+        personal_deduction: "Persönlicher Freibetrag"
+        city_tax_rate_id: "Wohnort"
       credit:
         parametar: "Parameter"
         value: "Beträge"
@@ -92,6 +120,26 @@ de:
             lower_rate:
               blank: "Niedriger Steuersatz darf nicht leer sein!"
               greater_than_or_equal_to: "Der niedrigere Steuersatz muss größer oder gleich 0 sein!"
+        salary_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Betrag darf nicht leer sein!"
+              greater_than_or_equal_to: "Der Betrag muss größer oder gleich 0 sein!"
+            calculation_type:
+              blank: "Berechnungsart darf nicht leer sein!"
+            dependents_num:
+              blank: "Anzahl der unterhaltsberechtigten Personen darf nicht leer sein!"
+              greater_than_or_equal_to: "Die Anzahl der unterhaltsberechtigten Personen muss größer oder gleich 0 sein!"
+            disability:
+              blank: "Behinderung darf nicht leer sein!"
+            kids_num:
+              blank: "Anzahl der Kinder darf nicht leer sein!"
+              greater_than_or_equal_to: "Die Anzahl der Kinder muss größer oder gleich 0 sein!"
+            personal_deduction:
+              blank: "Persönlicher Freibetrag darf nicht leer sein!"
+              greater_than_or_equal_to: "Der persönliche Freibetrag muss größer oder gleich 1 sein!"
+            city_tax_rate_id:
+              blank: "Wohnort darf nicht leer sein!"
         credit:
           attributes:
             calculation_method:

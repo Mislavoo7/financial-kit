@@ -1,0 +1,38 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: salary_calculators
+#
+#  id                 :bigint           not null, primary key
+#  amount_in_cent     :integer          default(0)
+#  calculation_type   :string           default("brut-to-net")
+#  dependents_num     :integer          default(0)
+#  disability         :string           default("no-disability")
+#  kids_num           :integer          default(0)
+#  personal_deduction :integer          default(1)
+#  slug               :string           default("")
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  city_tax_rate_id   :integer
+#  user_id            :integer
+#
+one:
+  amount_in_cent: 1
+  personal_deduction: 1
+  kids_num: 1
+  dependents_num: 1
+  disability: MyString
+  city_tax_rate: MyString
+  city_tax_rate_id: 1
+  calculation_type: MyString
+
+two:
+  amount_in_cent: 1
+  personal_deduction: 1
+  kids_num: 1
+  dependents_num: 1
+  disability: MyString
+  city_tax_rate: MyString
+  city_tax_rate_id: 1
+  calculation_type: MyString

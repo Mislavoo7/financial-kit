@@ -7,8 +7,8 @@ de:
     users: "Benutzer"
     credits: "Kredite"
     city_tax_rates: "Einkommensteuersätze"
+    salary_calculators: "Gehaltsberechnung"
   public_nav:
     legal_pages: "Rechtliche Seiten"
   user_nav:
-    lists: "Deine Listen"
     calculations: "Berechnen"

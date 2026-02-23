@@ -1,0 +1,151 @@
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.amount_in_cent") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= money_field f, :amount_in_cent, class: 'form-table-input',
+        data: {
+          "amount_in_cent" => true,
+          "amount_in_cent_input" => true, action: "input->salary-calculator#salaryCalculate"
+        } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.personal_deduction") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :personal_deduction, class: 'form-table-input' , placeholder: '0', requred: true , readonly: true, data: {
+        salary_calculator_personal_deduction_input: true, action: "input->salary-calculator#salaryCalculate"
+      } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.kids_num") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :kids_num, class: 'form-table-input' , placeholder: '0', requred: true , data: {
+        salary_calculator_kids_num_input: true, action: "input->salary-calculator#salaryCalculate"
+      } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.dependents_num") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.number_field :dependents_num, class: 'form-table-input' , placeholder: '0', requred: true , data: {
+        salary_calculator_dependents_num_input: true, action: "input->salary-calculator#salaryCalculate"
+      } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.disability") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <% SalaryCalculator::DISABILITY_TYPE.each do |value| %>
+        <% key = value.split("-").first %>
+        <% id  = "#{f.object_name}_disability_#{value.tr('-', '_')}" %>
+
+        <label for="<%= id %>"
+               class="mb-3 flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-300 hover:bg-slate-50">
+               <%= f.radio_button :disability, value,
+                 id: id,
+                 class: "h-5 w-5 text-primary-600 focus:ring-2 focus:ring-primary-500" %>
+
+               <span class="text-sm font-medium text-slate-900">
+                 <%= tf("salary_calculator.disabilities.#{key}") %>
+               </span>
+        </label>
+      <% end %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.city_tax_rate_id") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= f.text_field :city_tax_rate_id, class: 'form-table-input', requred: true , data: {
+        salary_calculator_city_tax_rate_input: true, action: "input->salary-calculator#salaryCalculate"
+      } %>
+    </div>
+  </td>
+</tr>
+
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("salary_calculator.calculation_type") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="px-3 py-2">
+      <label class="form-toggle">
+        <%= f.check_box :calculation_type,
+          {
+            class: "sr-only peer",
+            data: {
+              calculation_type_target: "methodToggle",
+              calculation_method: true,
+              action: "input->salary-calculator#salaryCalculate"
+            }
+          },
+          SalaryCalculator::CALCULATION_TYPE[0],
+          SalaryCalculator::CALCULATION_TYPE[1]
+        %>
+
+      <span class="form-toggle-option form-toggle-option--active
+                   peer-checked:bg-white peer-checked:text-secondary-800">
+        <%= tf("salary_calculator.calculation_types.brut_to_net") %>
+      </span>
+
+      <span class="form-toggle-divider"><%= t("or") %></span>
+
+      <span class="form-toggle-option
+                   peer-checked:text-white peer-checked:bg-primary-500">
+        <%= tf("salary_calculator.calculation_types.net_to_brut") %>
+      </span>
+      </label>
+    </div>
+  </td>
+</tr>
+
+

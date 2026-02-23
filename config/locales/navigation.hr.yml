@@ -7,6 +7,7 @@ hr:
     users: "Korisnici"
     credits: "Krediti"
     city_tax_rates: "Stope poreza na dohodak"
+    salary_calculators: "Izračun plaće"
   public_nav:
     legal_pages: "Pravne stranice"
   user_nav:

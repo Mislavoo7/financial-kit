@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_23_081207) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_23_115723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -118,6 +118,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_23_081207) do
     t.string "image"
     t.boolean "is_visible", default: true
     t.integer "position", default: 1000
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "salary_calculators", force: :cascade do |t|
+    t.integer "amount_in_cent", default: 0
+    t.integer "personal_deduction", default: 1
+    t.integer "kids_num", default: 0
+    t.integer "dependents_num", default: 0
+    t.string "disability", default: "no-disability"
+    t.integer "city_tax_rate_id"
+    t.string "calculation_type", default: "brut-to-net"
+    t.string "slug", default: ""
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

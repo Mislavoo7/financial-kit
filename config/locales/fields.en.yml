@@ -39,11 +39,37 @@ en:
         email: "Email"
       user:
         email: "E-mail"
+      salary_calculator:
+        brut: "Gross salary"
+        first_pillar: "Pension insurance pillar I"
+        second_pillar: "Pension insurance pillar II"
+        total_pillars: "Total pension contributions"
+        taxation_base: "Tax base"
+        pdv_one: "Tax at lower rate"
+        pdv_two: "Tax at higher rate"
+        income_tax: "Income tax"
+        health_insurance: "Health insurance contribution"
+        employer_to_pay: "Total employer cost"
+        net: "Net salary"
+        parametar: "Parametar"
+        value: "Value"
+        amount_in_cent: "Amount"
+        calculation_type: "Calculation type"
+        calculation_types:
+          brut_to_net: "Gross to net"
+          net_to_brut: "Net to gross"
+        dependents_num: "Number of dependents"
+        disability: "Disability"
+        disabilities:
+          no: "No disability"
+          partial: "Partial disability"
+          total: "100% disability"
+        kids_num: "Number of children"
+        personal_deduction: "Personal deduction"
+        city_tax_rate_id: "Place of residence"
       credit:
         parametar: "Parametar"
         value: "Value"
-        parametar: ""
-        value: ""
         interest_year: "Financial expenses (interest)"
         calculation_method: "Calculation method"
         calculation_methods:
@@ -94,6 +120,26 @@ en:
             lower_rate:
               blank: "Lower rate cannot be blank!"
               greater_than_or_equal_to: "Lower rate must be greater than or equal to 0!"
+        salary_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Amount can't be blank!"
+              greater_than_or_equal_to: "Amount must be greater than or equal to 0!"
+            calculation_type:
+              blank: "Calculation type can't be blank!"
+            dependents_num:
+              blank: "Number of dependents can't be blank!"
+              greater_than_or_equal_to: "Number of dependents must be greater than or equal to 0!"
+            disability:
+              blank: "Disability can't be blank!"
+            kids_num:
+              blank: "Number of children can't be blank!"
+              greater_than_or_equal_to: "Number of children must be greater than or equal to 0!"
+            personal_deduction:
+              blank: "Personal deduction can't be blank!"
+              greater_than_or_equal_to: "Personal deduction must be greater than or equal to 1!"
+            city_tax_rate_id:
+              blank: "Place of residence can't be blank!"
         credit:
           attributes:
             calculation_method:

@@ -21,13 +21,7 @@ class Credit < ApplicationRecord
   include CalculationMethods
   include RatioNormalization
   include MoneyNormalization
-
-  before_save :add_slug
-  def add_slug
-    if self.slug.blank?
-      self.slug = "#{SecureRandom.hex(8)}" 
-    end
-  end
+  include Slugable
 
   belongs_to :user, optional: true
 

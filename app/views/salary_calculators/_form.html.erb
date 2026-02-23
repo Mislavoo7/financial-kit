@@ -1,0 +1,54 @@
+<%= form_with model: @salary_calculator,
+  url: url,
+  method: method,
+  html: { class: 'form', id: 'investments-form' } do |f| %>
+  <div class="py-4">
+    <div data-controller="form-table-nested-fields">
+      <%= render 'shared/errors', object: @salary_calculator %>
+
+      <div class="form-table-wrapper">
+        <div class="form-table-container">
+          <table class="form-table form-table--vertical">
+            <thead>
+              <tr>
+                <th><%= tf("salary_calculator.parametar") %></th>
+                <th><%= tf("salary_calculator.value") %></th>
+              </tr>
+            </thead>
+            <tbody id="investment-fields-wrapper" data-controller="salary-calculator" >
+              <%= render 'salary_calculators/salary_calculator_fields', f: f %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="flex justify-end mt-6">
+        <%= button_tag type: 'submit', class: "button is-primary" do %>
+          <%= phosphor_icon "floppy-disk" %>
+          <%= t("save") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="py-4">
+    <div data-controller="form-table-nested-fields">
+      <div class="overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative form-table-border-overlay">
+        <table class="form-table form-table--credit-totals">
+          <thead>
+            <tr>
+              <th><%= tf("salary_calculator.parametar") %></th>
+              <th><%= tf("salary_calculator.value") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% ["brut", "first_pillar", "second_pillar", "total_pillars", "taxation_base", "pdv_one", "pdv_two", "income_tax", "health_insurance", "employer_to_pay", "net"  ].each do |item| %>
+              <tr>
+                <td> <%= tf("salary_calculator.#{item}") %> </td>
+                <td data-salary-calculator-<%= item.gsub("_", "-") %>></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

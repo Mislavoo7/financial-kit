@@ -39,6 +39,34 @@ hr:
         email: "E-mail"
       user:
         email: "E-mail"
+      salary_calculator:
+        brut: "Bruto plaća"
+        first_pillar: "I. stup mirovinskog osiguranja"
+        second_pillar: "II. stup mirovinskog osiguranja"
+        total_pillars: "Ukupno doprinos za mirovinsko"
+        taxation_base: "Porezna osnovica"
+        pdv_one: "Porez po nižoj stopi"
+        pdv_two: "Porez po višoj stopi"
+        income_tax: "Porez na dohodak"
+        health_insurance: "Doprinos za zdravstveno osiguranje"
+        employer_to_pay: "Ukupan trošak za poslodavca" 
+        net: "Neto plaća"
+        parametar: "Parametar"
+        value: "Vrijednosti"
+        amount_in_cent: "Iznos"
+        calculation_type: "Vrsta izračuna"
+        calculation_types:
+          brut_to_net: "Bruto u neto"
+          net_to_brut: "Neto u bruto"
+        dependents_num: "Broj uzdržavanih osoba"
+        disability: "Invalidnosti"
+        disabilities: 
+            no: "Bez invalidnosti"
+            partial: "Djelomična invalidnost"
+            total: "100% invalidnost"
+        kids_num: "Broj djece"
+        personal_deduction: "Osobni odbitak"
+        city_tax_rate_id: "Mjesto prebivališta"
       credit:
         parametar: "Parametar"
         value: "Vrijednosti"
@@ -92,6 +120,26 @@ hr:
             lower_rate:
               blank: "Niža stopa ne može biti prazna!"
               greater_than_or_equal_to: "Niža stopa mora biti veća ili jednaka 0!"
+        salary_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Iznos ne može biti prazan!"
+              greater_than_or_equal_to: "Iznos mora biti veći ili jednak 0!"
+            calculation_type:
+              blank: "Vrsta izračuna ne može biti prazna!"
+            dependents_num:
+              blank: "Broj uzdržavanih osoba ne može biti prazan!"
+              greater_than_or_equal_to: "Broj uzdržavanih osoba mora biti veći ili jednak 0!"
+            disability:
+              blank: "Invalidnost ne može biti prazna!"
+            kids_num:
+              blank: "Broj djece ne može biti prazan!"
+              greater_than_or_equal_to: "Broj djece mora biti veći ili jednak 0!"
+            personal_deduction:
+              blank: "Osobni odbitak ne može biti prazan!"
+              greater_than_or_equal_to: "Osobni odbitak mora biti veći ili jednak 1!"
+            city_tax_rate_id:
+              blank: "Mjesto prebivališta ne može biti prazno!"
         credit:
           attributes:
             calculation_method:
