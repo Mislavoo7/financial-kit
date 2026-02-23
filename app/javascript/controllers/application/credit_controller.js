@@ -24,6 +24,7 @@ export default class CreditController extends Controller {
 
     var k11 = 12 
 
+
     // =(J10)*K11
     var numberOfInstallmentsValue = repaymentYear * k11;
     numberOfInstallments.value = numberOfInstallmentsValue;

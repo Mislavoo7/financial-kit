@@ -13,7 +13,9 @@ window.initDatepicker = function(){
   flatpickr('.js-input-datepicker', {
     //    locale: I18n.locale,
     enableTime: false,
-    dateFormat: "d.m.Y."
+    dateFormat: "Y-m-d", 
+    altInput: true,
+    altFormat: "d.m.Y."      // lijepi prikaz
   });
 
 }
