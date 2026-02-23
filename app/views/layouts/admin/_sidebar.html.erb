@@ -19,6 +19,12 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_credits_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "bank", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.credits") %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_root_path, class: "sidebar-link" do %>
             <%= phosphor_icon "house", options: { class: 'size-5 shrink-0' } %>
             <%= t("admin_nav.home") %>

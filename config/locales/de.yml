@@ -8,6 +8,7 @@ de:
   title: "Welchen Namen soll ich wählen?"
   hi: "Hi"
   or: "oder"
+  created_at: "Erstellungsdatum"
   cancel: "Abbrechen"
   edit_record: "Aktualisieren"
   dashboard: "Meine Einkäufe"

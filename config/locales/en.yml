@@ -8,6 +8,7 @@ en:
   title: "Which name to choose?"
   hi: "Hi"
   or: "or"
+  created_at: "Created At"
   cancel: "Cancel"
   edit_record: "Edit"
   dashboard: "My purchases"

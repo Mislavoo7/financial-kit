@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       root 'pages#index'
       resources :admins, except: [:show]
       resources :users, only: [:index, :destroy]
+      resources :credits, only: [:index, :destroy]
       resources :pages, only: [:edit, :update, :show] do
         collection do
           patch :sort

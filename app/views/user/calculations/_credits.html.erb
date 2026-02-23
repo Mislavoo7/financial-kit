@@ -16,6 +16,11 @@
         <span class="credit-label"><%= tf("credit.number_of_installments") %></span>
         <span class="credit-value"><%= credit.number_of_installments %></span>
       </div>
+
+      <div class="credit-row">
+        <span class="credit-label"><%= t("created_at") %></span>
+        <span class="credit-value"><%= credit.created_at.strftime("%d.%m.%Y") %></span>
+      </div>
     </div>
 
     <div class="credit-actions">

@@ -8,6 +8,7 @@ hr:
   title: "Koje ime odabrati?"
   hi: "Bok"
   or: "ili"
+  created_at: "Datum stvaranja"
   cancel: "Odbaci"
   edit_record: "Izmijeni"
   dashboard: "Moje kupnje"
