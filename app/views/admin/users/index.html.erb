@@ -1,20 +1,32 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: t("admin_nav.users"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+
+
 <div class="page">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="thead-th"><%= tf('user.email') %></th>
-        <th class="thead-th"><%= t('actions') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+  <%= render "admin/shared/header", title: t('admin_nav.users')  %>
+  <div class="table-wrapper">
+    <table class="table">
+      <thead class="thead">
         <tr>
-          <td class="tbody-td"><%= user.email %></td>
-          <td class="tbody-td">
-            <%= link_to t('delete'), admin_user_path(user), class: "table-button", method: :delete, data: { confirm: t('are_you_sure') } %>
-          </td>
+          <th class="thead-th"><%= tf('user.email') %></th>
+          <th class="thead-th thead-th-actions"><%= t('actions') %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="tbody-tr">
+            <td class="tbody-td"><%= user.email %></td>
+            <td class="tbody-td">
+              <div class="flex justify-end gap-2">
+                <%= link_to t('delete'), admin_user_path(user), class: "table-icon table-icon-destroy", method: :delete, data: { confirm: t('are_you_sure') } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

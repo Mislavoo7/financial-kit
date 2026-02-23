@@ -1,28 +1,39 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: t("admin_nav.credits"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+
 <div class="page">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="thead-th"><%= tf('calculator.credit.title') %></th>
-        <th class="thead-th"><%= tf('credit.interest_ratio') %></th>
-        <th class="thead-th"><%= tf('credit.number_of_installments') %></th>
-        <th class="thead-th"><%= tf('user.email') %></th>
-        <th class="thead-th"><%= t('created_at') %></th>
-        <th class="thead-th"><%= t('actions') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @credits.each do |credit| %>
+  <%= render "admin/shared/header", title: t('admin_nav.credits')  %>
+  <div class="table-wrapper">
+    <table class="table">
+      <thead class="thead">
         <tr>
-          <td class="tbody-td"><%= credit.humanize_amount_in_cent %></td>
-          <td class="tbody-td"><%= credit.humanize_interest_ratio  %></td>
-          <td class="tbody-td"><%= credit.number_of_installments  %></td>
-          <td class="tbody-td"><%= credit.user&.email  %></td>
-          <td class="tbody-td"><%= credit.created_at.strftime("%d.%m.%Y") %></td>
-          <td class="tbody-td">
-            <%= link_to t('delete'), admin_credit_path(credit), class: "table-button", method: :delete, data: { confirm: t('are_you_sure') } %>
-          </td>
+          <th class="thead-th"><%= tf('calculator.credit.title') %></th>
+          <th class="thead-th"><%= tf('credit.interest_ratio') %></th>
+          <th class="thead-th"><%= tf('credit.number_of_installments') %></th>
+          <th class="thead-th"><%= tf('user.email') %></th>
+          <th class="thead-th"><%= t('created_at') %></th>
+          <th class="thead-th thead-th-actions"><%= t('actions') %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @credits.each do |credit| %>
+          <tr class="tbody-tr">
+            <td class="tbody-td"><%= credit.humanize_amount_in_cent %></td>
+            <td class="tbody-td"><%= credit.humanize_interest_ratio  %></td>
+            <td class="tbody-td"><%= credit.number_of_installments  %></td>
+            <td class="tbody-td"><%= credit.user&.email  %></td>
+            <td class="tbody-td"><%= credit.created_at.strftime("%d.%m.%Y") %></td>
+            <td class="tbody-td">
+              <div class="flex justify-end gap-2">
+                <%= link_to t('delete'), admin_credit_path(credit), class: "table-icon table-icon-destroy", method: :delete, data: { confirm: t('are_you_sure') } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
