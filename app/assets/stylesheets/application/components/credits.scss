@@ -1,0 +1,15 @@
+@layer components {
+  .calc-page { @apply min-h-full; }
+  .calc-container { @apply max-w-7xl mx-auto; }
+  .calc-card { @apply p-4 bg-white rounded-t-lg shadow; }
+
+  /* ovo je ključ */
+  .calc-header { @apply flex flex-col gap-4; }
+  .calc-help-box { @apply bg-secondary-50 p-4 rounded-lg; } /* ili tvoj zeleni */
+  .calc-content { @apply mt-6; }
+
+  .calc-block { @apply py-4; }
+  .calc-actions { @apply flex justify-end mt-6; }
+
+  .calc-table-shell { @apply overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative; }
+}
