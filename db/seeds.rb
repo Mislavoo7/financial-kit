@@ -6,7 +6,7 @@
 #
 #require_relative "seed_methods/seed_pages"
 #require_relative "seed_methods/seed_legal_pages"
-#require_relative "seed_methods/seed_city_taxes"
+require_relative "seed_methods/seed_city_taxes"
 #
 #seed_home
 #puts "++++ Home Page Seeded"
@@ -16,5 +16,5 @@
 #seed_legal_pages
 #puts "++++ Legal pages Seeded"
 
-#seed_city_taxes
-#puts "++++ City taxes Seeded"
+seed_city_taxes
+puts "++++ City taxes Seeded"

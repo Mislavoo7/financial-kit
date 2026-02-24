@@ -2,8 +2,13 @@
   url: url,
   method: method,
   html: { class: 'form', id: 'investments-form' } do |f| %>
-  <div class="py-4">
-    <div data-controller="form-table-nested-fields">
+
+  <div
+    data-controller="salary-calculator"
+    data-salary-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
+  >
+
+    <div class="py-4">
       <%= render 'shared/errors', object: @salary_calculator %>
 
       <div class="form-table-wrapper">
@@ -15,12 +20,14 @@
                 <th><%= tf("salary_calculator.value") %></th>
               </tr>
             </thead>
-            <tbody id="investment-fields-wrapper" data-controller="salary-calculator" >
+
+            <tbody id="investment-fields-wrapper">
               <%= render 'salary_calculators/salary_calculator_fields', f: f %>
             </tbody>
           </table>
         </div>
       </div>
+
       <div class="flex justify-end mt-6">
         <%= button_tag type: 'submit', class: "button is-primary" do %>
           <%= phosphor_icon "floppy-disk" %>
@@ -28,9 +35,8 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="py-4">
-    <div data-controller="form-table-nested-fields">
+
+    <div class="py-4">
       <div class="overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative form-table-border-overlay">
         <table class="form-table form-table--credit-totals">
           <thead>
@@ -40,9 +46,9 @@
             </tr>
           </thead>
           <tbody>
-            <% ["brut", "first_pillar", "second_pillar", "total_pillars", "taxation_base", "pdv_one", "pdv_two", "income_tax", "health_insurance", "employer_to_pay", "net"  ].each do |item| %>
+            <% ["brut", "first_pillar", "second_pillar", "total_pillars", "taxation_base", "pdv_one", "pdv_two", "income_tax", "health_insurance", "employer_to_pay", "net"].each do |item| %>
               <tr>
-                <td> <%= tf("salary_calculator.#{item}") %> </td>
+                <td><%= tf("salary_calculator.#{item}") %></td>
                 <td data-salary-calculator-<%= item.gsub("_", "-") %>></td>
               </tr>
             <% end %>
@@ -50,5 +56,6 @@
         </table>
       </div>
     </div>
+
   </div>
 <% end %>

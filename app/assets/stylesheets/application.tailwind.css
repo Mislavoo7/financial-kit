@@ -20,4 +20,5 @@
 @import "application/components/calculations.scss";
 @import "application/components/credits.scss";
 @import "application/components/table_forms.scss";
+@import "application/components/autocomplete.scss";
 @import "application/components/social.scss";

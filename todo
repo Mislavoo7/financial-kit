@@ -3,8 +3,10 @@
 - 3h credit
 - 4h credit
 - 2h city_tax
+- 3h salary_calculator
 
-- kalkulator plaća
+- kalkulator plaća - autocomplete i js controller
+- dodati skrivena polja u salary - personalDeduction već imam
 - autorski
 - ugovor o djelu
 - to pdf

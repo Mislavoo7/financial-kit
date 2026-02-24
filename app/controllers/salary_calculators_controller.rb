@@ -1,4 +1,5 @@
 class SalaryCalculatorsController < BaseController
+  before_action :set_city_tax_rates
   def new
     @salary_calculator = SalaryCalculator.new
   end
@@ -22,6 +23,12 @@ class SalaryCalculatorsController < BaseController
   end
 
   private
+
+  def set_city_tax_rates
+    @city_tax_rates = CityTaxRate.all.map { |r|
+      { id: r.id, title: r.title, lower_rate: r.lower_rate.to_f, higher_rate: r.higher_rate.to_f }
+    }.to_json
+  end
 
   def salary_calculator_params
     params.require(:salary_calculator).permit(

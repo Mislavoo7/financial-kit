@@ -1,0 +1,25 @@
+/* example selectors from autoComplete.js defaults */
+.autoComplete_wrapper {
+  position: relative;
+}
+
+#autoComplete_list {
+  position: absolute;
+  z-index: 50;
+  margin-top: 0.25rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+#autoComplete_list .result {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+#autoComplete_list .result:hover {
+  background: #f8fafc;
+}
