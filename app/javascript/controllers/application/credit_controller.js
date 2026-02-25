@@ -1,248 +1,226 @@
 import { Controller } from "@hotwired/stimulus";
-import { humanizeEuro, financialRoundUp, parseEuro } from "./concerns/calculator_helpers";
+import { humanizeEuro, financialRoundUp, parseEuro, percentHumanize, euroToCent } from "./concerns/calculator_helpers";
 
 export default class CreditController extends Controller {
-  static targets = [ "methodToggle" ]
+  static targets = ["methodToggle"];
 
   connect() {
     console.log("credit controller connected");
-    this.creditCalculate()
+    this.creditCalculate();
   }
 
   creditCalculate() {
-    // main table
-    var calculatorMethod = this.methodToggleTarget.checked ? "equal-annuities" : "equal-installments";
-    var amount = parseFloat(document.querySelector(`[data-amount-in-cent]`).value);
-    var interestRatio = parseFloat(document.querySelector(`[data-interest-ratio]`).value);
-    var repaymentYear = parseFloat(document.querySelector(`[data-repayment-year]`).value); 
-    var monthsOne = parseFloat(document.querySelector(`[data-months-one]`).value);
-    var start = parseFloat(document.querySelector(`[data-start]`).value);
+    const calculatorMethod = this.methodToggleTarget.checked ? "equal-annuities" : "equal-installments";
 
-    var numberOfInstallments = document.querySelector(`[data-number-of-installments]`);
-    var timeHorizon = document.querySelector(`[data-time-horizon]`);
+    const amount = parseFloat(document.querySelector(`[data-amount-in-cent]`).value) || 0;
+    const interestRatio = parseFloat(document.querySelector(`[data-interest-ratio]`).value) || 0; // annual %
+    const repaymentYear = parseFloat(document.querySelector(`[data-repayment-year]`).value) || 0;
+    const monthsOne = parseFloat(document.querySelector(`[data-months-one]`).value) || 1;
+    const start = parseFloat(document.querySelector(`[data-start]`).value) || 0;
 
-    var startAt = document.querySelector(`[data-start-at]`).value;
+    const numberOfInstallments = document.querySelector(`[data-number-of-installments]`);
+    const timeHorizon = document.querySelector(`[data-time-horizon]`);
 
-    var k11 = 12 
+    const startAt = document.querySelector(`[data-start-at]`).value;
 
+    const k11 = 12;
 
-    // =(J10)*K11
-    var numberOfInstallmentsValue = repaymentYear * k11;
+    // installments count
+    const numberOfInstallmentsValue = repaymentYear * k11;
     numberOfInstallments.value = numberOfInstallmentsValue;
 
-    // =(J10+K12)*K11
-    var k12 = start/12.0;
-    var timeHorizonValue = (repaymentYear + k12 ) * k11;
+    // horizon (months)
+    const k12 = start / 12.0;
+    const timeHorizonValue = (repaymentYear + k12) * k11;
     timeHorizon.value = timeHorizonValue;
 
     // months in table
-    var b15 = timeHorizonValue - numberOfInstallmentsValue;
-    var numOfRows = timeHorizonValue;
+    const b15 = timeHorizonValue - numberOfInstallmentsValue;
+    const numOfRows = timeHorizonValue;
 
-    var creditRest = document.querySelectorAll(`[data-credit-rest]`);
-    for (var i=0; i < creditRest.length; i++) {
-      creditRest[i].innerHTML = this.humanizeEuro(amount);
-    }
+    // Update credit rest placeholders
+    document.querySelectorAll(`[data-credit-rest]`).forEach((el) => {
+      el.innerHTML = humanizeEuro(amount);
+    });
 
-    var tbody = document.querySelector(`[data-credit-months]`);
-    var tbodyTotal = document.querySelector(`[data-credit-totals]`);
+    const tbody = document.querySelector(`[data-credit-months]`);
+    const tbodyTotal = document.querySelector(`[data-credit-totals]`);
 
-    // destroy all trs
-    tbody.querySelectorAll('tr:not([data-credit-permanent])').forEach(tr => tr.remove());
-    tbodyTotal.querySelectorAll('tr:not([data-credit-permanent])').forEach(tr => tr.remove());
+    // destroy all old trs
+    tbody.querySelectorAll("tr:not([data-credit-permanent])").forEach((tr) => tr.remove());
+    tbodyTotal.querySelectorAll("tr:not([data-credit-permanent])").forEach((tr) => tr.remove());
 
-    var fragment = document.createDocumentFragment();
-    var fragmentTotal = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
+    const fragmentTotal = document.createDocumentFragment();
 
-    var a26 = NaN;
-    var b27 = NaN;
-    var b11 = 12.0 / monthsOne;
-    var d26 = NaN;
-    var year = this.parseDate(startAt).getFullYear();
-    var date = this.parseDate(startAt)
-    var h26 = NaN;
-    var l25 = amount; 
-    var c9 = interestRatio / b11; 
-    var c26 = NaN;
-    var j26 = NaN;
-    var i26 = NaN;
-    var newCreditRestL25 = amount;
+    // periods per year (e.g. monthsOne=1 => 12, monthsOne=3 => 4)
+    const b11 = 12.0 / monthsOne;
 
-    var interesetCalculation = NaN;
+    let year = this.parseDate(startAt).getFullYear();
+    const date = this.parseDate(startAt);
 
-    // data for third table {2019: {instalments: 55566, principal: 66666...}}
-    var totalYearsTable = {}
-    var totalObj = {
-      installment: 0,
-      principal: 0,
-      interest: 0,
-      creditRest: 0
-    }
+    // periodic interest rate in percent (your sheet uses percent here)
+    const c9 = interestRatio / b11;
 
-    for (var rowIndex = 0; rowIndex < numOfRows; rowIndex++) {
-      var tr = document.createElement("tr");
+    let b27 = NaN;
+    let d26 = NaN;
+    let h26 = NaN;
 
-      a26 = rowIndex + 1
+    let newCreditRestL25 = amount;
+
+    // data for third table
+    const totalYearsTable = {};
+    let totalObj = { installment: 0, principal: 0, interest: 0, creditRest: 0 };
+
+    for (let rowIndex = 0; rowIndex < numOfRows; rowIndex++) {
+      const tr = document.createElement("tr");
+
+      const a26 = rowIndex + 1;
 
       // =IF(A26>$B$15,A26-$B$15,0)
-      c26 = a26 > b15 ? a26 - b15 : 0;
+      const c26 = a26 > b15 ? a26 - b15 : 0;
 
-      // =IF(A26>$J$15," ",L25*$C$9)
-      //var interesetCalculation = a26 > timeHorizonValue ? 0 : (l25 * c9)/100.00;
-      var interesetCalculation = (a26 > timeHorizonValue) ? 0 : newCreditRestL25 * (c9 / 100);
+      // interest for this period (money, round)
+      const interestCalc =
+        a26 > timeHorizonValue ? 0 : financialRoundUp(newCreditRestL25 * (c9 / 100));
 
-      // =IF(A26>$J$15," ",IF(C26=0,0,IF($C$5=2,PPMT($C$9,C26,$J$14,$J$8,0)*(-1),$C$8)))
-      j26 = this.calculatePrincipal(a26, timeHorizonValue, c26, calculatorMethod, c9, numberOfInstallmentsValue, amount);
+      // principal for this period (money, round)
+      const principalRaw = this.calculatePrincipal(
+        a26, timeHorizonValue,
+        c26, calculatorMethod,
+        c9,numberOfInstallmentsValue,
+        amount
+      );
+      const principal = a26 > timeHorizonValue ? 0 : financialRoundUp(principalRaw);
 
-      var principal = j26;
+      // installment for this period (money, round)
+      const installment = a26 > timeHorizonValue ? 0 : financialRoundUp(principal + interestCalc);
 
-      // =IF(A26>$J$15," ",J26+K26)
-      i26 = (a26 > timeHorizonValue) ? 0 : (j26 + interesetCalculation).toFixed(2)
+      // remaining balance (money, round)
+      newCreditRestL25 =
+        a26 > timeHorizonValue ? 0 : financialRoundUp(newCreditRestL25 - principal);
 
-      // =IF(A26>$J$15," ",L25-J26)
-      newCreditRestL25 = (a26 > timeHorizonValue)  ? 0 : newCreditRestL25 - principal;
+      for (let colIndex = 0; colIndex < 12; colIndex++) {
+        const td = document.createElement("td");
 
-      for (var colIndex = 0; colIndex < 12; colIndex++) {
-        var td = document.createElement("td");
-
-        if (colIndex == 0) {
-          td.innerHTML = a26
-        } else if (colIndex == 1) {
-          var month = this.parseDate(startAt).getMonth() + 1;
-          if (rowIndex != 0) {
+        if (colIndex === 0) {
+          td.innerHTML = a26;
+        } else if (colIndex === 1) {
+          let month = this.parseDate(startAt).getMonth() + 1;
+          if (rowIndex !== 0) {
             month += rowIndex;
             b27 = month;
           }
-
-          td.innerHTML = month 
-        } else if (colIndex == 2) {
-          // =IF(A26>$B$15,A26-$B$15,0)
-          td.innerHTML = c26 
-        } else if (colIndex == 3) {
-          if (rowIndex == 0) {
+          td.innerHTML = month;
+        } else if (colIndex === 2) {
+          td.innerHTML = c26;
+        } else if (colIndex === 3) {
+          if (rowIndex === 0) {
             d26 = this.parseDate(startAt).getMonth() + 1;
           } else {
-            // =IF(MOD(B27,$B$11)=0,$B$11,MOD(B27,$B$11))
-            d26 = this.excelModulo(b27, b11); 
-          } 
+            d26 = this.excelModulo(b27, b11);
+          }
           h26 = d26;
           td.innerHTML = d26;
-        } else if (colIndex == 4) {
-          if (rowIndex != 0) {
-            // =IF(D27=1,E26+1,E26)
-            if (d26===1) {
-              totalYearsTable[`${year}`] = totalObj
+        } else if (colIndex === 4) {
+          if (rowIndex !== 0) {
+            // new year boundary
+            if (d26 === 1) {
+              totalYearsTable[`${year}`] = totalObj;
               year += 1;
 
-              // add data to the third (total table) and reset totalObject
-              totalObj = {
-                installment: 0,
-                principal: 0,
-                interest: 0,
-                creditRest: 0
-              }
+              totalObj = { installment: 0, principal: 0, interest: 0, creditRest: 0 };
             }
           }
 
-          totalObj.installment += parseFloat(i26)
-          totalObj.principal += j26
-          totalObj.interest += interesetCalculation
+          totalObj.installment = financialRoundUp(totalObj.installment + installment);
+          totalObj.principal = financialRoundUp(totalObj.principal + principal);
+          totalObj.interest = financialRoundUp(totalObj.interest + interestCalc);
 
-          td.innerHTML = year 
-        } else if (colIndex == 6) {
-          var nextMonth = this.addMonths(date, rowIndex)
-          td.innerHTML = `1.${nextMonth.getMonth() + 1}.${nextMonth.getFullYear()}.` 
-        } else if (colIndex == 7) {
-          td.innerHTML = h26; 
-        } else if (colIndex == 8) {
-          td.innerHTML = typeof value === "number" ? this.humanizeEuro(i26.toFixed(2)) : this.humanizeEuro(i26);
-        } else if (colIndex == 9) {
-          td.innerHTML = typeof value === "number" ? this.humanizeEuro(j26.toFixed(2)) : this.humanizeEuro(j26.toFixed(2));
-        } else if (colIndex == 10) {
-          td.innerHTML = this.humanizeEuro(interesetCalculation.toFixed(2)); 
-        } else if (colIndex == 11) {
-          td.innerHTML = this.humanizeEuro(newCreditRestL25.toFixed(2)); 
+          td.innerHTML = year;
+        } else if (colIndex === 6) {
+          const nextMonth = this.addMonths(date, rowIndex);
+          td.innerHTML = `1.${nextMonth.getMonth() + 1}.${nextMonth.getFullYear()}.`;
+        } else if (colIndex === 7) {
+          td.innerHTML = h26;
+        } else if (colIndex === 8) {
+          td.innerHTML = humanizeEuro(installment);
+        } else if (colIndex === 9) {
+          td.innerHTML = humanizeEuro(principal);
+        } else if (colIndex === 10) {
+          td.innerHTML = humanizeEuro(interestCalc);
+        } else if (colIndex === 11) {
+          td.innerHTML = humanizeEuro(newCreditRestL25);
         }
 
-        td.dataset.row = rowIndex+26; // bc excel sheet starts on the row 26
-        td.dataset.col = String.fromCharCode(97 + colIndex); // 1,2,3,4... to a,b,c,d...
-
-        // special attribute for last column if needed
-        // td.setAttribute("data-credit-rest", "");
+        td.dataset.row = rowIndex + 26;
+        td.dataset.col = String.fromCharCode(97 + colIndex);
 
         tr.appendChild(td);
       }
 
       fragment.appendChild(tr);
 
-      // totalObject is ususally added on the first month. The remaining amounts should be added here, at the end
-      totalYearsTable[`${year}`] = totalObj
+      // keep latest totals for current year
+      totalYearsTable[`${year}`] = totalObj;
     }
 
     tbody.appendChild(fragment);
 
-    // Third table total
-    var lastCreditRest = amount;
+    // third table
+    let lastCreditRest = amount;
 
-    var sumValues = {
-      installment: 0,
-      principal: 0,
-      interest: 0,
-      creditRest: 0
-    }
+    const sumValues = { installment: 0, principal: 0, interest: 0, creditRest: 0 };
 
-    var yearIndex = 1
-    for (var row in totalYearsTable) {
-      let tr = document.createElement("tr");
+    for (const row in totalYearsTable) {
+      const tr = document.createElement("tr");
 
-      for (var colIndex = 0; colIndex < 5; colIndex++) {
-        var td = document.createElement("td");
+      for (let colIndex = 0; colIndex < 5; colIndex++) {
+        const td = document.createElement("td");
 
-        if (colIndex == 0) {
-          td.innerHTML = row
-        } else if (colIndex == 1) {
-          td.innerHTML = this.humanizeEuro(totalYearsTable[row].installment.toFixed(2))
-          sumValues.installment += totalYearsTable[row].installment 
-        } else if (colIndex == 2) {
-          td.innerHTML = this.humanizeEuro(totalYearsTable[row].principal.toFixed(2))
-          sumValues.principal += totalYearsTable[row].principal 
-        } else if (colIndex == 3) {
-          td.innerHTML = this.humanizeEuro(`${totalYearsTable[row].interest.toFixed(2)}`)
-          sumValues.interest += totalYearsTable[row].interest 
-        } else if (colIndex == 4) {
-          lastCreditRest = lastCreditRest - totalYearsTable[row].principal
-          td.innerHTML = this.humanizeEuro(lastCreditRest.toFixed(2))
-          sumValues.creditRest += lastCreditRest 
+        if (colIndex === 0) {
+          td.innerHTML = row;
+        } else if (colIndex === 1) {
+          td.innerHTML = humanizeEuro(totalYearsTable[row].installment);
+          sumValues.installment = financialRoundUp(sumValues.installment + totalYearsTable[row].installment);
+        } else if (colIndex === 2) {
+          td.innerHTML = humanizeEuro(totalYearsTable[row].principal);
+          sumValues.principal = financialRoundUp(sumValues.principal + totalYearsTable[row].principal);
+        } else if (colIndex === 3) {
+          td.innerHTML = humanizeEuro(totalYearsTable[row].interest);
+          sumValues.interest = financialRoundUp(sumValues.interest + totalYearsTable[row].interest);
+        } else if (colIndex === 4) {
+          lastCreditRest = financialRoundUp(lastCreditRest - totalYearsTable[row].principal);
+          td.innerHTML = humanizeEuro(lastCreditRest);
+          sumValues.creditRest = financialRoundUp(sumValues.creditRest + lastCreditRest);
         }
+
         tr.appendChild(td);
       }
 
       fragmentTotal.appendChild(tr);
     }
 
-    let trTotal = document.createElement("tr");
+    const trTotal = document.createElement("tr");
     trTotal.className = "credit-total-row";
-    for (var colIndex = 0; colIndex < 5; colIndex++) {
-      var td = document.createElement("td");
 
-      if (colIndex == 0) {
-        td.innerHTML = ""
-      } else if (colIndex == 1) {
-        td.innerHTML = this.humanizeEuro(sumValues.installment.toFixed(2))
-      } else if (colIndex == 2) {
-        td.innerHTML = this.humanizeEuro(sumValues.principal.toFixed(2))
-      } else if (colIndex == 3) {
-        td.innerHTML = this.humanizeEuro(sumValues.interest.toFixed(2))
-      } else if (colIndex == 4) {
-        td.innerHTML = "-" //sumValues.creditRest.toFixed(2)
-      }
+    for (let colIndex = 0; colIndex < 5; colIndex++) {
+      const td = document.createElement("td");
+
+      if (colIndex === 0) td.innerHTML = "";
+      else if (colIndex === 1) td.innerHTML = humanizeEuro(sumValues.installment);
+      else if (colIndex === 2) td.innerHTML = humanizeEuro(sumValues.principal);
+      else if (colIndex === 3) td.innerHTML = humanizeEuro(sumValues.interest);
+      else if (colIndex === 4) td.innerHTML = "-";
+
       trTotal.appendChild(td);
     }
+
     fragmentTotal.appendChild(trTotal);
-
     tbodyTotal.appendChild(fragmentTotal);
-  } 
+  }
 
+  // helpers
   parseDate(dateString) {
     const parts = dateString.split('.');
     if (parts.length === 3) {
@@ -256,12 +234,11 @@ export default class CreditController extends Controller {
   }
 
   addMonths(baseDate, monthsToAdd) {
-    const d = new Date(baseDate); // clone
+    const d = new Date(baseDate); 
     const day = d.getDate();
 
     d.setMonth(d.getMonth() + monthsToAdd);
 
-    // Handle month overflow (e.g. Jan 31 → Feb)
     if (d.getDate() < day) {
       d.setDate(0); // go to last day of previous month
     }
@@ -273,7 +250,6 @@ export default class CreditController extends Controller {
     const mod = value % divisor;
     return mod === 0 ? divisor : mod;
   }
-
 
   PMT(rate, nper, pv) {
     if (rate === 0) return -(pv / nper);
@@ -310,20 +286,21 @@ export default class CreditController extends Controller {
     return fv;
   }
 
+
   calculatePrincipal(a26, timeHorizonValue, c26, calculatorMethod, c9, numberOfInstallmentsValue, amount) {
-    var value;
+    let value;
+
     if (a26 > timeHorizonValue) {
-      value = " ";
+      value = 0;
     } else if (c26 === 0) {
       value = 0;
     } else if (calculatorMethod === "equal-annuities") {
-      var rateDecimal = c9/100;
+      const rateDecimal = c9 / 100;
       value = this.PPMT(rateDecimal, c26, numberOfInstallmentsValue, amount) * -1;
     } else {
-      var c8 = amount / numberOfInstallmentsValue;
-      value = c8;
+      value = amount / numberOfInstallmentsValue;
     }
-    return value 
-  }
 
+    return value;
+  }
 }

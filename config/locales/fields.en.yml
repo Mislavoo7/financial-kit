@@ -61,9 +61,9 @@ en:
         dependents_num: "Number of dependents"
         disability: "Disability"
         disabilities:
-          no: "No disability"
-          partial: "Partial disability"
-          total: "100% disability"
+          partial_disability: "Partial disability"
+          total_disability: "100% disability"
+          no_disability: "No disability"
         kids_num: "Number of children"
         personal_deduction: "Personal deduction"
         city_tax_rate_id: "Place of residence"

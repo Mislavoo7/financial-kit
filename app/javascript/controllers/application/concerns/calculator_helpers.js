@@ -31,10 +31,12 @@ export function parseEuro(v) {
 export function humanizeEuro(euro) {
   const n = parseEuro(euro);
 
-  return new Intl.NumberFormat("hr-HR", {
+  var tot = new Intl.NumberFormat("hr-HR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(n);
+
+  return `${tot}€`
 }
 
 /**

@@ -61,9 +61,9 @@ de:
         dependents_num: "Anzahl der unterhaltsberechtigten Personen"
         disability: "Behinderungen"
         disabilities:
-          no: "Keine Behinderung"
-          partial: "Teilweise Behinderung"
-          total: "100% Behinderung"
+          partial_disability: "Teilweise Behinderung"
+          total_disability: "100% Behinderung"
+          no_disability: "Keine Behinderung"
         kids_num: "Anzahl der Kinder"
         personal_deduction: "Persönlicher Freibetrag"
         city_tax_rate_id: "Wohnort"

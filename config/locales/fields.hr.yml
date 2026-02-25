@@ -61,9 +61,9 @@ hr:
         dependents_num: "Broj uzdržavanih osoba"
         disability: "Invalidnosti"
         disabilities: 
-            no: "Bez invalidnosti"
-            partial: "Djelomična invalidnost"
-            total: "100% invalidnost"
+            partial_disability: "Djelomična invalidnost"
+            total_disability: "100% invalidnost"
+            no_disability: "Bez invalidnosti"
         kids_num: "Broj djece"
         personal_deduction: "Osobni odbitak"
         city_tax_rate_id: "Mjesto prebivališta"

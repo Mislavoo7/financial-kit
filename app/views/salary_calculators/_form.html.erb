@@ -53,7 +53,7 @@
                     <% formated_item = item.gsub("_", "-") %>
 
                     <% if ["first_pillar", "second_pillar", "total_pillar", "pdv_one", "pdv_two", "health_insurance"].include? item %>
-                      <span data-<%= formated_item %>-ratio> 0 </span>
+                      <span data-<%= formated_item %>-ratio> 0 </span> |
                       <span data-<%= formated_item %>> 0 </span>
                       <%= f.hidden_field "#{item}_ratio".to_sym,  data: {
                         "#{formated_item}-ratio-hidden" => true
