@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { humanizeEuro, financialRoundUp, parseEuro } from "./concerns/calculator_helpers";
 
 export default class CreditController extends Controller {
   static targets = [ "methodToggle" ]
@@ -325,41 +326,4 @@ export default class CreditController extends Controller {
     return value 
   }
 
-  // TODO seperate
-  humanizeEuro(euro) {
-    // accepts: 5000, "5000", "5000.2", "5.000,20", "€5,000.20"
-    const parseEuro = (v) => {
-      if (v == null) return 0;
-      let s = String(v).trim();
-
-      // keep digits, comma, dot, minus
-      s = s.replace(/[^\d.,-]/g, "");
-
-      // If both '.' and ',' exist: decide which is decimal by last occurrence
-      const lastDot = s.lastIndexOf(".");
-      const lastComma = s.lastIndexOf(",");
-      if (lastDot !== -1 && lastComma !== -1) {
-        const decimalIsComma = lastComma > lastDot;
-        if (decimalIsComma) {
-          // "1.234,56" -> remove thousands dots, turn comma into dot
-          s = s.replace(/\./g, "").replace(",", ".");
-        } else {
-          // "1,234.56" -> remove thousands commas
-          s = s.replace(/,/g, "");
-        }
-      } else if (lastComma !== -1) {
-        // only comma: treat as decimal separator
-        s = s.replace(",", ".");
-      }
-      const n = Number(s);
-      return Number.isFinite(n) ? n : 0;
-    };
-
-    const n = parseEuro(euro);
-
-    return new Intl.NumberFormat("hr-HR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
-  }
 }
