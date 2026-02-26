@@ -16,6 +16,14 @@ export default class extends Controller {
 
     this.initCityAutocomplete();
     this.salaryCalculate();
+
+    this.minSalary = 600.0;
+    this.breakingPoint = 5000;
+    this.healthInsuranceInPercent = 0.165;
+    // pillars rates
+    this.firstPillar = 0.15;
+    this.secondPillar = 0.05;
+    this.totalPillar = this.firstPillar + this.secondPillar; // don't round a rate
   }
 
   initCityAutocomplete() {
@@ -97,126 +105,108 @@ export default class extends Controller {
     return total
   }
 
-  salaryCalculate() {
-    // settings
-    const calculatorMethod = this.methodToggleTarget?.checked ? "brut-to-net" : "net-to-brut";
+  incomeToGross(income, netSalary) {
+    var limits = 1872.00; 
+    if (income <= 285) {
+      return income / 0.95;
+    } else if (income > 285 && income <= 605) {
+      return (income -45) / 0.80;
+    } else if (income > 605 && income <= 1040) {
+      return (income - 97.5) / 0.725;
+    } else if (income > 1040) {
+      return income / 0.8;
+    }
 
-    const amountInEuro = parseFloat(this.element.querySelector(`[data-amount-in-cent-input]`)?.value || "0") || 0;
+    //} else if (income > 1040 && <= !limits) {
+    //  return netSalary / 0.8;
+    // } else if (income > 1040 && <= limits) {
+    //   return netSalary / 0.8;
+    // }
+  };
 
-    const kidsNum = parseInt(this.element.querySelector(`[data-kids-num-input]`)?.value || "0", 10) || 0;
 
-    const dependentsNum = parseInt(this.element.querySelector(`[data-dependents-num-input]`)?.value || "0", 10) || 0;
 
-    const disabilityEl = this.element.querySelector(`[data-disability-input]:checked`);
-    const disability = disabilityEl ? disabilityEl.value : null;
-
-    const cityTaxRateId = parseInt(this.cityTaxRateIdTarget?.value || "0", 10) || null;
-    const cityTaxRate = cityTaxRateId ? this.cityTaxRateById.get(cityTaxRateId) : null;
-
-    // tax rates (as decimals, e.g. 0.18)
-    const pdvOne = cityTaxRate ? Number(cityTaxRate.lower_rate) : 0;
-    const pdvTwo = cityTaxRate ? Number(cityTaxRate.higher_rate) : 0;
-
-    const minSalary = 600.0;
-    const breakingPoint = 5000;
-    const healthInsuranceInPercent = 0.165;
-
-    // deduction coefficient (not money yet)
-    const personalDeductionCoeff = this.getPersonalDeduction(kidsNum, dependentsNum, disability);
-
-    // pillars rates
-    const firstPillar = 0.15;
-    const secondPillar = 0.05;
-    const totalPillar = firstPillar + secondPillar; // don't round a rate
-
+  brutToNet(amountInEuro) {
     let firstPillarInEuro = 0;
 
     // calculations
     if (amountInEuro <= 700) {
       // up to 700: (brut - 300) * 15%
-      firstPillarInEuro = financialRoundUp((amountInEuro - 300) * firstPillar);
+      firstPillarInEuro = financialRoundUp((amountInEuro - 300) * this.firstPillar);
     } else if (amountInEuro <= 1300) {
       // 700..1300: (brut - 0.5*(1300 - brut)) * 15%
       firstPillarInEuro = financialRoundUp(
-        (amountInEuro - (0.5 * (1300 - amountInEuro))) * firstPillar
+        (amountInEuro - (0.5 * (1300 - amountInEuro))) * this.firstPillar
       );
     } else {
-      firstPillarInEuro = financialRoundUp(amountInEuro * firstPillar);
+      firstPillarInEuro = financialRoundUp(amountInEuro * this.firstPillar);
     }
 
-    const secondPillarInEuro = financialRoundUp(amountInEuro * secondPillar);
-    const totalPillarInEuro = financialRoundUp(firstPillarInEuro + secondPillarInEuro);
+    const secondPillarInEuro = financialRoundUp(amountInEuro * this.secondPillar);
+    this.totalPillarInEuro = financialRoundUp(firstPillarInEuro + secondPillarInEuro);
 
-    // base after pillars (money)
-    const baseAfterPillars = financialRoundUp(amountInEuro - totalPillarInEuro);
 
-    // desired deduction from coefficient
-    const desiredPersonalDeductionInEuro = minSalary * personalDeductionCoeff; // keep raw
-    // clamp so it never exceeds baseAfterPillars
-    const personalDeductionInEuro = financialRoundUp(
-      Math.min(desiredPersonalDeductionInEuro, baseAfterPillars)
-    );
-
-    const taxationBase = financialRoundUp(Math.max(0, baseAfterPillars - personalDeductionInEuro));
+    const taxationBase = financialRoundUp(Math.max(0, this.baseAfterPillars - this.personalDeductionInEuro));
+    console.log(this.baseAfterPillars, this.personalDeductionInEuro)
 
     let lowTax = 0;
     let highTax = 0;
     let incomeTax = 0;
 
-    if (taxationBase < breakingPoint) {
-      lowTax = financialRoundUp(taxationBase * pdvOne);
+    if (taxationBase < this.breakingPoint) {
+      lowTax = financialRoundUp(taxationBase * this.pdvOne);
       highTax = 0;
       incomeTax = lowTax;
     } else {
-      lowTax = financialRoundUp(breakingPoint * pdvOne);
-      highTax = financialRoundUp((taxationBase - breakingPoint) * pdvTwo);
+      lowTax = financialRoundUp(this.breakingPoint * this.pdvOne);
+      highTax = financialRoundUp((taxationBase - this.breakingPoint) * this.pdvTwo);
       incomeTax = financialRoundUp(lowTax + highTax);
     }
 
-    const healthInsurance = financialRoundUp(amountInEuro * healthInsuranceInPercent);
+    const healthInsurance = financialRoundUp(amountInEuro * this.healthInsuranceInPercent);
     const employerToPay = financialRoundUp(amountInEuro + healthInsurance);
-    const netSalary = financialRoundUp(taxationBase - incomeTax + personalDeductionInEuro);
+    const netSalary = financialRoundUp(taxationBase - incomeTax + this.personalDeductionInEuro);
 
     // add to DOM
     this.element.querySelector(`[data-brut]`).innerHTML = humanizeEuro(amountInEuro);
     this.element.querySelector(`[data-brut-hidden]`).value = euroToCent(amountInEuro);
 
-    this.element.querySelector(`[data-first-pillar-ratio]`).innerHTML = percentHumanize(firstPillar);
-    this.element.querySelector(`[data-first-pillar-ratio-hidden]`).value = firstPillar;
+    this.element.querySelector(`[data-first-pillar-ratio]`).innerHTML = percentHumanize(this.firstPillar);
+    this.element.querySelector(`[data-first-pillar-ratio-hidden]`).value = this.firstPillar;
     this.element.querySelector(`[data-first-pillar]`).innerHTML = humanizeEuro(firstPillarInEuro);
     this.element.querySelector(`[data-first-pillar-hidden]`).value = euroToCent(firstPillarInEuro);
 
-    this.element.querySelector(`[data-second-pillar-ratio]`).innerHTML = percentHumanize(secondPillar);
-    this.element.querySelector(`[data-second-pillar-ratio-hidden]`).value = secondPillar;
+    this.element.querySelector(`[data-second-pillar-ratio]`).innerHTML = percentHumanize(this.secondPillar);
+    this.element.querySelector(`[data-second-pillar-ratio-hidden]`).value = this.secondPillar;
     this.element.querySelector(`[data-second-pillar]`).innerHTML = humanizeEuro(secondPillarInEuro);
     this.element.querySelector(`[data-second-pillar-hidden]`).value = euroToCent(secondPillarInEuro);
 
-    this.element.querySelector(`[data-total-pillar-ratio]`).innerHTML = percentHumanize(totalPillar);
-    this.element.querySelector(`[data-total-pillar-ratio-hidden]`).value = totalPillar;
-    this.element.querySelector(`[data-total-pillar]`).innerHTML = humanizeEuro(totalPillarInEuro);
-    this.element.querySelector(`[data-total-pillar-hidden]`).value = euroToCent(totalPillarInEuro);
+    this.element.querySelector(`[data-total-pillar-ratio]`).innerHTML = percentHumanize(this.totalPillar);
+    this.element.querySelector(`[data-total-pillar-ratio-hidden]`).value = this.totalPillar;
+    this.element.querySelector(`[data-total-pillar]`).innerHTML = humanizeEuro(this.totalPillarInEuro);
+    this.element.querySelector(`[data-total-pillar-hidden]`).value = euroToCent(this.totalPillarInEuro);
 
-    this.element.querySelector(`[data-personal-deduction-hidden]`).value = euroToCent(personalDeductionInEuro);
-    this.element.querySelector(`[data-personal-deduction]`).innerHTML = humanizeEuro(personalDeductionInEuro);
+    this.element.querySelector(`[data-personal-deduction-hidden]`).value = euroToCent(this.personalDeductionInEuro);
+    this.element.querySelector(`[data-personal-deduction]`).innerHTML = humanizeEuro(this.personalDeductionInEuro);
 
     this.element.querySelector(`[data-taxation-base-hidden]`).value = euroToCent(taxationBase);
     this.element.querySelector(`[data-taxation-base]`).innerHTML = humanizeEuro(taxationBase);
 
-    this.element.querySelector(`[data-pdv-one-ratio]`).innerHTML = percentHumanize(pdvOne);
-    this.element.querySelector(`[data-pdv-one-ratio-hidden]`).value = pdvOne;
+    this.element.querySelector(`[data-pdv-one-ratio]`).innerHTML = percentHumanize(this.pdvOne);
+    this.element.querySelector(`[data-pdv-one-ratio-hidden]`).value = this.pdvOne;
     this.element.querySelector(`[data-pdv-one]`).innerHTML = humanizeEuro(lowTax);
     this.element.querySelector(`[data-pdv-one-hidden]`).value = euroToCent(lowTax);
 
-    this.element.querySelector(`[data-pdv-two-ratio]`).innerHTML = percentHumanize(pdvTwo);
-    this.element.querySelector(`[data-pdv-two-ratio-hidden]`).value = pdvTwo;
+    this.element.querySelector(`[data-pdv-two-ratio]`).innerHTML = percentHumanize(this.pdvTwo);
+    this.element.querySelector(`[data-pdv-two-ratio-hidden]`).value = this.pdvTwo;
     this.element.querySelector(`[data-pdv-two]`).innerHTML = humanizeEuro(highTax);
     this.element.querySelector(`[data-pdv-two-hidden]`).value = euroToCent(highTax);
 
     this.element.querySelector(`[data-income-tax-hidden]`).value = euroToCent(incomeTax);
     this.element.querySelector(`[data-income-tax]`).innerHTML = humanizeEuro(incomeTax);
 
-    this.element.querySelector(`[data-health-insurance-ratio]`).innerHTML = percentHumanize(healthInsuranceInPercent);
-    this.element.querySelector(`[data-health-insurance-ratio-hidden]`).value = healthInsuranceInPercent;
+    this.element.querySelector(`[data-health-insurance-ratio]`).innerHTML = percentHumanize(this.healthInsuranceInPercent);
+    this.element.querySelector(`[data-health-insurance-ratio-hidden]`).value = this.healthInsuranceInPercent;
     this.element.querySelector(`[data-health-insurance]`).innerHTML = humanizeEuro(healthInsurance);
     this.element.querySelector(`[data-health-insurance-hidden]`).value = euroToCent(healthInsurance);
 
@@ -226,4 +216,70 @@ export default class extends Controller {
     this.element.querySelector(`[data-net-hidden]`).value = euroToCent(netSalary);
     this.element.querySelector(`[data-net]`).innerHTML = humanizeEuro(netSalary);
   }
+
+  netToBrut(amountInEuro) {
+    const pdvOneInPercent = this.pdvOne * 100; 
+    const pdvTwoInPercent = this.pdvTwo * 100;
+
+    const netSalary = parseFloat(amountInEuro);
+
+    const kpn = (pdvOneInPercent / (100 - pdvOneInPercent) ) + 1;
+    const kpv = (pdvTwoInPercent / (100 - pdvTwoInPercent) ) + 1; 
+    var checkClass = this.breakingPoint * (1 / kpn) + this.personalDeductionInEuro;
+
+    
+    if (netSalary <= this.personalDeductionInEuro) {
+      var income = netSalary;
+      var grossSalary = this.incomeToGross(income, netSalary)
+    } else if (netSalary > this.personalDeductionCoeff && netSalary <= checkClass) {    // Here could be and error
+      var income = (netSalary - this.personalDeductionCoeff ) * kpn + this.personalDeductionInEuro;
+      var grossSalary = this.incomeToGross(income, netSalary);
+    } else if (netSalary > checkClass ) {
+      //console.log("hhhhero", breakingPoint, personalDeduction, netSalary, breakingPoint, breakingPoint, pdvOne, personalDeduction, kpv)
+      var income = this.breakingPoint + this.personalDeductionInEuro + (netSalary - (this.breakingPoint - this.breakingPoint * this.pdvOne + this.personalDeductionInEuro)) * kpv;
+      var grossSalary = this.incomeToGross(income, netSalary);
+    } 
+
+
+    this.brutToNet(grossSalary);
+
+  }
+
+  salaryCalculate() {
+    // settings
+    const amountInEuro = parseFloat(this.element.querySelector(`[data-amount-in-cent-input]`)?.value || "0") || 0;
+    const cityTaxRateId = parseInt(this.cityTaxRateIdTarget?.value || "0", 10) || null;
+    const cityTaxRate = cityTaxRateId ? this.cityTaxRateById.get(cityTaxRateId) : null;
+    // tax rates (as decimals, e.g. 0.18)
+    this.pdvOne = cityTaxRate ? Number(cityTaxRate.lower_rate) : 0;
+    this.pdvTwo = cityTaxRate ? Number(cityTaxRate.higher_rate) : 0;
+
+    const kidsNum = parseInt(this.element.querySelector(`[data-kids-num-input]`)?.value || "0", 10) || 0;
+    const dependentsNum = parseInt(this.element.querySelector(`[data-dependents-num-input]`)?.value || "0", 10) || 0;
+    const disabilityEl = this.element.querySelector(`[data-disability-input]:checked`);
+    const disability = disabilityEl ? disabilityEl.value : null;
+    // deduction coefficient (not money yet)
+    this.personalDeductionCoeff = this.getPersonalDeduction(kidsNum, dependentsNum, disability);
+
+    // base after pillars (money)
+    const baseAfterPillars = financialRoundUp(amountInEuro - this.totalPillarInEuro);
+
+    // desired deduction from coefficient
+    const desiredPersonalDeductionInEuro = this.minSalary * this.personalDeductionCoeff; // keep raw
+    // clamp so it never exceeds baseAfterPillars
+    this.personalDeductionInEuro = financialRoundUp(
+      Math.min(desiredPersonalDeductionInEuro, this.baseAfterPillars)
+    );
+
+
+    // TODO taxationBase dons't work in nettobrut
+    const calculatorMethod = this.methodToggleTarget?.checked ? "brut-to-net" : "net-to-brut";
+    if (calculatorMethod == "brut-to-net") {
+      this.brutToNet(amountInEuro)
+    } else if (calculatorMethod == "net-to-brut") {
+      this.netToBrut(amountInEuro)
+    }
+
+  }
+
 }
