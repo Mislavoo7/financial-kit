@@ -145,9 +145,13 @@ export default class extends Controller {
     const secondPillarInEuro = financialRoundUp(amountInEuro * this.secondPillar);
     this.totalPillarInEuro = financialRoundUp(firstPillarInEuro + secondPillarInEuro);
 
+    this.baseAfterPillars = financialRoundUp(amountInEuro - this.totalPillarInEuro);
+    const desiredPersonalDeductionInEuro = this.minSalary * this.personalDeductionCoeff; // keep raw
+    this.personalDeductionInEuro = financialRoundUp(
+      Math.min(desiredPersonalDeductionInEuro, this.baseAfterPillars)
+    );
 
     const taxationBase = financialRoundUp(Math.max(0, this.baseAfterPillars - this.personalDeductionInEuro));
-    console.log(this.baseAfterPillars, this.personalDeductionInEuro)
 
     let lowTax = 0;
     let highTax = 0;
@@ -223,26 +227,28 @@ export default class extends Controller {
 
     const netSalary = parseFloat(amountInEuro);
 
+    this.baseAfterPillars = financialRoundUp(netSalary - this.totalPillarInEuro);
+    const desiredPersonalDeductionInEuro = this.minSalary * this.personalDeductionCoeff; // keep raw
+    this.personalDeductionInEuro = financialRoundUp(
+      Math.min(desiredPersonalDeductionInEuro, this.baseAfterPillars)
+    );
+
     const kpn = (pdvOneInPercent / (100 - pdvOneInPercent) ) + 1;
     const kpv = (pdvTwoInPercent / (100 - pdvTwoInPercent) ) + 1; 
     var checkClass = this.breakingPoint * (1 / kpn) + this.personalDeductionInEuro;
-
     
-    if (netSalary <= this.personalDeductionInEuro) {
+    if (netSalary <= desiredPersonalDeductionInEuro) {
       var income = netSalary;
       var grossSalary = this.incomeToGross(income, netSalary)
-    } else if (netSalary > this.personalDeductionCoeff && netSalary <= checkClass) {    // Here could be and error
-      var income = (netSalary - this.personalDeductionCoeff ) * kpn + this.personalDeductionInEuro;
+    } else if (netSalary > desiredPersonalDeductionInEuro && netSalary <= checkClass) {    // Here could be and error
+      var income = (netSalary - desiredPersonalDeductionInEuro ) * kpn + desiredPersonalDeductionInEuro;
       var grossSalary = this.incomeToGross(income, netSalary);
     } else if (netSalary > checkClass ) {
-      //console.log("hhhhero", breakingPoint, personalDeduction, netSalary, breakingPoint, breakingPoint, pdvOne, personalDeduction, kpv)
-      var income = this.breakingPoint + this.personalDeductionInEuro + (netSalary - (this.breakingPoint - this.breakingPoint * this.pdvOne + this.personalDeductionInEuro)) * kpv;
+      var income = this.breakingPoint + desiredPersonalDeductionInEuro + (netSalary - (this.breakingPoint - this.breakingPoint * this.pdvOne + desiredPersonalDeductionInEuro)) * kpv;
       var grossSalary = this.incomeToGross(income, netSalary);
     } 
 
-
     this.brutToNet(grossSalary);
-
   }
 
   salaryCalculate() {
@@ -261,18 +267,6 @@ export default class extends Controller {
     // deduction coefficient (not money yet)
     this.personalDeductionCoeff = this.getPersonalDeduction(kidsNum, dependentsNum, disability);
 
-    // base after pillars (money)
-    const baseAfterPillars = financialRoundUp(amountInEuro - this.totalPillarInEuro);
-
-    // desired deduction from coefficient
-    const desiredPersonalDeductionInEuro = this.minSalary * this.personalDeductionCoeff; // keep raw
-    // clamp so it never exceeds baseAfterPillars
-    this.personalDeductionInEuro = financialRoundUp(
-      Math.min(desiredPersonalDeductionInEuro, this.baseAfterPillars)
-    );
-
-
-    // TODO taxationBase dons't work in nettobrut
     const calculatorMethod = this.methodToggleTarget?.checked ? "brut-to-net" : "net-to-brut";
     if (calculatorMethod == "brut-to-net") {
       this.brutToNet(amountInEuro)
