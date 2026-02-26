@@ -1,25 +1,30 @@
-/* example selectors from autoComplete.js defaults */
-.autoComplete_wrapper {
-  position: relative;
-}
-
-#autoComplete_list {
-  position: absolute;
-  z-index: 50;
-  margin-top: 0.25rem;
+[id^="autoComplete_list_"] {
+  margin-top: 0.375rem;
   width: 100%;
   overflow: hidden;
-  border-radius: 0.75rem;
-  border: 1px solid #e2e8f0;
-  background: white;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  border-radius: 0.875rem;
+  border: 1px solid #e2e8f0; /* slate-200 */
+  background: #ffffff;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.10),
+    0 4px 6px -4px rgb(0 0 0 / 0.10);
 }
 
-#autoComplete_list .result {
-  padding: 0.5rem 0.75rem;
+[id^="autoComplete_result_"] {
+  padding: 0.6rem 0.875rem;
   cursor: pointer;
+  font-size: 0.9rem;
+  color: #1e293b;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.1s ease, padding-left 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-#autoComplete_list .result:hover {
-  background: #f8fafc;
+[id^="autoComplete_result_"]:hover {
+  background: #f0f9ff;
+  padding-left: 1.125rem;
+  color: #0369a1;
 }

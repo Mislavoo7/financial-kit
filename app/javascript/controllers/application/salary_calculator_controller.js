@@ -47,6 +47,7 @@ export default class extends Controller {
       },
 
       resultItem: {
+        highlight: true,
         element: (item, data) => {
           item.innerHTML = data.value.title;
         },
@@ -236,7 +237,7 @@ export default class extends Controller {
     const kpn = (pdvOneInPercent / (100 - pdvOneInPercent) ) + 1;
     const kpv = (pdvTwoInPercent / (100 - pdvTwoInPercent) ) + 1; 
     var checkClass = this.breakingPoint * (1 / kpn) + this.personalDeductionInEuro;
-    
+
     if (netSalary <= desiredPersonalDeductionInEuro) {
       var income = netSalary;
       var grossSalary = this.incomeToGross(income, netSalary)
