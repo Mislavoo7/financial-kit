@@ -1,4 +1,7 @@
 hr:
+  shared:
+    edit: "Izmijeni"
+    delete: "Obriši"
   calculators:
     credit:
       title: "Izračun kredita"

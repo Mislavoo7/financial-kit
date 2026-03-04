@@ -9,22 +9,25 @@ export default class extends Controller {
   };
 
   connect() {
-    this.cityTaxRateById = new Map(this.cityTaxRatesValue.map((r) => [Number(r.id), r]));
-    this.cityTaxRateByTitle = new Map(
-      this.cityTaxRatesValue.map((r) => [String(r.title).toLowerCase(), r])
-    );
+ this.cityTaxRateById = new Map(this.cityTaxRatesValue.map((r) => [Number(r.id), r]));
+  this.cityTaxRateByTitle = new Map(
+    this.cityTaxRatesValue.map((r) => [String(r.title).toLowerCase(), r])
+  );
 
-    this.initCityAutocomplete();
-    this.salaryCalculate();
+  // settings FIRST (before any calculation)
+  this.minSalary = 600.0;
+  this.breakingPoint = 5000;
+  this.healthInsuranceInPercent = 0.165;
 
-    this.minSalary = 600.0;
-    this.breakingPoint = 5000;
-    this.healthInsuranceInPercent = 0.165;
-    // pillars rates
-    this.firstPillar = 0.15;
-    this.secondPillar = 0.05;
-    this.totalPillar = this.firstPillar + this.secondPillar; // don't round a rate
-  }
+  this.firstPillar = 0.15;
+  this.secondPillar = 0.05;
+  this.totalPillar = this.firstPillar + this.secondPillar;
+
+  this.initCityAutocomplete();
+
+  // calculate LAST
+  this.salaryCalculate();
+}
 
   initCityAutocomplete() {
     if (!this.hasCitySearchTarget) return;
@@ -191,7 +194,7 @@ export default class extends Controller {
     this.element.querySelector(`[data-total-pillar]`).innerHTML = humanizeEuro(this.totalPillarInEuro);
     this.element.querySelector(`[data-total-pillar-hidden]`).value = euroToCent(this.totalPillarInEuro);
 
-    this.element.querySelector(`[data-personal-deduction-hidden]`).value = euroToCent(this.personalDeductionInEuro);
+    this.element.querySelector(`[data-personal-deduction-hidden]`).value = this.personalDeductionCoeff;
     this.element.querySelector(`[data-personal-deduction]`).innerHTML = humanizeEuro(this.personalDeductionInEuro);
 
     this.element.querySelector(`[data-taxation-base-hidden]`).value = euroToCent(taxationBase);
@@ -254,7 +257,7 @@ export default class extends Controller {
 
   salaryCalculate() {
     // settings
-    const amountInEuro = parseFloat(this.element.querySelector(`[data-amount-in-cent-input]`)?.value || "0") || 0;
+    const amountInEuro = parseEuro(this.element.querySelector(`[data-amount-in-cent-input]`)?.value || "0");
     const cityTaxRateId = parseInt(this.cityTaxRateIdTarget?.value || "0", 10) || null;
     const cityTaxRate = cityTaxRateId ? this.cityTaxRateById.get(cityTaxRateId) : null;
     // tax rates (as decimals, e.g. 0.18)

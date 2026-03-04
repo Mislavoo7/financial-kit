@@ -1,5 +1,6 @@
 class User::CalculationsController < User::BaseController
   def index
-    @credits = Credit.all
+    @credits = current_user.credits
+    @salary_calculators = current_user.salary_calculators
   end
 end

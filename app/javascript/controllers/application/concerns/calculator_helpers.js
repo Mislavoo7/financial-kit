@@ -67,7 +67,7 @@ export function percentHumanize(value) {
 }
 
 export function euroToCent(value) {
-  return value/100
+  return value*100
 }
 
 

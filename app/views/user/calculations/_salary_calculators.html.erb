@@ -1,0 +1,43 @@
+<% @salary_calculators.each do |salary_calculator| %>
+  <div id="<%= dom_id(salary_calculator) %>" class="credit-card">
+
+    <div class="credit-meta">
+      <div class="credit-row">
+        <span class="credit-label"><%= tf("salary_calculator.brut") %></span>
+        <span class="credit-value"><%= salary_calculator.humanize_brut_in_cent %></span>
+      </div>
+
+      <div class="credit-row">
+        <span class="credit-label"><%= tf("salary_calculator.net") %></span>
+        <span class="credit-value"><%= salary_calculator.humanize_net_in_cent %></span>
+      </div>
+
+      <div class="credit-row">
+        <span class="credit-label"><%= tf("salary_calculator.personal_deduction") %></span>
+        <span class="credit-value"><%= salary_calculator.personal_deduction %></span>
+      </div>
+
+      <div class="credit-row">
+        <span class="credit-label"><%= t("created_at") %></span>
+        <span class="credit-value"><%= salary_calculator.created_at.strftime("%d.%m.%Y") %></span>
+      </div>
+    </div>
+
+    <div class="credit-actions">
+      <%= link_to edit_user_salary_calculator_path(salary_calculator), class: "credit-action-edit" do %>
+        <%= phosphor_icon "pencil-simple", class: "credit-action-icon" %>
+        <%= t("shared.edit") %>
+      <% end %>
+
+      <%= link_to user_salary_calculator_path(salary_calculator),
+        method: :delete,
+        remote: true,
+        data: { confirm: t("are_you_sure") },
+        class: "credit-action-delete" do %>
+        <%= phosphor_icon "trash", class: "credit-action-icon" %>
+        <%= t("shared.delete") %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>

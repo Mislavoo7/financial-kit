@@ -1,25 +1,23 @@
-class SalaryCalculatorsController < BaseController
+class User::SalaryCalculatorsController < User::BaseController
   before_action :set_city_tax_rates
-  def new
-    @salary_calculator = SalaryCalculator.new
+  before_action :set_salary_calculator, only: [:edit, :update, :destroy]
+
+  def edit
   end
 
-  def create
-    @salary_calculator = SalaryCalculator.new(salary_calculator_params)
-
-    if @salary_calculator.save
-      if current_user
-        current_user.salary_calculators << @salary_calculator
-      else
-        cookies['salary_calculator_id'] = @salary_calculator.slug
-      end
-      redirect_to user_calculations_path
+  def update
+    if @salary_calculator.update(salary_calculator_params)
+      redirect_to user_calculations_path, notice: t('message.updated')
     else
-      render :new
+      render :edit
     end
   end
 
-  def show
+  def destroy
+    @salary_calculator.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
@@ -41,5 +39,9 @@ class SalaryCalculatorsController < BaseController
       :first_pillar_ratio, :second_pillar_ratio, :total_pillar_ratio,
       :pdv_one_ratio, :pdv_two_ratio, :health_insurance_ratio
     )
+  end
+
+  def set_salary_calculator
+    @salary_calculator = current_user.salary_calculators.find_by_slug(params["id"])
   end
 end

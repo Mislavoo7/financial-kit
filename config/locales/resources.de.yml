@@ -1,4 +1,7 @@
 de:
+  shared:
+    edit: "Bearbeiten"
+    delete: "Löschen"
   calculators:
     credit:
       title: "Kreditrechner"

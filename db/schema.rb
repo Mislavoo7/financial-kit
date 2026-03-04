@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_23_115723) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_03_222427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -134,6 +134,23 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_23_115723) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "brut_in_cent", default: 0, null: false
+    t.integer "first_pillar_in_cent", default: 0, null: false
+    t.integer "second_pillar_in_cent", default: 0, null: false
+    t.integer "total_pillar_in_cent", default: 0, null: false
+    t.integer "taxation_base_in_cent", default: 0, null: false
+    t.integer "pdv_one_in_cent", default: 0, null: false
+    t.integer "pdv_two_in_cent", default: 0, null: false
+    t.integer "income_tax_in_cent", default: 0, null: false
+    t.integer "health_insurance_in_cent", default: 0, null: false
+    t.integer "employer_to_pay_in_cent", default: 0, null: false
+    t.integer "net_in_cent", default: 0, null: false
+    t.decimal "first_pillar_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.decimal "second_pillar_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.decimal "total_pillar_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.decimal "pdv_one_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.decimal "pdv_two_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.decimal "health_insurance_ratio", precision: 5, scale: 4, default: "0.0", null: false
   end
 
   create_table "section_translations", force: :cascade do |t|
