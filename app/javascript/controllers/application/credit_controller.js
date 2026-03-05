@@ -223,13 +223,13 @@ export default class CreditController extends Controller {
   // helpers
   parseDate(dateString) {
     const parts = dateString.split('.');
-    if (parts.length === 3) {
+    if (parts.length === 1) {
+      return new Date(dateString);
+    } else {
       const day = parseInt(parts[0], 10);
       const month = parseInt(parts[1], 10) - 1; // JS months are 0-indexed
       const year = parseInt(parts[2], 10);
       return new Date(year, month, day);
-    } else {
-      return new Date(dateString);
     }
   }
 
