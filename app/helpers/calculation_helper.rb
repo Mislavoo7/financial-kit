@@ -1,8 +1,8 @@
 module CalculationHelper
-  include CalculationMethods
+  include MoneyRatioUtils # in libs
 
   def money_field(form, field, **opts)
-    value = form.object.send(field)
+    value = form.object.public_send(field)
 
     form.text_field field,
       {
@@ -10,13 +10,12 @@ module CalculationHelper
         inputmode: "decimal",
         autocomplete: "off",
         placeholder: 0,
-        pattern: "[0-9.,]+",
-        #        data: { money_field: true }
+        pattern: "[0-9.,]+"
       }.merge(opts)
   end
 
   def ratio_field(form, field, **opts)
-    value = form.object.send(field)
+    value = form.object.public_send(field)
 
     form.text_field field,
       {

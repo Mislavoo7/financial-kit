@@ -1,0 +1,28 @@
+<div class="px-3 py-2">
+  <label class="form-toggle">
+    <%= f.check_box :calculation_type,
+      {
+        class: "sr-only peer",
+        data: {
+          salary_calculator_target: "methodToggle",
+          calculation_method: true,
+          action: "input->salary-calculator#salaryCalculate"
+        }
+      },
+      CalculationMethods::CALCULATION_TYPES[0],
+      CalculationMethods::CALCULATION_TYPES[1]
+    %>
+
+  <span class="form-toggle-option form-toggle-option--active
+               peer-checked:bg-white peer-checked:text-secondary-800">
+    <%= tf("salary_calculator.calculation_types.net_to_brut") %>
+  </span>
+
+  <span class="form-toggle-divider"><%= t("or") %></span>
+
+  <span class="form-toggle-option
+               peer-checked:text-white peer-checked:bg-primary-500">
+    <%= tf("salary_calculator.calculation_types.brut_to_net") %>
+  </span>
+  </label>
+</div>
