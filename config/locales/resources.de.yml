@@ -13,8 +13,8 @@ de:
       title: "Honorareinkommen-Rechner"
       description: "Berechnung von Steuern und Abgaben für Honorareinkommen, Kosten und Nettoauszahlung."
     contract:
-      title: "Werkvertrags-Rechner"
-      description: "Berechnung von Steuern und Abgaben für Werkverträge, Brutto/Netto und Gesamtkosten."
+      title: "Dienstvertrags-Rechner"
+      description: "Berechnung von Steuern und Abgaben für Dienstvertrage, Brutto/Netto und Gesamtkosten."
   user:
     add: "Benutzer hinzufügen"
     blocked_confirmation: "Sind Sie sicher, dass Sie den Benutzer sperren möchten?"

@@ -8,6 +8,8 @@ de:
     credits: "Kredite"
     city_tax_rates: "Einkommensteuersätze"
     salary_calculators: "Gehaltsberechnung"
+    author_fee_calculators: "Berechnung des Autorenhonorars"
+    service_contract_calculators: "Berechnung des Dienstvertrags"
   public_nav:
     legal_pages: "Rechtliche Seiten"
   user_nav:

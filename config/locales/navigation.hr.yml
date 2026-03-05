@@ -8,6 +8,8 @@ hr:
     credits: "Krediti"
     city_tax_rates: "Stope poreza na dohodak"
     salary_calculators: "Izračun plaće"
+    author_fee_calculators: "Izračun autorskog honorara"
+    service_contract_calculators: "Izračun ugovora o djelu"
   public_nav:
     legal_pages: "Pravne stranice"
   user_nav:

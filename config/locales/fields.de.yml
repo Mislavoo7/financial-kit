@@ -39,6 +39,24 @@ de:
         email: "E-Mail"
       user:
         email: "E-mail"
+      author_fee_calculator:
+        amount_in_cent: "Betrag"
+        calculation_type: "Berechnungsart"
+        calculation_types:
+          brut_to_net: "Brutto zu Netto"
+          net_to_brut: "Netto zu Brutto"
+        city_tax_rate_id: "Wohnort"
+        fee_type: "Art des Autorenhonorars"
+        fee_types: 
+          contract: "Autorenvertrag"
+          artist_contract: "Autorenvertrag für Künstler"
+      service_contract_calculator:
+        amount_in_cent: "Betrag"
+        calculation_type: "Berechnungsart"
+        calculation_types:
+          brut_to_net: "Brutto zu Netto"
+          net_to_brut: "Netto zu Brutto"
+        city_tax_rate_id: "Wohnort"
       salary_calculator:
         brut: "Bruttogehalt"
         first_pillar: "I. Säule der Rentenversicherung"
@@ -120,6 +138,25 @@ de:
             lower_rate:
               blank: "Niedriger Steuersatz darf nicht leer sein!"
               greater_than_or_equal_to: "Der niedrigere Steuersatz muss größer oder gleich 0 sein!"
+        author_fee_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Der Betrag darf nicht leer sein!"
+              greater_than_or_equal_to: "Der Betrag muss größer oder gleich 0 sein!"
+            calculation_type:
+              blank: "Die Berechnungsart darf nicht leer sein!"
+              inclusion: "Die Berechnungsart muss einer der zulässigen Werte sein!"
+            fee_type:
+              blank: "Die Vertragsart darf nicht leer sein!"
+              inclusion: "Der Typ muss einer der zulässigen Werte sein!"
+        service_contract_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Der Betrag darf nicht leer sein!"
+              greater_than_or_equal_to: "Der Betrag muss größer oder gleich 0 sein!"
+            calculation_type:
+              blank: "Die Berechnungsart darf nicht leer sein!"
+              inclusion: "Die Berechnungsart muss einer der zulässigen Werte sein!"
         salary_calculator:
           attributes:
             amount_in_cent:
@@ -127,6 +164,7 @@ de:
               greater_than_or_equal_to: "Der Betrag muss größer oder gleich 0 sein!"
             calculation_type:
               blank: "Berechnungsart darf nicht leer sein!"
+              inclusion: "Die Berechnungsart muss eine der zulässigen Werte sein!"
             dependents_num:
               blank: "Anzahl der unterhaltsberechtigten Personen darf nicht leer sein!"
               greater_than_or_equal_to: "Die Anzahl der unterhaltsberechtigten Personen muss größer oder gleich 0 sein!"

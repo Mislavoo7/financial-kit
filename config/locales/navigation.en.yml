@@ -8,6 +8,8 @@ en:
     credits: "Loans"
     city_tax_rates: "Income tax rates"
     salary_calculators: "Salary calculation"
+    author_fee_calculators: "Author fee calculation"
+    service_contract_calculators: "Service contract calculation"
   public_nav:
     legal_pages: "Legals Pages"
   user_nav:

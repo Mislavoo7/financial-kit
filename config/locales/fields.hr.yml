@@ -39,6 +39,24 @@ hr:
         email: "E-mail"
       user:
         email: "E-mail"
+      author_fee_calculator:
+        amount_in_cent: "Iznos"
+        calculation_type: "Vrsta izračuna"
+        calculation_types:
+          brut_to_net: "Bruto u neto"
+          net_to_brut: "Neto u bruto"
+        city_tax_rate_id: "Mjesto prebivališta"
+        fee_type: "Tip autorskog honorara"
+        fee_types: 
+            contract: "Autorski ugovor"
+            artist_contract: "Autorski ugovor umjetnika"
+      service_contract_calculator:
+        amount_in_cent: "Iznos"
+        calculation_type: "Vrsta izračuna"
+        calculation_types:
+          brut_to_net: "Bruto u neto"
+          net_to_brut: "Neto u bruto"
+        city_tax_rate_id: "Mjesto prebivališta"
       salary_calculator:
         brut: "Bruto plaća"
         first_pillar: "I. stup mirovinskog osiguranja"
@@ -120,6 +138,25 @@ hr:
             lower_rate:
               blank: "Niža stopa ne može biti prazna!"
               greater_than_or_equal_to: "Niža stopa mora biti veća ili jednaka 0!"
+        author_fee_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Iznos ne može biti prazan!"
+              greater_than_or_equal_to: "Iznos mora biti veći ili jednak 0!"
+            calculation_type:
+              blank: "Vrsta izračuna ne može biti prazna!"
+              inclusion: "Vrsta izračuna mora biti jedna od dopuštenih vrijednosti!"
+            fee_type:
+              blank: "Tip ugovora ne može biti prazna!"
+              inclusion: "Tip mora biti jedan od dopuštenih vrijednosti!"
+        service_contract_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Iznos ne može biti prazan!"
+              greater_than_or_equal_to: "Iznos mora biti veći ili jednak 0!"
+            calculation_type:
+              blank: "Vrsta izračuna ne može biti prazna!"
+              inclusion: "Vrsta izračuna mora biti jedna od dopuštenih vrijednosti!"
         salary_calculator:
           attributes:
             amount_in_cent:
@@ -127,6 +164,7 @@ hr:
               greater_than_or_equal_to: "Iznos mora biti veći ili jednak 0!"
             calculation_type:
               blank: "Vrsta izračuna ne može biti prazna!"
+              inclusion: "Vrsta izračuna mora biti jedna od dopuštenih vrijednosti!"
             dependents_num:
               blank: "Broj uzdržavanih osoba ne može biti prazan!"
               greater_than_or_equal_to: "Broj uzdržavanih osoba mora biti veći ili jednak 0!"

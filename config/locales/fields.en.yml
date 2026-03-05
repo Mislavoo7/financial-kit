@@ -39,6 +39,24 @@ en:
         email: "Email"
       user:
         email: "E-mail"
+      author_fee_calculator:
+        amount_in_cent: "Amount"
+        calculation_type: "Calculation type"
+        calculation_types:
+          brut_to_net: "Gross to net"
+          net_to_brut: "Net to gross"
+        city_tax_rate_id: "Place of residence"
+        fee_type: "Author fee type"
+        fee_types: 
+          contract: "Author contract"
+          artist_contract: "Artist author contract"
+      service_contract_calculator:
+        amount_in_cent: "Amount"
+        calculation_type: "Calculation type"
+        calculation_types:
+          brut_to_net: "Gross to net"
+          net_to_brut: "Net to gross"
+        city_tax_rate_id: "Place of residence"
       salary_calculator:
         brut: "Gross salary"
         first_pillar: "Pension insurance pillar I"
@@ -120,6 +138,25 @@ en:
             lower_rate:
               blank: "Lower rate cannot be blank!"
               greater_than_or_equal_to: "Lower rate must be greater than or equal to 0!"
+        author_fee_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Amount cannot be blank!"
+              greater_than_or_equal_to: "Amount must be greater than or equal to 0!"
+            calculation_type:
+              blank: "Calculation type cannot be blank!"
+              inclusion: "Calculation type must be one of the allowed values!"
+            fee_type:
+              blank: "Contract type cannot be blank!"
+              inclusion: "Type must be one of the allowed values!"
+        service_contract_calculator:
+          attributes:
+            amount_in_cent:
+              blank: "Amount cannot be blank!"
+              greater_than_or_equal_to: "Amount must be greater than or equal to 0!"
+            calculation_type:
+              blank: "Calculation type cannot be blank!"
+              inclusion: "Calculation type must be one of the allowed values!"
         salary_calculator:
           attributes:
             amount_in_cent:
@@ -127,6 +164,7 @@ en:
               greater_than_or_equal_to: "Amount must be greater than or equal to 0!"
             calculation_type:
               blank: "Calculation type can't be blank!"
+              inclusion: "Calculation type must be one of the allowed values!"
             dependents_num:
               blank: "Number of dependents can't be blank!"
               greater_than_or_equal_to: "Number of dependents must be greater than or equal to 0!"

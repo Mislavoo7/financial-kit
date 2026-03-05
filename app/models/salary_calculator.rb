@@ -36,6 +36,7 @@ class SalaryCalculator < ApplicationRecord
   include CalculationMethods
   include MoneyNormalization
   include Slugable
+  include CityTaxMethods
 
   belongs_to :user, optional: true
 
@@ -43,10 +44,7 @@ class SalaryCalculator < ApplicationRecord
   validates :amount_in_cent, :dependents_num, :kids_num, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :personal_deduction, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
 
-  CALCULATION_TYPE = ["brut-to-net", "net-to-brut"]
-  validates :calculation_type, inclusion: { in: CALCULATION_TYPE }
-
-  DISABILITY_TYPE = ["no-disability", "partial-disability", "total-disability"]
+  DISABILITY_TYPE = ["no-disability", "partial-disability", "total-disability"].freeze
   validates :disability, inclusion: { in: DISABILITY_TYPE }
 
   def money_fields
@@ -67,13 +65,5 @@ class SalaryCalculator < ApplicationRecord
 
   def to_param
     slug
-  end
-
-  def city_tax_rate
-    begin
-      CityTaxRate.find(self.city_tax_rate_id).title
-    rescue
-      "-"
-    end
   end
 end

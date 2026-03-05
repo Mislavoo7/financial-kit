@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: service_contract_calculators
+#
+#  id               :bigint           not null, primary key
+#  amount_in_cent   :integer          default(0)
+#  calculation_type :string           default("brut-to-net")
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  city_tax_rate_id :integer
+#  user_id          :integer
+#
+one:
+  amount_in_cent: 1
+  calculation_type: MyString
+  city_tax_rate_id: 1
+  user_id: 1
+
+two:
+  amount_in_cent: 1
+  calculation_type: MyString
+  city_tax_rate_id: 1
+  user_id: 1
