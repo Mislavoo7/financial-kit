@@ -25,7 +25,7 @@
 
   <td>
     <div class="form-table-cell">
-      <% AuthorFeeCalculator::CONTRACT_TYPE.each do |value| %>
+      <% AuthorFeeCalculator::FEE_TYPES.each do |value| %>
         <% key = value.tr('-', '_') %>
         <% id  = "#{f.object_name}_contract_type_#{key}" %>
 

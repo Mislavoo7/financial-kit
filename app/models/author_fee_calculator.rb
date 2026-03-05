@@ -21,8 +21,8 @@ class AuthorFeeCalculator < ApplicationRecord
   validates :amount_in_cent, :calculation_type, :fee_type, :city_tax_rate_id, presence: true
   validates :amount_in_cent, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 
-  FEE_TYPE = ["contract", "artist-contract"].freeze
-  validates :fee_type, inclusion: { in: FEE_TYPE }
+  FEE_TYPES = ["contract", "artist-contract"].freeze
+  validates :fee_type, inclusion: { in: FEE_TYPES }
 
   def money_fields
     %i[amount_in_cent]

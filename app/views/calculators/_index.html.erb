@@ -4,8 +4,8 @@
     <% [
       {key: "credit", url: new_credit_path, icon: "bank"},
       {key: "salary", url: new_salary_calculator_path, icon: "calculator"},
-      {key: "author", url: "#", icon: "pen-nib"},
-      {key: "contract", url: "#", icon: "file-text"},
+      {key: "author", url: new_author_fee_calculator_path, icon: "pen-nib"},
+      {key: "contract", url: new_service_contract_calculator_path, icon: "file-text"},
     ].each do |item| %>
     <%= link_to item[:url], class: "calc-card group" do %>
       <div class="calc-card__icon" aria-hidden="true">
