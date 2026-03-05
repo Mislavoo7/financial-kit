@@ -9,12 +9,16 @@ Rails.application.routes.draw do
     resources :names, only: [:index, :show]
     resources :credits, only: [:new, :create]
     resources :salary_calculators, only: [:new, :create]
+    resources :author_fee_calculators, only: [:new, :create]
+    resources :service_contract_calculators, only: [:new, :create]
 
     namespace :user do
       root 'pages#index'
       resources :calculations, only: [:index]
       resources :credits, only: [:edit, :update, :destroy]
       resources :salary_calculators, only: [:edit, :update, :destroy]
+      resources :author_fee_calculators, only: [:edit, :update, :destroy]
+      resources :service_contract_calculators, only: [:edit, :update, :destroy]
       resource :accounts, only: [:edit, :update], path: :accounts, as: :accounts
       get 'destroy-me', to: 'accounts#destroy_me'
     end
@@ -25,6 +29,8 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :destroy]
       resources :credits, only: [:index, :destroy]
       resources :salary_calculators, only: [:index, :destroy]
+      resources :author_fee_calculators, only: [:index, :destroy]
+      resources :service_contract_calculators, only: [:index, :destroy]
       resources :city_tax_rates, except: [:show]
       resources :pages, only: [:edit, :update, :show] do
         collection do
