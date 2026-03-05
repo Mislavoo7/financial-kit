@@ -1,0 +1,58 @@
+<%= form_with model: @service_contract_calculator,
+  url: url,
+  method: method,
+  html: { class: 'form', id: 'investments-form' } do |f| %>
+
+  <div
+      data-controller="service_contract-calculator"
+      data-service_contract-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
+      >
+
+      <div class="py-4">
+        <%= render 'shared/errors', object: @service_contract_calculator %>
+
+        <div class="form-table-wrapper">
+          <div class="form-table-container">
+            <table class="form-table form-table--vertical">
+              <thead>
+                <tr>
+                  <th><%= tf("service_contract_calculator.parametar") %></th>
+                  <th><%= tf("service_contract_calculator.value") %></th>
+                </tr>
+              </thead>
+
+              <tbody id="investment-fields-wrapper">
+                <%= render 'service_contract_calculators/service_contract_calculator_fields', f: f %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <%= button_tag type: 'submit', class: "button is-primary" do %>
+            <%= phosphor_icon "floppy-disk" %>
+            <%= t("save") %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="py-4">
+        <div class="overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative form-table-border-overlay">
+          <table class="form-table form-table--credit-totals">
+            <thead>
+              <tr>
+                <th><%= tf("service_contract_calculator.parametar") %></th>
+                <th><%= tf("service_contract_calculator.value") %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+  </div>
+<% end %>
+

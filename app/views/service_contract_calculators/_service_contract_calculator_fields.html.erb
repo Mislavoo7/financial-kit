@@ -1,0 +1,84 @@
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("service_contract_calculator.amount_in_cent") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <%= money_field f, :amount_in_cent, class: 'form-table-input', min: 0,
+        data: {
+          "amount_in_cent" => true,
+          "amount_in_cent_input" => true, action: "input->service_contract-calculator#service_contractCalculate"
+        } %>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("service_contract_calculator.city_tax_rate_id") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="form-table-cell">
+      <div class="relative">
+        <input
+            type="text"
+            class="form-table-input"
+            placeholder="<%= t('search') %>..."
+            autocomplete="off"
+            data-service_contract-calculator-target="citySearch"
+            />
+
+            <%= f.hidden_field :city_tax_rate_id,
+              data: { service_contract_calculator_target: "cityTaxRateId" } %>
+      </div>
+    </div>
+  </td>
+</tr>
+
+
+<tr>
+  <td>
+    <div class="form-table-label">
+      <%= tf("service_contract_calculator.calculation_type") %>
+    </div>
+  </td>
+
+  <td>
+    <div class="px-3 py-2">
+      <label class="form-toggle">
+        <%= f.check_box :calculation_type,
+          {
+            class: "sr-only peer",
+            data: {
+              service_contract_calculator_target: "methodToggle",
+              calculation_method: true,
+              action: "input->service_contract-calculator#service_contractCalculate"
+            }
+          },
+          ServiceContractCalculator::CALCULATION_TYPE[0],
+          ServiceContractCalculator::CALCULATION_TYPE[1]
+        %>
+
+      <span class="form-toggle-option form-toggle-option--active
+                   peer-checked:bg-white peer-checked:text-secondary-800">
+        <%= tf("service_contract_calculator.calculation_types.net_to_brut") %>
+      </span>
+
+      <span class="form-toggle-divider"><%= t("or") %></span>
+
+      <span class="form-toggle-option
+                   peer-checked:text-white peer-checked:bg-primary-500">
+        <%= tf("service_contract_calculator.calculation_types.brut_to_net") %>
+      </span>
+      </label>
+    </div>
+  </td>
+</tr>
+
+
