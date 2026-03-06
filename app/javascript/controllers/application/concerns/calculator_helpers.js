@@ -70,4 +70,8 @@ export function euroToCent(value) {
   return value*100
 }
 
+export function percentToRatio(value) {
+  return value/100
+}
+
 

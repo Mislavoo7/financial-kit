@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import autoComplete from "@tarekraafat/autocomplete.js";
+import { initCityAutocomplete } from "./concerns/city_autocomplete";
 import { humanizeEuro, financialRoundUp, parseEuro, percentHumanize, euroToCent } from "./concerns/calculator_helpers";
 
 export default class extends Controller {
@@ -9,64 +9,27 @@ export default class extends Controller {
   };
 
   connect() {
- this.cityTaxRateById = new Map(this.cityTaxRatesValue.map((r) => [Number(r.id), r]));
-  this.cityTaxRateByTitle = new Map(
-    this.cityTaxRatesValue.map((r) => [String(r.title).toLowerCase(), r])
-  );
+    this.cityTaxRateById = new Map(this.cityTaxRatesValue.map((r) => [Number(r.id), r]));
+    this.cityTaxRateByTitle = new Map(
+      this.cityTaxRatesValue.map((r) => [String(r.title).toLowerCase(), r])
+    );
 
-  // settings FIRST (before any calculation)
-  this.minSalary = 600.0;
-  this.breakingPoint = 5000;
-  this.healthInsuranceInPercent = 0.165;
+    // settings FIRST (before any calculation)
+    this.minSalary = 600.0;
+    this.breakingPoint = 5000;
+    this.healthInsuranceInPercent = 0.165;
 
-  this.firstPillar = 0.15;
-  this.secondPillar = 0.05;
-  this.totalPillar = this.firstPillar + this.secondPillar;
+    this.firstPillar = 0.15;
+    this.secondPillar = 0.05;
+    this.totalPillar = this.firstPillar + this.secondPillar;
 
-  this.initCityAutocomplete();
-
-  // calculate LAST
-  this.salaryCalculate();
-}
-
-  initCityAutocomplete() {
-    if (!this.hasCitySearchTarget) return;
-
-    new autoComplete({
-      selector: () => this.citySearchTarget,
-      threshold: 1,
-
-      data: {
-        src: this.cityTaxRatesValue,
-      },
-
-      searchEngine: (query, record) => {
-        return record.title?.toLowerCase().includes(query.toLowerCase());
-      },
-
-      resultsList: {
-        maxResults: 20,
-        noResults: true,
-      },
-
-      resultItem: {
-        highlight: true,
-        element: (item, data) => {
-          item.innerHTML = data.value.title;
-        },
-      },
-
-      events: {
-        input: {
-          selection: (event) => {
-            const selected = event.detail.selection.value; // object
-            this.citySearchTarget.value = selected.title;
-            this.cityTaxRateIdTarget.value = selected.id;
-            this.salaryCalculate(); // run the salary calc
-          },
-        },
-      },
+    initCityAutocomplete({
+      input: this.citySearchTarget,
+      hiddenInput: this.cityTaxRateIdTarget,
+      data: this.cityTaxRatesValue,
+      onSelect: () => this.salaryCalculate()
     });
+    this.salaryCalculate();
   }
 
   getPersonalDeduction(kidsNum, dependentsNum, disability) {
@@ -120,15 +83,7 @@ export default class extends Controller {
     } else if (income > 1040) {
       return income / 0.8;
     }
-
-    //} else if (income > 1040 && <= !limits) {
-    //  return netSalary / 0.8;
-    // } else if (income > 1040 && <= limits) {
-    //   return netSalary / 0.8;
-    // }
   };
-
-
 
   brutToNet(amountInEuro) {
     let firstPillarInEuro = 0;
