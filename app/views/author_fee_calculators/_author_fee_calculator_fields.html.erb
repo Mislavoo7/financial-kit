@@ -10,7 +10,7 @@
       <%= money_field f, :amount_in_cent, class: 'form-table-input', min: 0,
         data: {
           "amount_in_cent" => true,
-          "amount_in_cent_input" => true, action: "input->author_fee-calculator#author_feeCalculate"
+          "amount_in_cent_input" => true, action: "input->author-fee-calculator#authorFeeCalculate"
         } %>
     </div>
   </td>
@@ -35,7 +35,7 @@
                  id: id,
                  data: {
                    contract_type_input: true, 
-                   action: "input->author_fee-calculator#author_feeCalculate"
+                   action: "input->author-fee-calculator#authorFeeCalculate"
                  },
                  class: "h-5 w-5 text-primary-600 focus:ring-2 focus:ring-primary-500" %>
 
@@ -63,7 +63,7 @@
             class="form-table-input"
             placeholder="<%= t('search') %>..."
             autocomplete="off"
-            data-author_fee-calculator-target="citySearch"
+            data-author-fee-calculator-target="citySearch"
             />
 
             <%= f.hidden_field :city_tax_rate_id,
