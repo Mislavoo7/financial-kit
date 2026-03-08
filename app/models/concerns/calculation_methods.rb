@@ -1,10 +1,12 @@
 module CalculationMethods
   extend ActiveSupport::Concern
-  
+
   CALCULATION_TYPES = ["brut-to-net", "net-to-brut"].freeze
   included do
-    validates :calculation_type, presence: true,
-                                 inclusion: { in: CALCULATION_TYPES }
+    validates :calculation_type,
+      presence: true,
+      inclusion: { in: CALCULATION_TYPES },
+      if: -> { has_attribute?(:calculation_type) }
   end
 
   def humanize_euro(euro)

@@ -4,10 +4,19 @@
       <div class="calc-panel-inner">
         <div class="calc-section">
           <div class="calc-grid">
-            <%= render "user/calculations/credits" %>
-            <%= render "user/calculations/salary_calculators" %>
-            <%= render "user/calculations/author_fee_calculators" %>
-            <%= render "user/calculations/service_contract_calculators" %>
+            <% some_present = @author_fee_calculators.present? ||
+              @credits.present? ||
+              @salary_calculators.present? ||
+              @service_contract_calculators.present? %>
+
+            <% if some_present %>
+              <%= render "user/calculations/credits" %>
+              <%= render "user/calculations/salary_calculators" %>
+              <%= render "user/calculations/author_fee_calculators" %>
+              <%= render "user/calculations/service_contract_calculators" %>
+            <% else %>
+              <%= t("no_calculations_yet") %>
+            <% end %>
           </div>
         </div>
       </div>

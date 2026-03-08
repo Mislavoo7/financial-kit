@@ -24,4 +24,6 @@ class User < ApplicationRecord
 
   has_many :credits, dependent: :destroy
   has_many :salary_calculators, dependent: :destroy
+  has_many :author_fee_calculators, dependent: :destroy
+  has_many :service_contract_calculators, dependent: :destroy
 end

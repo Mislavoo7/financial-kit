@@ -16,18 +16,19 @@ class User::BaseController < ApplicationController
   end
 
   def empty_cookies
-    unless cookies["credit_id"].blank?
-      credit = Credit.find_by_slug(cookies["credit_id"])
-      current_user.credits << credit 
-    end
+    {
+      "credit_id" => [Credit, :credits],
+      "salary_calculator_id" => [SalaryCalculator, :salary_calculators],
+      "author_fee_calculator_id" => [AuthorFeeCalculator, :author_fee_calculators],
+      "service_contract_calculator_id" => [ServiceContractCalculator, :service_contract_calculators]
+    }.each do |cookie_key, (model, association)|
 
-    unless cookies["salary_calculator_id"].blank?
-      salary_calculator = SalaryCalculator.find_by_slug(cookies["salary_calculator_id"])
-      current_user.salary_calculators << salary_calculator 
-    end
+      next if cookies[cookie_key].blank?
 
-    # current_user doesn't have to see the login/sign up CTA under the login form
-    cookies.delete "credit_id"
-    cookies.delete "salary_calculator_id"
+      record = model.find_by_slug(cookies[cookie_key])
+      current_user.public_send(association) << record if record.present?
+
+      cookies.delete(cookie_key)
+    end
   end
 end

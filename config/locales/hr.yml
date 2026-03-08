@@ -1,4 +1,5 @@
 hr:
+  no_calculations_yet: "Još nema niti jednog izračuna!"
   search: "Pretraži"
   sign_in_to_see: "Prijavite se kako bi vidjeli spremljeni izračun!"
   language: "Jezici"

@@ -51,7 +51,7 @@
               <% ratio_items = %w[lump_sum lump_sum_additional first_pillar second_pillar income_tax health_insurance] %>
               <% money_items = %w[brut lump_sum lump_sum_additional contribution_base first_pillar second_pillar total_pillar taxation_base income_tax_in_euro net health_insurance employer_to_pay] %>
 
-              <% ["brut", "lump_sum", "lump_sum_additional", "contribution_base", "first_pillar", "second_pillar", "total_pillar", "income_tax", "taxation_base", "income", "net", "health_insurance", "employer_to_pay"].each do |item| %>
+              <% ["brut", "lump_sum", "lump_sum_additional", "contribution_base", "first_pillar", "second_pillar", "total_pillar", "income_tax", "taxation_base", "net", "health_insurance", "employer_to_pay"].each do |item| %>
                 <tr>
                   <td><%= tf("author_fee_calculator.#{item}") %></td>
                   <td>

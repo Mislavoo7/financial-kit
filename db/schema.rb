@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_05_040713) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_08_220215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -72,6 +72,26 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_05_040713) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "brut_in_cent", default: 0, null: false
+    t.decimal "lump_sum_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "lump_sum_in_cent", default: 0, null: false
+    t.decimal "lump_sum_additional_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "lump_sum_additional_in_cent", default: 0, null: false
+    t.integer "contribution_base_in_cent", default: 0, null: false
+    t.decimal "first_pillar_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "first_pillar_in_cent", default: 0, null: false
+    t.decimal "second_pillar_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "second_pillar_in_cent", default: 0, null: false
+    t.integer "total_pillar_in_cent", default: 0, null: false
+    t.decimal "income_tax_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "income_tax_in_cent", default: 0, null: false
+    t.integer "taxation_base_in_cent", default: 0, null: false
+    t.integer "income_in_cent", default: 0, null: false
+    t.integer "net_in_cent", default: 0, null: false
+    t.decimal "health_insurance_ratio", precision: 5, scale: 4, default: "0.0", null: false
+    t.integer "health_insurance_in_cent", default: 0, null: false
+    t.integer "employer_to_pay_in_cent", default: 0, null: false
+    t.string "slug"
   end
 
   create_table "city_tax_rates", force: :cascade do |t|

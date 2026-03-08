@@ -12,10 +12,10 @@
     <%= link_to t("devise.register"), new_user_registration_path,
       class: "desktop-nav-link" %>
   <% else %>
-    <%= link_to t("dashboard"), user_root_path,
+    <%= link_to t("user_nav.calculations"), user_calculations_path,
       class: "desktop-nav-link" %>
 
-    <%= link_to t("user_nav.calculations"), user_calculations_path,
+    <%= link_to t("user_nav.calculators"), user_root_path,
       class: "desktop-nav-link" %>
 
     <%= link_to t("devise.edit"), edit_user_accounts_path(id: current_user),
