@@ -50,7 +50,10 @@
   </td>
 
   <td>
-    <%= render "shared/calculation_method_field", f: f %>
+    <%= render "shared/calculation_method_field", f: f,
+      action: "input->service-contract-calculator#serviceContractCalculate",
+      targetName: "service_contract_calculator"
+  %>
   </td>
 </tr>
 

@@ -19,7 +19,7 @@
 <tr>
   <td>
     <div class="form-table-label">
-      <%= tf("author_fee_calculator.contract_type") %>
+      <%= tf("author_fee_calculator.fee_type") %>
     </div>
   </td>
 
@@ -27,20 +27,20 @@
     <div class="form-table-cell">
       <% AuthorFeeCalculator::FEE_TYPES.each do |value| %>
         <% key = value.tr('-', '_') %>
-        <% id  = "#{f.object_name}_contract_type_#{key}" %>
+        <% id  = "#{f.object_name}_fee_type_#{key}" %>
 
         <label for="<%= id %>"
                class="mb-3 flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-300 hover:bg-slate-50">
-               <%= f.radio_button :contract_type, value,
+               <%= f.radio_button :fee_type, value,
                  id: id,
                  data: {
-                   contract_type_input: true, 
+                   fee_type_input: true, 
                    action: "input->author-fee-calculator#authorFeeCalculate"
                  },
                  class: "h-5 w-5 text-primary-600 focus:ring-2 focus:ring-primary-500" %>
 
                <span class="text-sm font-medium text-slate-900">
-                 <%= tf("author_fee_calculator.contract_types.#{key}") %>
+                 <%= tf("author_fee_calculator.fee_types.#{key}") %>
                </span>
         </label>
       <% end %>
@@ -82,7 +82,9 @@
   </td>
 
   <td>
-    <%= render "shared/calculation_method_field", f: f %>
+    <%= render "shared/calculation_method_field", f: f, 
+      action: "input->author-fee-calculator#authorFeeCalculate", 
+      targetName: "author_fee_calculator" %>
   </td>
 </tr>
 

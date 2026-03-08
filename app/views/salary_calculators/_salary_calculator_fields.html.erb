@@ -114,7 +114,10 @@
   </td>
 
   <td>
-    <%= render "shared/calculation_method_field", f: f %>
+    <%= render "shared/calculation_method_field", f: f, 
+      action: "input->salary-calculator#salaryCalculate"
+      targetName: "salary_calculator"
+    %>
   </td>
 </tr>
 

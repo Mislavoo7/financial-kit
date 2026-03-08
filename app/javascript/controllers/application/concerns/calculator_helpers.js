@@ -74,4 +74,8 @@ export function percentToRatio(value) {
   return value/100
 }
 
+export function ratioToPercent(value) {
+  return value*100
+}
+
 

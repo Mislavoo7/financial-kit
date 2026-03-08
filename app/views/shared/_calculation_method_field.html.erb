@@ -4,9 +4,9 @@
       {
         class: "sr-only peer",
         data: {
-          salary_calculator_target: "methodToggle",
+          "#{targetName}_target" => "methodToggle",
           calculation_method: true,
-          action: "input->salary-calculator#salaryCalculate"
+          action: action
         }
       },
       CalculationMethods::CALCULATION_TYPES[0],

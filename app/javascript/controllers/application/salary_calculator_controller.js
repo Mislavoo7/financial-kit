@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { initCityAutocomplete } from "./concerns/city_autocomplete";
+import { initCityAutocomplete } from "./concerns/autocomplete";
 import { humanizeEuro, financialRoundUp, parseEuro, percentHumanize, euroToCent } from "./concerns/calculator_helpers";
 
 export default class extends Controller {

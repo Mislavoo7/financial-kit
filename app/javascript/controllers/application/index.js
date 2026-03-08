@@ -4,7 +4,7 @@ import SortWithUpdateController from "./sort_with_update_controller"
 import NoticesController from "./notices_controller";
 import CreditController from "./credit_controller";
 import SalaryCalculatorController from "./salary_calculator_controller";
-import AuthorFeeCalculatorController from "./author_fee_controller";
+import AuthorFeeCalculatorController from "./author_fee_calculator_controller";
 import ServiceContractCalculatorController from "./service_contract_controller";
 
 //import NoticesController from "./notices_controller";

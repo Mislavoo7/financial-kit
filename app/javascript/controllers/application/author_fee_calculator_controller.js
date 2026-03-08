@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
-import { initCityAutocomplete } from "./concerns/city_autocomplete";
-import { humanizeEuro, financialRoundUp, parseEuro, percentHumanize, euroToCent, percentToRatio } from "./concerns/calculator_helpers";
+import { initCityAutocomplete } from "./concerns/autocomplete";
+import { ratioToPercent, humanizeEuro, financialRoundUp, parseEuro, percentHumanize, euroToCent, percentToRatio } from "./concerns/calculator_helpers";
 
 export default class extends Controller {
   static targets = ["methodToggle", "citySearch", "cityTaxRateId"];
@@ -44,11 +44,11 @@ export default class extends Controller {
     if (feeType == "artist-contract" ) {
       expenseAdditional = amountInEuro * this.lumpSumAdditionalRatio
       totalExpenseInEuro = expense + expenseAdditional;
-    } (feeType == "contract" ) {
+    } else if (feeType == "contract") {
       totalExpenseInEuro = expense;
     }
 
-    const contributionBase = amountInEuro - totalExpense;
+    const contributionBase = amountInEuro - totalExpenseInEuro;
     const firstPillarInEuro = contributionBase * this.firstPillarRatio;
     const secondPillarInEuro = contributionBase * this.secondPillarRatio;
     const totalPillarInEuro = firstPillarInEuro + secondPillarInEuro;
@@ -62,16 +62,16 @@ export default class extends Controller {
     this.element.querySelector(`[data-brut]`).innerHTML = humanizeEuro(amountInEuro);
     this.element.querySelector(`[data-brut-hidden]`).value = euroToCent(amountInEuro);
 
-
-    this.element.querySelector(`[data-lump-sum-ratio]`).innerHTML = percentHumanize(this.firstPillarRatio);
-    this.element.querySelector(`[data-lump-sum-ratio-hidden]`).value = this.lumpSumAdditionalRatio;
+    this.element.querySelector(`[data-lump-sum-ratio]`).innerHTML = percentHumanize(this.lumpSumRatio);
+    this.element.querySelector(`[data-lump-sum-ratio-hidden]`).value = this.lumpSumRatio;
     this.element.querySelector(`[data-lump-sum]`).innerHTML = humanizeEuro(expense);
     this.element.querySelector(`[data-lump-sum-hidden]`).value = euroToCent(expense);
 
-    this.element.querySelector(`[data-lump-sum-aditional-ratio]`).innerHTML = percentHumanize(this.firstPillarRatio);
-    this.element.querySelector(`[data-lump-sum-aditional-ratio-hidden]`).value = this.lumpSumAdditionalRatio;
-    this.element.querySelector(`[data-lump-sum-aditional]`).innerHTML = humanizeEuro(expenseAdditional);
-    this.element.querySelector(`[data-lump-sum-aditional-hidden]`).value = euroToCent(expenseAdditional);
+    this.element.querySelector(`[data-lump-sum-additional-ratio]`).innerHTML = percentHumanize(this.lumpSumAdditionalRatio);
+    this.element.querySelector(`[data-lump-sum-additional-ratio-hidden]`).value = this.lumpSumAdditionalRatio;
+
+    this.element.querySelector(`[data-lump-sum-additional]`).innerHTML = humanizeEuro(expenseAdditional);
+    this.element.querySelector(`[data-lump-sum-additional-hidden]`).value = euroToCent(expenseAdditional);
     this.element.querySelector(`[data-contribution-base]`).innerHTML = humanizeEuro(contributionBase);
     this.element.querySelector(`[data-contribution-base-hidden]`).value = euroToCent(contributionBase);
     this.element.querySelector(`[data-first-pillar-ratio]`).innerHTML = percentHumanize(this.firstPillarRatio);
@@ -107,13 +107,14 @@ export default class extends Controller {
 
   netToBrut(amountInEuro, feeType) {
     let kpr = NaN;
+    let pdvOneInPercent = ratioToPercent(this.pdvOne);
     if (feeType == "artist-contract" ) {
-      kpr = (( 4.5 + 0.405 * this.pdvOne) / (100 - 4.5 - 0.405 * this.pdvOne)) + 1
+      kpr = (( 4.5 + 0.405 * pdvOneInPercent) / (100 - 4.5 - 0.405 * pdvOneInPercent)) + 1
     } else {
-      kpr = (( 7 + 0.63 * this.pdvOne) / (100 - 7 - 0.63 * this.pdvOne)) + 1
+      kpr = (( 7 + 0.63 * pdvOneInPercent) / (100 - 7 - 0.63 * pdvOneInPercent)) + 1
     }
     const brutSalary = amountInEuro * kpr 
-    brutToNet(brutSalary, feeType)
+    this.brutToNet(brutSalary, feeType)
   }
 
   authorFeeCalculate() {
@@ -130,7 +131,7 @@ export default class extends Controller {
     if (calculatorMethod == "brut-to-net") {
       this.brutToNet(amountInEuro, feeType)
     } else if (calculatorMethod == "net-to-brut") {
-      this.netToBrut(amountInEuro)
+      this.netToBrut(amountInEuro, feeType)
     }
   }
 }
