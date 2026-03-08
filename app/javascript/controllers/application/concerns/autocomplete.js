@@ -8,6 +8,16 @@ export function initCityAutocomplete({
 }) {
   if (!input) return;
 
+  if (hiddenInput?.value) {
+    const selectedCity = data.find(
+      (item) => String(item.id) === String(hiddenInput.value)
+    );
+
+    if (selectedCity) {
+      input.value = selectedCity.title;
+    }
+  }
+
   new autoComplete({
     selector: () => input,
     threshold: 1,
