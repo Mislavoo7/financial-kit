@@ -4,8 +4,8 @@
   html: { class: 'form', id: 'investments-form' } do |f| %>
 
   <div
-      data-controller="service_contract-calculator"
-      data-service_contract-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
+      data-controller="service-contract-calculator"
+      data-service-contract-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
       >
 
       <div class="py-4">
@@ -47,6 +47,42 @@
             </thead>
 
             <tbody>
+              <% ratio_items = %w[first_pillar second_pillar income_tax health_insurance] %>
+              <% money_items = %w[brut first_pillar second_pillar total_pillar taxation_base income_tax_in_euro net health_insurance employer_to_pay] %>
+              <% ["brut", "first_pillar", "second_pillar", "total_pillar", "income_tax", "taxation_base", "net", "health_insurance", "employer_to_pay"].each do |item| %>
+                <tr>
+                  <td><%= tf("author_fee_calculator.#{item}") %></td>
+                  <td>
+                    <% formated_item = item.tr("_", "-") %>
+
+                    <% if ratio_items.include?(item) %>
+                      <span data-<%= formated_item %>-ratio>0</span> |
+                      <span data-<%= formated_item %>>0</span>
+
+                      <%= f.hidden_field "#{item}_ratio".to_sym, data: {
+                        "#{formated_item}-ratio-hidden" => true
+                      } %>
+
+                    <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
+                      "#{formated_item}-hidden" => true
+                    } %>
+
+                <% elsif money_items.include?(item) %>
+                  <span data-<%= formated_item %>>0</span>
+
+                  <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
+                    "#{formated_item}-hidden" => true
+                  } %>
+
+              <% elsif item == "personal_deduction" %>
+                <span data-<%= formated_item %>>0</span>
+                <%= f.hidden_field :personal_deduction, data: { "#{formated_item}-hidden" => true } %>
+              <% end %>
+                  </td>
+                </tr>
+              <% end %>
+
+
             </tbody>
 
           </table>

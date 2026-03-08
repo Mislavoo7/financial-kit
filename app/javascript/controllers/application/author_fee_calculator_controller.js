@@ -55,7 +55,7 @@ export default class extends Controller {
     const taxationBase = contributionBase - totalPillarInEuro;
 
     const incomeTaxInEuro = financialRoundUp(taxationBase * this.pdvOne); 
-    const healthInsuranceInEuro = contributionBase * this.healthInsuranceRatio;
+    const healthInsuranceInEuro = financialRoundUp(contributionBase * this.healthInsuranceRatio);
     const employerToPay = financialRoundUp(amountInEuro + healthInsuranceInEuro);
     const netSalary = financialRoundUp(taxationBase - incomeTaxInEuro + totalExpenseInEuro);
 
