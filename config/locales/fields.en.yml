@@ -66,6 +66,8 @@ en:
         parametar: "Parametar"
         value: "Value"
       service_contract_calculator:
+        parametar: "Parametar"
+        value: "Value"
         amount_in_cent: "Amount"
         calculation_type: "Calculation type"
         calculation_types:

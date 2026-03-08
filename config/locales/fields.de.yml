@@ -66,6 +66,8 @@ de:
         parametar: "Parameter"
         value: "Beträge"
       service_contract_calculator:
+        parametar: "Parameter"
+        value: "Beträge"
         amount_in_cent: "Betrag"
         calculation_type: "Berechnungsart"
         calculation_types:

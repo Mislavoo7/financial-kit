@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_08_220215) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_08_232753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -227,6 +227,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_08_220215) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "brut_in_cent"
+    t.decimal "first_pillar_ratio", precision: 5, scale: 4
+    t.integer "first_pillar_in_cent"
+    t.decimal "second_pillar_ratio", precision: 5, scale: 4
+    t.integer "second_pillar_in_cent"
+    t.integer "total_pillar_in_cent"
+    t.decimal "income_tax_ratio", precision: 5, scale: 4
+    t.integer "income_tax_in_cent"
+    t.integer "taxation_base_in_cent"
+    t.integer "net_in_cent"
+    t.decimal "health_insurance_ratio", precision: 5, scale: 4
+    t.integer "health_insurance_in_cent"
+    t.integer "employer_to_pay_in_cent"
+    t.string "slug"
   end
 
   create_table "users", force: :cascade do |t|
