@@ -13,7 +13,7 @@ class SalaryCalculatorsController < BaseController
       if current_user
         current_user.salary_calculators << @salary_calculator
       else
-        cookies['salary_calculator_id'] = @salary_calculator.slug
+        cookies["salary_calculator_id"] = @salary_calculator.slug
       end
       redirect_to user_calculations_path
     else

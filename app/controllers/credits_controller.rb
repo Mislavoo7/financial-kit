@@ -10,7 +10,7 @@ class CreditsController < BaseController
       if current_user
         current_user.credits << @credit
       else
-        cookies['credit_id'] = @credit.slug
+        cookies["credit_id"] = @credit.slug
       end
       redirect_to user_calculations_path
     else

@@ -5,7 +5,7 @@ def seed_legal_pages
       0 => {
         title: "Uvjeti korištenja",
         locale: "hr",
-        content:""" 
+        content: """
           <h2>1. Prihvaćanje uvjeta</h2>
           <p>Korištenjem web aplikacije Financial Kit (\"Aplikacija\", \"usluga\") prihvaćate ove Uvjete korištenja. Ako se ne slažete, molimo nemojte koristiti Aplikaciju. Zadržavamo pravo izmjene ovih Uvjeta. Datum zadnje izmjene može biti prikazan na ovoj stranici.</p>
 
@@ -35,12 +35,12 @@ def seed_legal_pages
 
           <h2>10. Kontakt</h2>
           <p>Za pitanja vezana uz ove Uvjete kontaktirajte nas na: <strong>kvesic.mislav@gmail.com</strong></p>
-       """ 
+       """
       },
       1 => {
         title: "Terms of Use",
         locale: "en",
-        content: """ 
+        content: """
           <h2>1. Acceptance of Terms</h2>
           <p>By accessing or using Financial Kit (the \"App\", the \"Service\"), you agree to these Terms of Use. If you do not agree, please do not use the App. We may update these Terms from time to time. The last updated date may be displayed on this page.</p>
 
@@ -70,12 +70,12 @@ def seed_legal_pages
 
           <h2>10. Contact</h2>
           <p>For questions regarding these Terms, contact: <strong>kvesic.mislav@gmail.com</strong></p>
-       """ 
+       """
       },
       2 => {
         title: "Nutzungsbedingungen",
         locale: "de",
-        content: """ 
+        content: """
           <h2>1. Annahme der Bedingungen</h2>
           <p>Durch die Nutzung von Financial Kit (die „App“, der „Dienst“) stimmen Sie diesen Nutzungsbedingungen zu. Wenn Sie nicht zustimmen, nutzen Sie die App bitte nicht. Wir können diese Bedingungen gelegentlich aktualisieren. Das Datum der letzten Aktualisierung kann auf dieser Seite angezeigt werden.</p>
 
@@ -105,7 +105,7 @@ def seed_legal_pages
 
           <h2>10. Kontakt</h2>
           <p>Fragen zu diesen Bedingungen: <strong>kvesic.mislav@gmail.com</strong></p>
-       """ 
+       """
       }
     },
     seos_attributes: {
@@ -141,7 +141,7 @@ def seed_legal_pages
       0 => {
         title: "Pravila o privatnosti",
         locale: "hr",
-        content: """ 
+        content: """
           <p>Vaša privatnost nam je važna. Ova Politika privatnosti objašnjava kako obrađujemo osobne podatke u skladu s GDPR-om (EU) 2016/679.</p>
 
           <h2>1. Voditelj obrade</h2>
@@ -187,12 +187,12 @@ def seed_legal_pages
 
           <h2>10. Kontakt i pritužbe</h2>
           <p>Kontakt: <strong>kvesic.mislav@gmail.com</strong>. Imate pravo podnijeti pritužbu nadzornom tijelu (AZOP).</p>
-       """ 
+       """
       },
       1 => {
         title: "Privacy Policy",
         locale: "en",
-        content: """ 
+        content: """
           <p>Your privacy matters. This Privacy Policy explains how we process personal data in accordance with the GDPR (EU) 2016/679.</p>
 
           <h2>1. Data Controller</h2>
@@ -238,12 +238,12 @@ def seed_legal_pages
 
           <h2>10. Contact & Complaints</h2>
           <p>Contact: <strong>kvesic.mislav@gmail.com</strong>. You may lodge a complaint with a supervisory authority.</p>
-       """ 
+       """
       },
       2 => {
         title: "Datenschutzrichtlinie",
         locale: "de",
-        content: """ 
+        content: """
           <p>Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erläutert die Verarbeitung personenbezogener Daten gemäß DSGVO (EU) 2016/679.</p>
 
           <h2>1. Verantwortlicher</h2>
@@ -289,7 +289,7 @@ def seed_legal_pages
 
           <h2>10. Kontakt & Beschwerden</h2>
           <p>Kontakt: <strong>kvesic.mislav@gmail.com</strong>. Sie können sich zudem bei einer Aufsichtsbehörde beschweren.</p>
-       """ 
+       """
       }
     },
     seos_attributes: {

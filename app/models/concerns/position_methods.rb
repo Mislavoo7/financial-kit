@@ -18,5 +18,4 @@ module PositionMethods
       end
     end
   end
-
 end

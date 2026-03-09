@@ -1,19 +1,19 @@
 class User::AccountsController < User::BaseController
   before_action :set_user
-  before_action :clear_params, only: [:update]
+  before_action :clear_params, only: [ :update ]
 
   def edit; end
 
   def update
     @user.update(user_params)
 
-    redirect_to user_root_path, notice: t('message.updated')
+    redirect_to user_root_path, notice: t("message.updated")
   end
 
   def destroy_me
     @user.destroy
 
-    redirect_to root_path, notice: t('message.updated')
+    redirect_to root_path, notice: t("message.updated")
   end
 
   private
@@ -23,7 +23,7 @@ class User::AccountsController < User::BaseController
   end
 
   def clear_params
-    if params[:user][:password].blank? 
+    if params[:user][:password].blank?
       params[:user].delete(:password)
     end
   end

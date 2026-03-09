@@ -35,6 +35,6 @@ class Seo < ApplicationRecord
   end
 
   def self.default_image
-    'logo.png'
+    "logo.png"
   end
 end

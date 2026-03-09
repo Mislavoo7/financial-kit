@@ -20,10 +20,10 @@ class Section < ApplicationRecord
   accepts_nested_attributes_for :section_translations
   belongs_to :sectionable, polymorphic: true, required: false
 
-  SECTION_TYPES = ["simple", "gray-box"]
+  SECTION_TYPES = [ "simple", "gray-box" ]
 
   def self.allowed_types
-    SECTION_TYPES.map{|s| [I18n.t("activerecord.attributes.section.section_types.#{s.gsub("-", "_")}", locale: "en"), s]}
+    SECTION_TYPES.map { |s| [ I18n.t("activerecord.attributes.section.section_types.#{s.gsub("-", "_")}", locale: "en"), s ] }
   end
 
   def to_partial

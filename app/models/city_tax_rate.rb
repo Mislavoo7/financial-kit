@@ -22,11 +22,11 @@ class CityTaxRate < ApplicationRecord
     %i[higher_rate lower_rate]
   end
 
-  def humanize_higher_rate 
+  def humanize_higher_rate
     ratio_to_percent(higher_rate)
   end
 
-  def humanize_lower_rate 
+  def humanize_lower_rate
     ratio_to_percent(lower_rate)
   end
 end

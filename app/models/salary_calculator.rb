@@ -44,7 +44,7 @@ class SalaryCalculator < ApplicationRecord
   validates :amount_in_cent, :dependents_num, :kids_num, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :personal_deduction, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
 
-  DISABILITY_TYPE = ["no-disability", "partial-disability", "total-disability"].freeze
+  DISABILITY_TYPE = [ "no-disability", "partial-disability", "total-disability" ].freeze
   validates :disability, inclusion: { in: DISABILITY_TYPE }
 
   def money_fields

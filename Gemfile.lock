@@ -439,6 +439,7 @@ DEPENDENCIES
   pry-rails
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rubocop-rails
   rubocop-rails-omakase
   sass-rails
   sitemap_generator

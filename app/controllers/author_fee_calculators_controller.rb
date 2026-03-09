@@ -13,7 +13,7 @@ class AuthorFeeCalculatorsController < BaseController
       if current_user
         current_user.author_fee_calculators << @author_fee_calculator
       else
-        cookies['author_fee_calculator_id'] = @author_fee_calculator.slug
+        cookies["author_fee_calculator_id"] = @author_fee_calculator.slug
       end
       redirect_to user_calculations_path
     else

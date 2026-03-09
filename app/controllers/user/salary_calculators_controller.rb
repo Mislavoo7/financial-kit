@@ -1,13 +1,13 @@
 class User::SalaryCalculatorsController < User::BaseController
   before_action :set_city_tax_rates
-  before_action :set_salary_calculator, only: [:edit, :update, :destroy]
+  before_action :set_salary_calculator, only: [ :edit, :update, :destroy ]
 
   def edit
   end
 
   def update
     if @salary_calculator.update(salary_calculator_params)
-      redirect_to user_calculations_path, notice: t('message.updated')
+      redirect_to user_calculations_path, notice: t("message.updated")
     else
       render :edit
     end

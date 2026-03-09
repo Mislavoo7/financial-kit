@@ -14,7 +14,7 @@ module FinancialKit
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_paths += %W(#{config.root}/lib/modules)
+    config.autoload_paths += %W[#{config.root}/lib/modules]
     config.assets.precompile += %w[admin.scss application.scss emails.css]
 
 
@@ -25,7 +25,7 @@ module FinancialKit
     #
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.autoload_lib(ignore: %w(assets tasks generators))
+    config.autoload_lib(ignore: %w[assets tasks generators])
 
     config.exceptions_app = self.routes
 
@@ -35,12 +35,12 @@ module FinancialKit
 
     config.i18n.enforce_available_locales = false
     config.i18n.default_locale = :hr
-    config.i18n.available_locales = [:hr, :en, :de]
+    config.i18n.available_locales = [ :hr, :en, :de ]
 
-    config.time_zone = 'Zagreb'
+    config.time_zone = "Zagreb"
 
     config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      env_file = File.join(Rails.root, "config", "local_env.yml")
       YAML.load(File.open(env_file)).each do |key, value|
         ENV[key.to_s] = value
       end if File.exist?(env_file)

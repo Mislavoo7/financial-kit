@@ -1,12 +1,12 @@
 class User::CreditsController < User::BaseController
-  before_action :set_credit, only: [:edit, :update, :destroy]
+  before_action :set_credit, only: [ :edit, :update, :destroy ]
 
   def edit
   end
 
   def update
     if @credit.update(credit_params)
-      redirect_to user_calculations_path, notice: t('message.updated')
+      redirect_to user_calculations_path, notice: t("message.updated")
     else
       render :edit
     end

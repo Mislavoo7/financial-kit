@@ -1,5 +1,5 @@
 class Admin::LegalPagesController < Admin::BaseController
-  before_action :set_legal_page, only: [:edit, :update, :destroy, :visibility]
+  before_action :set_legal_page, only: [ :edit, :update, :destroy, :visibility ]
 
   def index
     @legal_pages = LegalPage.all
@@ -12,7 +12,7 @@ class Admin::LegalPagesController < Admin::BaseController
   def create
     @legal_page = LegalPage.new(legal_page_params)
     if @legal_page.save
-      redirect_to admin_legal_pages_path, notice: t('message.created')
+      redirect_to admin_legal_pages_path, notice: t("message.created")
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Admin::LegalPagesController < Admin::BaseController
 
   def update
     if @legal_page.update(legal_page_params)
-      redirect_to admin_legal_pages_path, notice: t('message.updated')
+      redirect_to admin_legal_pages_path, notice: t("message.updated")
     else
       render :edit
     end
@@ -53,8 +53,8 @@ class Admin::LegalPagesController < Admin::BaseController
 
   def legal_page_params
     params.require(:legal_page).permit(
-      legal_page_translations_attributes: [:id, :locale, :title, :content, :slug],
-      seos_attributes: [:id, :image, :remove_image, seo_translations_attributes: [:id, :title, :description, :keywords, :locale] ], 
+      legal_page_translations_attributes: [ :id, :locale, :title, :content, :slug ],
+      seos_attributes: [ :id, :image, :remove_image, seo_translations_attributes: [ :id, :title, :description, :keywords, :locale ] ],
     )
   end
 end

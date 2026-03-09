@@ -9,7 +9,7 @@ module FriendlyIdMethods
       slug.blank? || title_changed?
     end
     def slug_candidates
-      [:title] + Array.new(6) {|index| [:title, index+2]}
+      [ :title ] + Array.new(6) { |index| [ :title, index+2 ] }
     end
   end
 end

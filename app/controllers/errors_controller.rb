@@ -1,8 +1,8 @@
 class ErrorsController < ApplicationController
-  #layout 'errors'
+  # layout 'errors'
 
   def show
-    render status_code, formats: [:html], status: status_code
+    render status_code, formats: [ :html ], status: status_code
   end
 
   protected
@@ -10,6 +10,4 @@ class ErrorsController < ApplicationController
   def status_code
     params[:code] || 500
   end
-
 end
-

@@ -3,43 +3,43 @@ Rails.application.routes.draw do
     devise_for :users
     devise_for :admins
     root "pages#index"
-    resources :legal_pages, only: [:show], path: "legal-pages"
+    resources :legal_pages, only: [ :show ], path: "legal-pages"
 
     post "/ai", to: "ai#generate"
-    resources :names, only: [:index, :show]
-    resources :credits, only: [:new, :create]
-    resources :salary_calculators, only: [:new, :create]
-    resources :author_fee_calculators, only: [:new, :create]
-    resources :service_contract_calculators, only: [:new, :create]
+    resources :names, only: [ :index, :show ]
+    resources :credits, only: [ :new, :create ]
+    resources :salary_calculators, only: [ :new, :create ]
+    resources :author_fee_calculators, only: [ :new, :create ]
+    resources :service_contract_calculators, only: [ :new, :create ]
 
     namespace :user do
-      root 'pages#index'
-      resources :calculations, only: [:index]
-      resources :credits, only: [:edit, :update, :destroy]
-      resources :salary_calculators, only: [:edit, :update, :destroy]
-      resources :author_fee_calculators, only: [:edit, :update, :destroy]
-      resources :service_contract_calculators, only: [:edit, :update, :destroy]
-      resource :accounts, only: [:edit, :update], path: :accounts, as: :accounts
-      get 'destroy-me', to: 'accounts#destroy_me'
+      root "pages#index"
+      resources :calculations, only: [ :index ]
+      resources :credits, only: [ :edit, :update, :destroy ]
+      resources :salary_calculators, only: [ :edit, :update, :destroy ]
+      resources :author_fee_calculators, only: [ :edit, :update, :destroy ]
+      resources :service_contract_calculators, only: [ :edit, :update, :destroy ]
+      resource :accounts, only: [ :edit, :update ], path: :accounts, as: :accounts
+      get "destroy-me", to: "accounts#destroy_me"
     end
-    
+
     namespace :admin do
-      root 'pages#index'
-      resources :admins, except: [:show]
-      resources :users, only: [:index, :destroy]
-      resources :credits, only: [:index, :destroy]
-      resources :salary_calculators, only: [:index, :destroy]
-      resources :author_fee_calculators, only: [:index, :destroy]
-      resources :service_contract_calculators, only: [:index, :destroy]
-      resources :city_tax_rates, except: [:show]
-      resources :pages, only: [:edit, :update, :show] do
+      root "pages#index"
+      resources :admins, except: [ :show ]
+      resources :users, only: [ :index, :destroy ]
+      resources :credits, only: [ :index, :destroy ]
+      resources :salary_calculators, only: [ :index, :destroy ]
+      resources :author_fee_calculators, only: [ :index, :destroy ]
+      resources :service_contract_calculators, only: [ :index, :destroy ]
+      resources :city_tax_rates, except: [ :show ]
+      resources :pages, only: [ :edit, :update, :show ] do
         collection do
           patch :sort
         end
         member do
           patch :visibility
         end
-        resources :sections, except: [:index, :show] do
+        resources :sections, except: [ :index, :show ] do
           collection do
             patch :sort
           end
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
           end
         end
       end
-      resources :legal_pages, except: [:show], path: "legal-pages" do
+      resources :legal_pages, except: [ :show ], path: "legal-pages" do
         collection do
           patch :sort
         end
@@ -57,11 +57,10 @@ Rails.application.routes.draw do
         end
       end
     end
-  %w( 404 422 500 ).each do |code|
+  %w[ 404 422 500 ].each do |code|
     get code, to: "errors#show", code: code
   end
 
     resources :pages, only: :show, path: ""
   end
-
 end

@@ -1,6 +1,6 @@
 class Admin::SectionsController < Admin::BaseController
   before_action :set_page
-  before_action :set_section, only: [:edit, :update, :destroy, :visibility]
+  before_action :set_section, only: [ :edit, :update, :destroy, :visibility ]
 
   def new
     @section = Section.new
@@ -11,7 +11,7 @@ class Admin::SectionsController < Admin::BaseController
     @page.sections << @section
 
     if @section.save
-      redirect_to admin_page_path(@page), notice: t('saved_successfully')
+      redirect_to admin_page_path(@page), notice: t("saved_successfully")
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Admin::SectionsController < Admin::BaseController
 
   def update
     if @section.update(section_params)
-      redirect_to admin_page_path(@page), notice: t('saved_successfully')
+      redirect_to admin_page_path(@page), notice: t("saved_successfully")
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class Admin::SectionsController < Admin::BaseController
 
   def visibility
     if @section.update_column(:is_visible, !@section.is_visible)
-      flash.now[:notice] = @section.is_visible ? t('section.is_now_visible') : t('section.is_now_invisible')
+      flash.now[:notice] = @section.is_visible ? t("section.is_now_visible") : t("section.is_now_invisible")
     end
   end
 
@@ -52,7 +52,7 @@ class Admin::SectionsController < Admin::BaseController
   def section_params
     params.require(:section).permit(
       :section_type,
-      section_translations_attributes: [:id, :locale, :title, :content]
+      section_translations_attributes: [ :id, :locale, :title, :content ]
     )
   end
 

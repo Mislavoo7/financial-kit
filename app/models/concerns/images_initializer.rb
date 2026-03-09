@@ -8,6 +8,6 @@ module ImagesInitializer
   end
 
   def initialize_images
-#    self.images.build if self.images.blank?
+    #    self.images.build if self.images.blank?
   end
 end

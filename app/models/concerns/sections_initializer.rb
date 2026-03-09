@@ -8,6 +8,6 @@ module SectionsInitializer
   end
 
   def initialize_sections
-    #self.images.build if self.images.blank?
+    # self.images.build if self.images.blank?
   end
 end

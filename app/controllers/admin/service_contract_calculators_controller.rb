@@ -1,15 +1,15 @@
 class Admin::ServiceContractCalculatorsController < Admin::BaseController
-  before_action :set_service_contract_calculator, only: [:destroy]
+  before_action :set_service_contract_calculator, only: [ :destroy ]
 
   def index
-    @service_contract_calculators = ServiceContractCalculator.all 
+    @service_contract_calculators = ServiceContractCalculator.all
   end
 
   def destroy
     if @service_contract_calculator.destroy
-      redirect_to admin_service_contract_calculators_path, notice: t('message.deleted')
+      redirect_to admin_service_contract_calculators_path, notice: t("message.deleted")
     else
-      redirect_to admin_service_contract_calculators_path, alert: t('message.something_wrong')
+      redirect_to admin_service_contract_calculators_path, alert: t("message.something_wrong")
     end
   end
 
@@ -19,4 +19,3 @@ class Admin::ServiceContractCalculatorsController < Admin::BaseController
     @service_contract_calculator = ServiceContractCalculator.find_by_slug(params[:id])
   end
 end
-

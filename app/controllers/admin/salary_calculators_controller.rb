@@ -1,15 +1,15 @@
 class Admin::SalaryCalculatorsController < Admin::BaseController
-  before_action :set_salary_calculator, only: [:destroy]
+  before_action :set_salary_calculator, only: [ :destroy ]
 
   def index
-    @salary_calculators = SalaryCalculator.all 
+    @salary_calculators = SalaryCalculator.all
   end
 
   def destroy
     if @salary_calculator.destroy
-      redirect_to admin_salary_calculators_path, notice: t('message.deleted')
+      redirect_to admin_salary_calculators_path, notice: t("message.deleted")
     else
-      redirect_to admin_salary_calculators_path, alert: t('message.something_wrong')
+      redirect_to admin_salary_calculators_path, alert: t("message.something_wrong")
     end
   end
 
@@ -19,4 +19,3 @@ class Admin::SalaryCalculatorsController < Admin::BaseController
     @salary_calculator = SalaryCalculator.find_by_slug(params[:id])
   end
 end
-

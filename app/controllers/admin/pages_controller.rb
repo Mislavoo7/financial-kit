@@ -1,5 +1,5 @@
 class Admin::PagesController < Admin::BaseController
-  before_action :set_page, only: [:edit, :update, :visibility, :show]
+  before_action :set_page, only: [ :edit, :update, :visibility, :show ]
 
   def index
     @page = Page.find_by_name("home")
@@ -11,7 +11,7 @@ class Admin::PagesController < Admin::BaseController
 
   def update
     if @page.update(page_params)
-      redirect_to "#{admin_page_path(@page)}", notice: t('saved_successfully')
+      redirect_to "#{admin_page_path(@page)}", notice: t("saved_successfully")
     else
       render :edit
     end
@@ -38,8 +38,8 @@ class Admin::PagesController < Admin::BaseController
   def page_params
     params.require(:page).permit(
       :image, :remove_image,
-      page_translations_attributes: [:id, :locale, :title, :slug],
-      seos_attributes: [:id, :image, :remove_image, seo_translations_attributes: [:id, :title, :description, :keywords, :locale] ], 
+      page_translations_attributes: [ :id, :locale, :title, :slug ],
+      seos_attributes: [ :id, :image, :remove_image, seo_translations_attributes: [ :id, :title, :description, :keywords, :locale ] ],
     )
   end
 

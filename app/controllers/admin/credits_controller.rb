@@ -1,15 +1,15 @@
 class Admin::CreditsController < Admin::BaseController
-  before_action :set_credit, only: [:destroy]
+  before_action :set_credit, only: [ :destroy ]
 
   def index
-    @credits = Credit.all 
+    @credits = Credit.all
   end
 
   def destroy
     if @credit.destroy
-      redirect_to admin_credits_path, notice: t('message.deleted')
+      redirect_to admin_credits_path, notice: t("message.deleted")
     else
-      redirect_to admin_credits_path, alert: t('message.something_wrong')
+      redirect_to admin_credits_path, alert: t("message.something_wrong")
     end
   end
 
@@ -19,4 +19,3 @@ class Admin::CreditsController < Admin::BaseController
     @credit = Credit.find_by_slug(params[:id])
   end
 end
-

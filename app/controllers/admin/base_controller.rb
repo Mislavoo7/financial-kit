@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  layout 'admin/admin'
+  layout "admin/admin"
   before_action :authenticate_admin!
   before_action :set_pages
 

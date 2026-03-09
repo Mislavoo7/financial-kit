@@ -29,7 +29,7 @@ class Credit < ApplicationRecord
   validates :interest_ratio, :months_one, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :amount_in_cent, :repayment_year, :start, numericality: { greater_than: 0 }, allow_nil: true
 
-  CALCULATION_METHOD = ["equal-annuities", "equal-installments"]
+  CALCULATION_METHOD = [ "equal-annuities", "equal-installments" ]
   validates :calculation_method, inclusion: { in: CALCULATION_METHOD }
 
   def ratio_fields
@@ -40,7 +40,7 @@ class Credit < ApplicationRecord
     %i[amount_in_cent]
   end
 
-  def humanize_interest_ratio 
+  def humanize_interest_ratio
     ratio_to_percent(interest_ratio)
   end
 

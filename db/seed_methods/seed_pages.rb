@@ -14,7 +14,7 @@ def seed_home
       2 => {
         title: "Financial Kit",
         locale: "de"
-      },
+      }
     },
     seos_attributes: {
       0 => {
@@ -59,12 +59,11 @@ def seed_home
         title: "Financial Kit",
         content: "<p>Financial Kit ist eine Sammlung einfacher und zuverlässiger Finanzrechner, die auf die kroatische Gesetzgebung abgestimmt sind.</p><p>Die Anwendung ermöglicht schnelle und transparente Berechnungen für typische finanzielle Situationen – von Kreditberechnungen bis zur Gehalts- und Honorarberechnung.</p>",
         locale: "de"
-      },
+      }
     },
     position: 0
   )
   page.sections << s1
-
 end
 
 
@@ -75,7 +74,7 @@ def seed_about
     page_translations_attributes: {
       0 => { title: "O projektu", locale: "hr" },
       1 => { title: "About the Project", locale: "en" },
-      2 => { title: "Über das Projekt", locale: "de" },
+      2 => { title: "Über das Projekt", locale: "de" }
     },
     seos_attributes: {
       0 => {
@@ -120,7 +119,7 @@ def seed_about
         title: "Kurz gesagt",
         content: "<p>Financial Kit wurde entwickelt, um präzise und transparente Finanzberechnungen bereitzustellen. Der Schwerpunkt liegt auf klarer Logik, überprüfbaren Formeln und einer einfachen Benutzeroberfläche.</p>",
         locale: "de"
-      },
+      }
     },
     position: 0
   )
@@ -142,7 +141,7 @@ def seed_about
         title: "Verfügbare Rechner",
         content: "<ul><li><strong>Kreditrechner</strong> – Vergleich von Annuitäten- und Tilgungsmodellen.</li><li><strong>Gehaltsrechner</strong> – Brutto- und Nettoberechnung inklusive Steuerfreibeträgen.</li><li><strong>Honorarechner</strong> – Berechnung von Steuern und Abgaben.</li><li><strong>Arbeitsvertragsrechner</strong> – detaillierte Einkommensberechnung gemäß aktuellen Vorschriften.</li></ul>",
         locale: "de"
-      },
+      }
     },
     position: 1
   )

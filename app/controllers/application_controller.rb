@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Skip CSRF protection for API requests
   skip_before_action :verify_authenticity_token, if: :json_request?
-  
+
   private
 
   def json_request?
@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     # user can change his pref language - NO! i wont use this bc when the user chooses :de in the app it will be automaticly changed by the default :en in the web. I will add some account settins to change currency, language an theme
-##    if current_user and current_user.language_id != locale.to_s
-##      current_user.update(language_id: locale.to_s)
-##    end
+    ##    if current_user and current_user.language_id != locale.to_s
+    ##      current_user.update(language_id: locale.to_s)
+    ##    end
 
     { locale: I18n.locale }.merge options
   end
@@ -33,12 +33,12 @@ class ApplicationController < ActionController::Base
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
-  def js_toast_response(message, type='success')
+  def js_toast_response(message, type = "success")
     type = type.to_s
-    return { js: "dispatchWarningToast('#{message}')" } if type == 'warning'
-    return { js: "dispatchAlertToast('#{message}')" } if type == 'alert'
-    return { js: "dispatchInfoToast('#{message}')" } if type == 'info'
-    return { js: "dispatchSuccessToast('#{message}')" }
+    return { js: "dispatchWarningToast('#{message}')" } if type == "warning"
+    return { js: "dispatchAlertToast('#{message}')" } if type == "alert"
+    return { js: "dispatchInfoToast('#{message}')" } if type == "info"
+    { js: "dispatchSuccessToast('#{message}')" }
   end
 
   def set_absolute_url
@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   def set_pages
     @pages = Page.where(name: [
-      "home", "about"    
+      "home", "about"
     ]).index_by(&:name)
 
     @home_page = @pages["home"]

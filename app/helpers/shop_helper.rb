@@ -8,9 +8,9 @@ module ShopHelper
     g = (hash.abs * 89) % 255
     b = (hash.abs * 117) % 255
 
-    r = [[r, 0].max, 255].min
-    g = [[g, 0].max, 255].min
-    b = [[b, 0].max, 255].min
+    r = [ [ r, 0 ].max, 255 ].min
+    g = [ [ g, 0 ].max, 255 ].min
+    b = [ [ b, 0 ].max, 255 ].min
 
     "rgb(#{r}, #{g}, #{b})"
   end

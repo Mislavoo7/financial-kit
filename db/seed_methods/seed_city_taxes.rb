@@ -568,11 +568,10 @@ end
 
 def  to_float(str)
   n = str.gsub("%", "").gsub(",", ".").to_f
-  return n/100
+  n/100
 end
 
 def seed_city_taxes
-
   html = table
   doc = Nokogiri::HTML.fragment(html)
 
@@ -583,8 +582,8 @@ def seed_city_taxes
 
       {
         title: tds[0],
-        lower_rate: to_float(tds[1]),  
-        higher_rate: to_float(tds[2])   
+        lower_rate: to_float(tds[1]),
+        higher_rate: to_float(tds[2])
       }
     end.compact
 
@@ -593,4 +592,3 @@ def seed_city_taxes
 
   CityTaxRate.insert_all!(city_taxes)
 end
-

@@ -1,8 +1,8 @@
 class Admin::AdminsController < Admin::BaseController
-  before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :set_admin, only: [ :edit, :update, :destroy ]
 
   def index
-    @admins = Admin.all 
+    @admins = Admin.all
   end
 
   def new
@@ -15,10 +15,10 @@ class Admin::AdminsController < Admin::BaseController
     @token = Devise.token_generator.generate(Admin, :reset_password_token)
     @admin.reset_password_token = @token.last
     @admin.reset_password_sent_at = Time.now.utc
-  #  @admin.invitation_sent_at = DateTime.current
+    #  @admin.invitation_sent_at = DateTime.current
     if @admin.save
-  #    AdminMailer.send_invitation(@admin, @token.first).deliver_now
-      redirect_to admin_admins_path(@admin), notice: t('message.created')
+      #    AdminMailer.send_invitation(@admin, @token.first).deliver_now
+      redirect_to admin_admins_path(@admin), notice: t("message.created")
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Admin::AdminsController < Admin::BaseController
 
   def update
     if @admin.update(admin_params)
-      redirect_to admin_admins_path, notice: t('message.updated')
+      redirect_to admin_admins_path, notice: t("message.updated")
     else
       render :edit
     end
@@ -37,9 +37,9 @@ class Admin::AdminsController < Admin::BaseController
 
   def destroy
     if @admin.destroy
-      redirect_to admin_admins_path, notice: t('message.deleted')
+      redirect_to admin_admins_path, notice: t("message.deleted")
     else
-      redirect_to admin_admins_path, alert: t('message.something_wrong')
+      redirect_to admin_admins_path, alert: t("message.something_wrong")
     end
   end
 

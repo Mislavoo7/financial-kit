@@ -1,5 +1,4 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
-
   after :remove, :delete_empty_upstream_dirs
 
   def delete_empty_upstream_dirs

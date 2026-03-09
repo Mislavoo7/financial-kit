@@ -1,7 +1,7 @@
 module CalculationMethods
   extend ActiveSupport::Concern
 
-  CALCULATION_TYPES = ["brut-to-net", "net-to-brut"].freeze
+  CALCULATION_TYPES = [ "brut-to-net", "net-to-brut" ].freeze
   included do
     validates :calculation_type,
       presence: true,
@@ -22,7 +22,7 @@ module CalculationMethods
   end
 
   def euro_to_cent(euro)
-    return euro.to_i * 100.0
+    euro.to_i * 100.0
   end
 
   def ratio_to_percent(ratio)

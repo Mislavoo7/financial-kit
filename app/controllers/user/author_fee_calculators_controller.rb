@@ -1,14 +1,14 @@
 class User::AuthorFeeCalculatorsController < User::BaseController
   include CityTaxRateHandler
   before_action :set_city_tax_rates
-  before_action :set_author_fee_calculator, only: [:edit, :update, :destroy]
+  before_action :set_author_fee_calculator, only: [ :edit, :update, :destroy ]
 
   def edit
   end
 
   def update
     if @author_fee_calculator.update(author_fee_calculator_params)
-      redirect_to user_calculations_path, notice: t('message.updated')
+      redirect_to user_calculations_path, notice: t("message.updated")
     else
       render :edit
     end

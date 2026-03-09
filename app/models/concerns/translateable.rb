@@ -15,13 +15,13 @@ module Translateable
     send("#{self.class.name.underscore}_translations")
   end
 
-  def translate(locale=I18n.locale)
+  def translate(locale = I18n.locale)
     translations = send("#{self.model_name.param_key}_translations")
     translations.find_by(locale: locale.to_s)
   end
 
   def english_title
-    translations.detect{ |t| t.locale == 'en' }.title
+    translations.detect { |t| t.locale == "en" }.title
   end
 
   def slug
@@ -44,7 +44,7 @@ module Translateable
     def findy_by_slug(id)
       underline_name = self.model_name.name.underscore
       model = eval("#{underline_name}_translation".camelize)
-      find( model.friendly.find(id).public_send("#{underline_name}_id") )
+      find(model.friendly.find(id).public_send("#{underline_name}_id"))
     end
   end
 end
