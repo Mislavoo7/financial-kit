@@ -1,0 +1,19 @@
+.desktop-nav-link {
+  position: relative;
+}
+
+.desktop-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.desktop-nav-link:hover::after,
+.desktop-nav-link--active::after {
+  width: 100%;
+}
