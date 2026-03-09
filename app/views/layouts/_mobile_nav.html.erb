@@ -15,40 +15,35 @@
         <%= link_to raw(@about_page.translate.title), 
           page_path(@about_page.slug), 
           aria: { current: path_is_active?(@about_page.page_translations.map { |slug| page_path(slug) }) },
-          class: "hamburger-link",
+          class: "hamburger-link #{'hamburger-link--active' if current_page?(page_path(@about_page))}",
           role: "menuitem" %>
       </li>
 
       <% if current_user.blank? %>
         <li>
           <%= link_to t("devise.login"), new_user_session_path,
-            class: "hamburger-link",
+            class: "hamburger-link #{'hamburger-link--active' if current_page?(new_user_session_path)}",
             role: "menuitem" %>
         </li>
         <li>
           <%= link_to t("devise.register"), new_user_registration_path,
-            class: "hamburger-link",
+            class: "hamburger-link #{'hamburger-link--active' if current_page?(new_user_registration_path)}",
             role: "menuitem" %>
         </li>
       <% else %>
         <li>
-          <%= link_to t("dashboard"), user_root_path,
-            class: "hamburger-link",
-            role: "menuitem" %>
-        </li>
-        <li>
           <%= link_to t("user_nav.calculators"), user_root_path,
-            class: "hamburger-link",
+            class: "hamburger-link #{'hamburger-link--active' if current_page?(user_root_path)}",
             role: "menuitem" %>
         </li>
         <li>
           <%= link_to t("user_nav.calculations"), user_calculations_path,
-            class: "hamburger-link",
+            class: "hamburger-link #{'hamburger-link--active' if current_page?(user_calculations_path)}",
             role: "menuitem" %>
         </li>
         <li>
           <%= link_to t("devise.edit"), edit_user_accounts_path(id: current_user),
-            class: "hamburger-link",
+            class: "hamburger-link #{'hamburger-link--active' if current_page?(edit_user_accounts_path)}",
             role: "menuitem" %>
         </li>
         <li>
