@@ -25,6 +25,24 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_salary_calculators_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "calculator", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.salary_calculators") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_author_fee_calculators_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "pen-nib", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.author_fee_calculators") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_service_contract_calculators_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "file-text", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.service_contract_calculators") %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_city_tax_rates_path, class: "sidebar-link" do %>
             <%= phosphor_icon "percent", options: { class: 'size-5 shrink-0' } %>
             <%= t("admin_nav.city_tax_rates") %>

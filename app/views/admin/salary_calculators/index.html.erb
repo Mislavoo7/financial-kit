@@ -21,7 +21,7 @@
         <% @salary_calculators.each do |salary_calculator| %>
           <tr class="tbody-tr">
             <td class="tbody-td"><%= salary_calculator.humanize_amount_in_cent %></td>
-            <td class="tbody-td"><%= salary_calculator.city_tax_rate&.title  %></td>
+            <td class="tbody-td"><%= salary_calculator.city_tax_rate  %></td>
             <td class="tbody-td"><%= salary_calculator.user&.email  %></td>
             <td class="tbody-td"><%= salary_calculator.created_at.strftime("%d.%m.%Y") %></td>
             <td class="tbody-td">
