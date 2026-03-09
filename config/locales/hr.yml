@@ -8,6 +8,7 @@ hr:
       title: "Obračuna kredita"
       description: "Kredit (zajam) je posuđeni novac koji se mora vratiti tijekom vremena uz kamatu, obično u redovitim ratama prema dogovorenim uvjetima."
   title: "Koje ime odabrati?"
+  and: "i"
   hi: "Bok"
   or: "ili"
   created_at: "Datum stvaranja"

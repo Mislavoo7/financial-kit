@@ -5,6 +5,10 @@
     aria: { current: path_is_active?(@about_page.page_translations.map { |slug| page_path(slug) }) },
     class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(page_path(@about_page))}" %>
 
+  <%= link_to t("user_nav.calculators"), root_path,
+    class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(root_path)}" %>
+
+
   <% if current_user.blank? %>
     <%= link_to t("devise.login"), new_user_session_path,
       class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(new_user_session_path)}"%>
@@ -15,16 +19,13 @@
     <%= link_to t("user_nav.calculations"), user_calculations_path,
       class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(user_calculations_path)}" %>
 
-    <%= link_to t("user_nav.calculators"), user_root_path,
-      class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(user_root_path)}" %>
-
     <%= link_to t("devise.edit"), edit_user_accounts_path(id: current_user),
       class: "desktop-nav-link #{'desktop-nav-link--active' if current_page?(edit_user_accounts_path)}" %>
 
     <%= link_to t("devise.logout"), destroy_user_session_path,
-    data: { turbo_method: :delete },
-    class: "desktop-nav-link" %>
-<% end %>
+      data: { turbo_method: :delete },
+      class: "desktop-nav-link" %>
+  <% end %>
 
   <!-- language switcher -->
   <% if I18n.available_locales.size > 1 %>
@@ -40,7 +41,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      
+
       <div id="locale-menu"
            class="hidden absolute right-0  mt-2 w-32 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;"
            role="menu"

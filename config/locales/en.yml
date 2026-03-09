@@ -8,6 +8,7 @@ en:
       title: "Loan calculation"
       description: "A credit (loan) is borrowed money that must be repaid over time with interest, usually in regular installments according to agreed terms."
   title: "Which name to choose?"
+  and: "and"
   hi: "Hi"
   or: "or"
   created_at: "Created At"

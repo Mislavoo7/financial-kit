@@ -8,6 +8,7 @@ de:
     title: "Kreditberechnung"
     description: "Ein Kredit ist geliehenes Geld, das über einen bestimmten Zeitraum mit Zinsen zurückgezahlt wird, in der Regel in regelmäßigen Raten gemäß den vereinbarten Bedingungen."
   title: "Welchen Namen soll ich wählen?"
+  and: "und"
   hi: "Hi"
   or: "oder"
   created_at: "Erstellungsdatum"

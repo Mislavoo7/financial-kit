@@ -67,7 +67,7 @@ hr:
         value: "Vrijednosti"
       service_contract_calculator:
         parametar: "Parametar"
-        value: "Value"
+        value: "Vrijednosti"
         amount_in_cent: "Iznos"
         calculation_type: "Vrsta izračuna"
         calculation_types:

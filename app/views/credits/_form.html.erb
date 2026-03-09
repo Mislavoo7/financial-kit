@@ -25,6 +25,7 @@
         <%= button_tag type: 'submit', class: "button is-primary" do %>
           <%= phosphor_icon "floppy-disk" %>
           <%= t("save") %>
+          <%= "#{t("and")} #{t("devise.registrations.sign_up_button").downcase}" unless current_user %>
         <% end %>
       </div>
     </div>

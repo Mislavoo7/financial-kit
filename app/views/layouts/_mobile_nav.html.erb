@@ -1,6 +1,6 @@
 <div class="mobile-nav">
   <input id="menu-toggle" type="checkbox" class="hidden peer" />
-  
+
   <!-- hamburger -->
   <label for="menu-toggle" class="hamburger-label">
     <% hamburger_lines = "block w-8 h-0.5 bg-gray-700 transition-all duration-300" %>
@@ -19,6 +19,12 @@
           role: "menuitem" %>
       </li>
 
+      <li>
+        <%= link_to t("user_nav.calculators"), root_path,
+          class: "hamburger-link #{'hamburger-link--active' if current_page?(root_path)}",
+          role: "menuitem" %>
+      </li>
+
       <% if current_user.blank? %>
         <li>
           <%= link_to t("devise.login"), new_user_session_path,
@@ -31,11 +37,6 @@
             role: "menuitem" %>
         </li>
       <% else %>
-        <li>
-          <%= link_to t("user_nav.calculators"), user_root_path,
-            class: "hamburger-link #{'hamburger-link--active' if current_page?(user_root_path)}",
-            role: "menuitem" %>
-        </li>
         <li>
           <%= link_to t("user_nav.calculations"), user_calculations_path,
             class: "hamburger-link #{'hamburger-link--active' if current_page?(user_calculations_path)}",
@@ -53,7 +54,7 @@
             role: "menuitem" %>
         </li>
       <% end %>
-      
+
       <% if I18n.available_locales.size > 1 %>
         <li class="language-wrapper">
           <div class="language-title">
