@@ -15,6 +15,7 @@ class CityTaxRate < ApplicationRecord
 
   validates :title, :higher_rate, :lower_rate, presence: true
   validates :higher_rate, :lower_rate, numericality: { greater_than: 0 }, allow_nil: true
+  validate :lower_rate_must_be_less_than_higher_rate
 
   default_scope { order(:title) }
 
@@ -28,5 +29,15 @@ class CityTaxRate < ApplicationRecord
 
   def humanize_lower_rate
     ratio_to_percent(lower_rate)
+  end
+
+  private
+
+  def lower_rate_must_be_less_than_higher_rate
+    return if lower_rate.blank? || higher_rate.blank?
+
+    if lower_rate >= higher_rate
+      errors.add(:lower_rate, :must_be_less_than_higher_rate)
+    end
   end
 end

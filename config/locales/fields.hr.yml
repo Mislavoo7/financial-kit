@@ -155,6 +155,7 @@ hr:
             lower_rate:
               blank: "Niža stopa ne može biti prazna!"
               greater_than_or_equal_to: "Niža stopa mora biti veća ili jednaka 0!"
+              must_be_less_than_higher_rate: "Niža stopa mora biti manja od više stope"
         author_fee_calculator:
           attributes:
             amount_in_cent:

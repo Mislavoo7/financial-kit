@@ -155,6 +155,7 @@ de:
             lower_rate:
               blank: "Niedriger Steuersatz darf nicht leer sein!"
               greater_than_or_equal_to: "Der niedrigere Steuersatz muss größer oder gleich 0 sein!"
+              must_be_less_than_higher_rate: "Der niedrigere Zinssatz muss niedriger sein als der höhere Zinssatz"
         author_fee_calculator:
           attributes:
             amount_in_cent:
