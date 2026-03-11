@@ -22,7 +22,7 @@ module CalculationMethods
   end
 
   def euro_to_cent(euro)
-    euro.to_i * 100.0
+    (euro.to_f * 100).round
   end
 
   def ratio_to_percent(ratio)
