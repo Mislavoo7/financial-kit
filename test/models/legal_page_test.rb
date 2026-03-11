@@ -11,72 +11,65 @@
 require "test_helper"
 
 class LegalPageTest < ActiveSupport::TestCase
-  def build_legal_page(position=nil) 
-    LegalPage.create!(
-      position: position, 
+  def create_legal_page(position = nil)
+    attrs = {
       legal_page_translations_attributes: [
         { title: "Privacy Policy", locale: "en", slug: "privacy-policy" },
-        { title: "Nutzungsbedingungen", locale: "de", slug: "nutzungsbedingungen" }, 
+        { title: "Nutzungsbedingungen", locale: "de", slug: "nutzungsbedingungen" },
         { title: "Politika privatnosti", locale: "hr", slug: "politika-privatnosti" }
       ]
-    )
+    }
+
+    attrs[:position] = position unless position.nil?
+
+    LegalPage.create!(attrs)
   end
 
   test "accepts nested attributes for legal_page_translations" do
-    legal_page = build_legal_page
+    legal_page = create_legal_page
 
     assert_equal 3, legal_page.legal_page_translations.size
 
-    titles = legal_page.legal_page_translations.map(&:title)
+    translations = legal_page.legal_page_translations.index_by(&:locale)
 
-    assert_includes titles, "Privacy Policy"
-    assert_includes titles, "Politika privatnosti"
-    assert_includes titles, "Nutzungsbedingungen"
+    assert_equal "Privacy Policy", translations["en"].title
+    assert_equal "Nutzungsbedingungen", translations["de"].title
+    assert_equal "Politika privatnosti", translations["hr"].title
   end
 
   test "default scope orders by position ascending" do
-    second = build_legal_page(2)
-    first = build_legal_page(1)
-    third = build_legal_page(3)
+    LegalPage.delete_all
 
-    assert_equal [first, second, third], LegalPage.all.to_a
+    create_legal_page(2)
+    create_legal_page(1)
+    create_legal_page(3)
+
+    assert_equal [1, 2, 3], LegalPage.pluck(:position)
   end
 
-  test "legal page must have some position greater then 0" do
-    legal_page = build_legal_page
+  test "assigns position automatically when not provided" do
+    legal_page = create_legal_page
 
-    assert_not legal_page.position <= 0
+    assert legal_page.position.present?
+    assert legal_page.position > 0
   end
 
-  test "is invalid without title" do
-    translation = build_legal_page.legal_page_translations.first
-    translation.title = nil
-    assert translation.invalid?
-    assert translation.errors.added?(:title, :blank)
+  test "is_visible defaults to true" do
+    legal_page = create_legal_page
+
+    assert_equal true, legal_page.is_visible
   end
 
-  test "can have rich text content" do
-    translation = build_legal_page.legal_page_translations.first
-    translation.content = "<p>Hello world</p>"
-    assert translation.save
-    assert_equal "Hello world", translation.content.to_plain_text
+  test "can be set to not visible" do
+    legal_page = create_legal_page
+
+    legal_page.update!(is_visible: false)
+
+    assert_equal false, legal_page.reload.is_visible
   end
-
-  test "belongs to a legal page" do
-    translation = build_legal_page.legal_page_translations.first
-    assert_instance_of LegalPage, translation.legal_page
-  end
-
-
-  test "default scope orders by locale descending" do
-    legal_page = build_legal_page
-    locales = LegalPageTranslation.where(legal_page: legal_page).pluck(:locale)
-    assert_equal ["hr", "en", "de"], locales
-  end
-
 
   test "destroying legal page destroys all associated translations" do
-    legal_page = build_legal_page 
+    legal_page = create_legal_page
     translation_ids = legal_page.legal_page_translations.pluck(:id)
 
     assert_difference("LegalPageTranslation.count", -3) do

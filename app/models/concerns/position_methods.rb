@@ -2,19 +2,15 @@ module PositionMethods
   extend ActiveSupport::Concern
 
   included do
-    before_save :check_position
-
-    validates :position,
-      numericality: { greater_than: 0 },
-      allow_nil: true
+    before_validation :check_position, on: :create
+    validates :position, numericality: { greater_than: 0 }
   end
 
   def check_position
-    return if id # if not new, pass
+    return unless new_record?
+    return if position.present? && position > 0
 
-    if position.blank?
-      last_position = self.class.order(:position).last&.position
-      self.position = last_position ? last_position + 1 : 1
-    end
+    last_position = self.class.order(:position).last&.position
+    self.position = last_position ? last_position + 1 : 1
   end
 end

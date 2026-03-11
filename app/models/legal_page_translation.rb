@@ -12,7 +12,9 @@
 #
 class LegalPageTranslation < ApplicationRecord
   include FriendlyIdMethods
+
   default_scope { order(locale: :desc) }
+
   has_rich_text :content
 
   validates_presence_of :title
