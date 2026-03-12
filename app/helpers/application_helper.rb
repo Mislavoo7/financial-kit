@@ -1,14 +1,4 @@
 module ApplicationHelper
-  def external_url(link)
-    return nil if link.blank?
-
-    if link =~ /http/
-      link
-    else
-      "http://#{link}"
-    end
-  end
-
   def prepare_url(locale)
     return "javascript:void(0);" if locale == I18n.locale
     url_for(locale: locale)

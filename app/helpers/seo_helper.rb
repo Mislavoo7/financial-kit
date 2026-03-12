@@ -21,10 +21,6 @@ module SeoHelper
   end
 
   def seo_image_path(img)
-    if img.include?("storage.googleapis")
-      img
-    else
-      image_path(img)
-    end
+    image_path(img)
   end
 end
