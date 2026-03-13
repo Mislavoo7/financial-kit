@@ -1,34 +1,88 @@
 require "test_helper"
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  def create_about_page(position = nil)
-    attrs = {
+  def create_about_page
+    Page.create!(
+      image: Rails.root.join("app/assets/images/seed_imgs/about.jpg").open,
       name: "about",
-      page_translations_attributes: [
-        { title: "About Us", locale: "en", slug: "about-us" },
-        { title: "Über uns", locale: "de", slug: "uber-uns" },
-        { title: "O nama", locale: "hr", slug: "o-nama" }
-      ]
-    }
+      page_translations_attributes: {
+        0 => { title: "O projektu", locale: "hr" },
+        1 => { title: "About the Project", locale: "en" },
+        2 => { title: "Über das Projekt", locale: "de" }
+      },
+      seos_attributes: {
+        0 => {
+          image: Rails.root.join("app/assets/images/seed_imgs/about.jpg").open,
+          seo_translations_attributes: {
+            0 => {
+              title: "O projektu | Financial Kit",
+              description: "",
+              keywords: "",
+              locale: "hr"
+            },
+            1 => {
+              title: "About | Financial Kit",
+              description: "",
+              keywords: "",
+              locale: "en"
+            },
+            2 => {
+              title: "Über das Projekt | Financial Kit",
+              description: "",
+              keywords: "",
+              locale: "de"
+            }
+          }
+        }
+      }
+    )
 
-    attrs[:position] = position unless position.nil?
-
-    Page.create!(attrs)
   end
 
   def create_home_page(position = nil)
-    attrs = {
+    page = Page.create!(
+      image: Rails.root.join("app/assets/images/seed_imgs/home.jpg").open,
       name: "home",
-      page_translations_attributes: [
-        { title: "Financial Kit", locale: "en", slug: "f-k" },
-        { title: "Financial Kit", locale: "de", slug: "f-k" },
-        { title: "Financial Kit", locale: "hr", slug: "f-k" }
-      ]
-    }
-
-    attrs[:position] = position unless position.nil?
-
-    Page.create!(attrs)
+      page_translations_attributes: {
+        0 => {
+          title: "Financial Kit",
+          locale: "hr"
+        },
+        1 => {
+          title: "Financial Kit",
+          locale: "en"
+        },
+        2 => {
+          title: "Financial Kit",
+          locale: "de"
+        }
+      },
+      seos_attributes: {
+        0 => {
+          image: Rails.root.join("app/assets/images/seed_imgs/home.jpg").open,
+          seo_translations_attributes: {
+            0 => {
+              title: "Financial Kit – Financijski kalkulatori za Hrvatsku",
+              description: "",
+              keywords: "",
+              locale: "hr"
+            },
+            1 => {
+              title: "Financial Kit – Financial Calculators for Croatia",
+              description: "",
+              keywords: "",
+              locale: "en"
+            },
+            2 => {
+              title: "Financial Kit – Finanzrechner für Kroatien",
+              description: "",
+              keywords: "",
+              locale: "de"
+            }
+          }
+        }
+      }
+    )
   end
 
   def add_sections(page, position = nil)
@@ -73,6 +127,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
   test "show loads page by translation slug" do
     get page_path(id: @about_translation.slug)
+    assert_includes response.body, "<title>O projektu"
     assert_response :success
   end
 
