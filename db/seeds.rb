@@ -1,20 +1,20 @@
-# Admin.create(
-#  email: "kvesic.mislav@gmail.com",
-#  password: "9233183a",
-# )
-# puts "++++ Admin Seeded"
-#
-# require_relative "seed_methods/seed_pages"
-# require_relative "seed_methods/seed_legal_pages"
-# require_relative "seed_methods/seed_city_taxes"
-#
-# seed_home
-# puts "++++ Home Page Seeded"
-# seed_about
-# puts "++++ About Page Seeded"
-#
-# seed_legal_pages
-# puts "++++ Legal pages Seeded"
+ Admin.create(
+  email: "kvesic.mislav@gmail.com",
+  password: "9233183a",
+ )
+ puts "++++ Admin Seeded"
 
-# seed_city_taxes
-# puts "++++ City taxes Seeded"
+ require_relative "seed_methods/seed_pages"
+ require_relative "seed_methods/seed_legal_pages"
+ require_relative "seed_methods/seed_city_taxes"
+
+ seed_home
+ puts "++++ Home Page Seeded"
+ seed_about
+ puts "++++ About Page Seeded"
+
+ seed_legal_pages
+ puts "++++ Legal pages Seeded"
+
+ seed_city_taxes
+ puts "++++ City taxes Seeded"

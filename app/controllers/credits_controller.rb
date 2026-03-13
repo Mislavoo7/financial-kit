@@ -1,6 +1,8 @@
 class CreditsController < BaseController
   def new
     @credit = Credit.new
+    @page = @pages["home"]
+    @seo = @page.seo
   end
 
   def create

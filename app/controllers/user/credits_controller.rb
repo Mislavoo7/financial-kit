@@ -28,6 +28,6 @@ class User::CreditsController < User::BaseController
   end
 
   def set_credit
-    @credit = current_user.credits.find_by_slug(params["id"])
+    @credit = current_user.credits.find_by!(slug: params[:id])
   end
 end

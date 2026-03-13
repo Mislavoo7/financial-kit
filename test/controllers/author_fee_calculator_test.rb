@@ -52,6 +52,7 @@ class AuthorFeeCalculatorsControllerTest < ActionDispatch::IntegrationTest
 
   test "new loads successfully" do
     get new_author_fee_calculator_path
+    assert_includes response.body, "<title>Financial "
     assert_response :success
   end
 

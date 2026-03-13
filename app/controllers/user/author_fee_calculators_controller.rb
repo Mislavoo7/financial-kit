@@ -36,6 +36,6 @@ class User::AuthorFeeCalculatorsController < User::BaseController
   end
 
   def set_author_fee_calculator
-    @author_fee_calculator = current_user.author_fee_calculators.find_by_slug(params["id"])
+     @author_fee_calculator = current_user.author_fee_calculators.find_by!(slug: params[:id])
   end
 end

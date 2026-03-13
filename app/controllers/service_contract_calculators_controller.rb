@@ -4,6 +4,8 @@ class ServiceContractCalculatorsController < BaseController
 
   def new
     @service_contract_calculator = ServiceContractCalculator.new
+    @page = @pages["home"]
+    @seo = @page.seo
   end
 
   def create

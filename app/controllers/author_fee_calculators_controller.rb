@@ -4,6 +4,8 @@ class AuthorFeeCalculatorsController < BaseController
 
   def new
     @author_fee_calculator = AuthorFeeCalculator.new
+    @page = @pages["home"]
+    @seo = @page.seo
   end
 
   def create

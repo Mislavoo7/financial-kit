@@ -35,6 +35,6 @@ class User::ServiceContractCalculatorsController < User::BaseController
   end
 
   def set_service_contract_calculator
-    @service_contract_calculator = current_user.service_contract_calculators.find_by_slug(params["id"])
+    @service_contract_calculator = current_user.service_contract_calculator.find_by!(slug: params[:id])
   end
 end

@@ -42,6 +42,6 @@ class User::SalaryCalculatorsController < User::BaseController
   end
 
   def set_salary_calculator
-    @salary_calculator = current_user.salary_calculators.find_by_slug(params["id"])
+    @salary_calculator = current_user.salary_calculators.find_by!(slug: params[:id])
   end
 end

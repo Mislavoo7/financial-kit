@@ -52,6 +52,7 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
 
   test "new loads successfully" do
     get new_salary_calculator_path
+    assert_includes response.body, "<title>Financial "
     assert_response :success
   end
 

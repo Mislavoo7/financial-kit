@@ -117,6 +117,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
+    @seo = @home_page.seo
 
     @home_visible_section, @home_hidden_section = add_sections(@home_page, 1)
     @about_visible_section, @about_hidden_section = add_sections(@about_page, 1)
@@ -127,8 +128,9 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
   test "show loads page by translation slug" do
     get page_path(id: @about_translation.slug)
-    assert_includes response.body, "<title>O projektu"
+
     assert_response :success
+    assert_includes response.body, "<title>O projektu"
   end
 
   test "show renders visible sections" do
@@ -152,6 +154,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
   test "index loads successfully" do
     get root_path
+    assert_includes response.body, "<title>Financial "
     assert_response :success
   end
 end

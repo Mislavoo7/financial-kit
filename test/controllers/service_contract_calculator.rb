@@ -52,6 +52,7 @@ class ServiceContractCalculatorsControllerTest < ActionDispatch::IntegrationTest
 
   test "new loads successfully" do
     get new_service_contract_calculator_path
+    assert_includes response.body, "<title>Financial "
     assert_response :success
   end
 

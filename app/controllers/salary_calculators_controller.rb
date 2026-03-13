@@ -4,6 +4,8 @@ class SalaryCalculatorsController < BaseController
 
   def new
     @salary_calculator = SalaryCalculator.new
+    @page = @pages["home"]
+    @seo = @page.seo
   end
 
   def create
