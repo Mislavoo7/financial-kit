@@ -131,6 +131,20 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "show renders visible sections" do
+    get page_path(id: @about_translation.slug)
+
+    assert_response :success
+    assert_includes response.body, "Vidljiva sekcija"
+  end
+
+  test "show does not render hidden sections" do
+    get page_path(id: @about_translation.slug)
+
+    assert_response :success
+    assert_not_includes response.body, "Skrivena sekcija"
+  end
+
   test "show raises not found for invalid slug" do
     get page_path(id: "nepostojeci-slug")
     assert_response :not_found
