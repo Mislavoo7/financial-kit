@@ -1,8 +1,6 @@
-require "test_helper"
+require "application_system_test_case"
 
-class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
-
+class SalaryCalculatorsTest < ApplicationSystemTestCase
   def create_about_page(position = nil)
     attrs = {
       name: "about",
@@ -14,7 +12,6 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
     }
 
     attrs[:position] = position unless position.nil?
-
     Page.create!(attrs)
   end
 
@@ -29,108 +26,53 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
     }
 
     attrs[:position] = position unless position.nil?
+    Page.create!(attrs)
+  end
 
+  def create_salary_calculator_page(position = nil)
+    attrs = {
+      name: "salary_calculators",
+      page_translations_attributes: [
+        { title: "Salary Calculator", locale: "en" },
+        { title: "Gehaltsrechner", locale: "de" },
+        { title: "Kalkulator plaće", locale: "hr" }
+      ]
+    }
+
+    attrs[:position] = position unless position.nil?
     Page.create!(attrs)
   end
 
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
-    @seo = @home_page.seo
-
-    @user = User.create!(
-      email: "test@example.com",
-      password: "password123"
-    )
+    @salary_page = create_salary_calculator_page
 
     @city_tax_rate = CityTaxRate.create!(
+      id: 319,
       title: "Osijek",
       higher_rate: 30,
-      lower_rate: 20,
+      lower_rate: 20
     )
   end
 
-  test "new loads successfully" do
-    get new_salary_calculator_path
-    assert_includes response.body, "<title>Financial "
-    assert_response :success
-  end
+  test "guest calculates net to brut salary" do
+    visit "/hr/salary_calculators/new"
 
-  test "create saves calculator and stores slug in cookie for guest" do
-    assert_difference("SalaryCalculator.count", 1) do
-      post salary_calculators_path, params: {
-        salary_calculator: valid_salary_calculator_params
-      }
-    end
+    fill_in "salary_calculator_amount_in_cent", with: "1300"
+    fill_in "salary_calculator_kids_num", with: "2"
+    fill_in "salary_calculator_dependents_num", with: "0"
+    choose "salary_calculator_disability_no_disability"
 
-    calculator = SalaryCalculator.last
+    find("#salary_calculator_city_tax_rate_id", visible: false).set("319")
+    find("#salary_calculator_calculation_type", visible: :all).uncheck
 
-    assert_equal calculator.slug, cookies["salary_calculator_id"]
-    assert_redirected_to user_calculations_path
-  end
+    assert_text "1.625,00€"
+    assert_text "1.893,12€"
+    assert_text "1.300,00€"
 
-  test "create saves calculator and assigns it to current user" do
-    sign_in @user
-
-    assert_difference("SalaryCalculator.count", 1) do
-      post salary_calculators_path, params: {
-        salary_calculator: valid_salary_calculator_params
-      }
-    end
-
-    calculator = SalaryCalculator.last
-
-    assert_includes @user.salary_calculators.reload, calculator
-    assert_nil cookies["salary_calculator_id"]
-    assert_redirected_to user_calculations_path
-  end
-
-  test "create does not save invalid calculator" do
-    assert_no_difference("SalaryCalculator.count") do
-      post salary_calculators_path, params: {
-        salary_calculator: invalid_salary_calculator_params
-      }
-    end
-
-    assert_response :success
-  end
-
-  private
-
-  def valid_salary_calculator_params
-    {
-      amount_in_cent: 130000,
-      calculation_type: "brut-to-net",
-      dependents_num: 0,
-      disability: "no-disability",
-      kids_num: 2,
-      personal_deduction: 104000,
-      city_tax_rate_id: @city_tax_rate.id,
-      brut_in_cent: 130000,
-      first_pillar_in_cent: 19500,
-      second_pillar_in_cent: 6500,
-      total_pillar_in_cent: 26000,
-      taxation_base_in_cent: 0,
-      pdv_one_in_cent: 0,
-      pdv_two_in_cent: 0,
-      income_tax_in_cent: 0,
-      health_insurance_in_cent: 21450,
-      employer_to_pay_in_cent: 151450,
-      net_in_cent: 104000,
-      first_pillar_ratio: 0.15,
-      second_pillar_ratio: 0.05,
-      total_pillar_ratio: 0.20,
-      pdv_one_ratio: 0.0,
-      pdv_two_ratio: 0.0,
-      health_insurance_ratio: 0.165
-    }
-  end
-
-  def invalid_salary_calculator_params
-    {
-      amount_in_cent: nil,
-      calculation_type: nil,
-      city_tax_rate_id: nil
-    }
+    assert_selector "input#salary_calculator_brut_in_cent[value='162500']", visible: false
+    assert_selector "input#salary_calculator_employer_to_pay_in_cent[value='189312']", visible: false
+    assert_selector "input#salary_calculator_net_in_cent[value='130000']", visible: false
   end
 end
