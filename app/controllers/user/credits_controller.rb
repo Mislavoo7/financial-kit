@@ -23,7 +23,7 @@ class User::CreditsController < User::BaseController
 
   def credit_params
     params.require(:credit).permit(
-      :calculation_method, :amount_in_cent, :interest_ratio, :repayment_year, :months_one, :months_two, :start, :number_of_installments, :time_horizon, :start_at
+      :calculation_method, :amount_in_cent, :interest_ratio, :repayment_year, :months_one, :start, :number_of_installments, :time_horizon, :start_at
     )
   end
 
