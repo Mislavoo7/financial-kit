@@ -4,42 +4,15 @@
   html: { class: 'form', id: 'investments-form' } do |f| %>
 
   <div
-      data-controller="salary-calculator"
-      data-salary-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
-      >
+    data-controller="salary-calculator"
+    data-salary-calculator-city-tax-rates-value="<%= @city_tax_rates %>"
+  >
+    <div class="py-4">
+      <%= render 'shared/errors', object: @salary_calculator %>
 
-      <div class="py-4">
-        <%= render 'shared/errors', object: @salary_calculator %>
-
-        <div class="form-table-wrapper">
-          <div class="form-table-container">
-            <table class="form-table form-table--vertical">
-              <thead>
-                <tr>
-                  <th><%= tf("salary_calculator.parametar") %></th>
-                  <th><%= tf("salary_calculator.value") %></th>
-                </tr>
-              </thead>
-
-              <tbody id="investment-fields-wrapper">
-                <%= render 'salary_calculators/salary_calculator_fields', f: f %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="flex justify-end mt-6">
-          <%= button_tag type: 'submit', class: "button is-primary" do %>
-            <%= phosphor_icon "floppy-disk" %>
-            <%= t("save") %>
-            <%= "#{t("and")} #{t("devise.registrations.sign_up_button").downcase}" unless current_user %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="py-4">
-        <div class="overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative form-table-border-overlay">
-          <table class="form-table form-table--credit-totals">
+      <div class="form-table-wrapper">
+        <div class="form-table-container">
+          <table class="form-table form-table--vertical">
             <thead>
               <tr>
                 <th><%= tf("salary_calculator.parametar") %></th>
@@ -47,47 +20,73 @@
               </tr>
             </thead>
 
-            <tbody>
-              <% ratio_items = %w[first_pillar second_pillar total_pillar pdv_one pdv_two health_insurance] %>
-              <% money_items = %w[brut first_pillar second_pillar total_pillar taxation_base pdv_one pdv_two income_tax health_insurance employer_to_pay net] %>
+            <tbody id="investment-fields-wrapper">
+              <%= render 'salary_calculators/salary_calculator_fields', f: f %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-              <% ["brut", "first_pillar", "second_pillar", "total_pillar", "personal_deduction", "taxation_base", "pdv_one", "pdv_two", "income_tax", "health_insurance", "employer_to_pay", "net"].each do |item| %>
-                <tr>
-                  <td><%= tf("salary_calculator.#{item}") %></td>
-                  <td>
-                    <% formated_item = item.tr("_", "-") %>
+    <div class="py-4">
+      <div class="overflow-x-auto overflow-hidden rounded-lg bg-white shadow-sm relative form-table-border-overlay">
+        <table class="form-table form-table--credit-totals">
+          <thead>
+            <tr>
+              <th><%= tf("salary_calculator.parametar") %></th>
+              <th><%= tf("salary_calculator.value") %></th>
+            </tr>
+          </thead>
 
-                    <% if ratio_items.include?(item) %>
-                      <span data-<%= formated_item %>-ratio>0</span> |
-                      <span data-<%= formated_item %>>0</span>
+          <tbody>
+            <% ratio_items = %w[first_pillar second_pillar total_pillar pdv_one pdv_two health_insurance] %>
+            <% money_items = %w[brut first_pillar second_pillar total_pillar taxation_base pdv_one pdv_two income_tax health_insurance employer_to_pay net] %>
 
-                      <%= f.hidden_field "#{item}_ratio".to_sym, data: {
-                        "#{formated_item}-ratio-hidden" => true
-                      } %>
+            <% ["brut", "first_pillar", "second_pillar", "total_pillar", "personal_deduction", "taxation_base", "pdv_one", "pdv_two", "income_tax", "health_insurance", "employer_to_pay", "net"].each do |item| %>
+              <tr>
+                <td><%= tf("salary_calculator.#{item}") %></td>
+                <td>
+                  <% formated_item = item.tr("_", "-") %>
+
+                  <% if ratio_items.include?(item) %>
+                    <span data-<%= formated_item %>-ratio>0</span> |
+                    <span data-<%= formated_item %>>0</span>
+
+                    <%= f.hidden_field "#{item}_ratio".to_sym, data: {
+                      "#{formated_item}-ratio-hidden" => true
+                    } %>
 
                     <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
                       "#{formated_item}-hidden" => true
                     } %>
 
-                <% elsif money_items.include?(item) %>
-                  <span data-<%= formated_item %>>0</span>
+                  <% elsif money_items.include?(item) %>
+                    <span data-<%= formated_item %>>0</span>
 
-                  <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
-                    "#{formated_item}-hidden" => true
-                  } %>
+                    <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
+                      "#{formated_item}-hidden" => true
+                    } %>
 
-              <% elsif item == "personal_deduction" %>
-                <span data-<%= formated_item %>>0</span>
-                <%= f.hidden_field :personal_deduction, data: { "#{formated_item}-hidden" => true } %>
-              <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-
-          </table>
-        </div>
+                  <% elsif item == "personal_deduction" %>
+                    <span data-<%= formated_item %>>0</span>
+                    <%= f.hidden_field :personal_deduction, data: { "#{formated_item}-hidden" => true } %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+    </div>
 
+    <div class="calculator-save-floating">
+      <%= button_tag type: "submit", class: "button is-primary calculator-save-floating__button" do %>
+        <%= phosphor_icon "floppy-disk" %>
+        <span>
+          <%= t("save") %>
+          <%= "#{t("and")} #{t("devise.registrations.sign_up_button").downcase}" unless current_user %>
+        </span>
+      <% end %>
+    </div>
   </div>
 <% end %>

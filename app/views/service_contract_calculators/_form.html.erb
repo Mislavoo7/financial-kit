@@ -28,14 +28,6 @@
           </div>
         </div>
 
-        <div class="flex justify-end mt-6">
-          <%= button_tag type: 'submit', class: "button is-primary" do %>
-            <%= phosphor_icon "floppy-disk" %>
-            <%= t("save") %>
-            <%= "#{t("and")} #{t("devise.registrations.sign_up_button").downcase}" unless current_user %>
-
-          <% end %>
-        </div>
       </div>
 
       <div class="py-4">
@@ -53,7 +45,7 @@
               <% money_items = %w[brut first_pillar second_pillar total_pillar taxation_base income_tax_in_euro net health_insurance employer_to_pay] %>
               <% ["brut", "first_pillar", "second_pillar", "total_pillar", "income_tax", "taxation_base", "net", "health_insurance", "employer_to_pay"].each do |item| %>
                 <tr>
-                  <td><%= tf("author_fee_calculator.#{item}") %></td>
+                  <td><%= tf("service_contract_calculator#{item}") %></td>
                   <td>
                     <% formated_item = item.tr("_", "-") %>
 
@@ -69,28 +61,32 @@
                       "#{formated_item}-hidden" => true
                     } %>
 
-                <% elsif money_items.include?(item) %>
-                  <span data-<%= formated_item %>>0</span>
-
-                  <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
-                    "#{formated_item}-hidden" => true
-                  } %>
-
-              <% elsif item == "personal_deduction" %>
-                <span data-<%= formated_item %>>0</span>
-                <%= f.hidden_field :personal_deduction, data: { "#{formated_item}-hidden" => true } %>
-              <% end %>
+                    <% elsif money_items.include?(item) %>
+                      <span data-<%= formated_item %>>0</span>
+    
+                      <%= f.hidden_field "#{item}_in_cent".to_sym, data: {
+                        "#{formated_item}-hidden" => true
+                      } %>
+    
+                    <% end %>
                   </td>
                 </tr>
               <% end %>
-
-
             </tbody>
 
           </table>
         </div>
       </div>
 
+      <div class="calculator-save-floating">
+        <%= button_tag type: "submit", class: "button is-primary calculator-save-floating__button" do %>
+          <%= phosphor_icon "floppy-disk" %>
+          <span>
+            <%= t("save") %>
+            <%= "#{t("and")} #{t("devise.registrations.sign_up_button").downcase}" unless current_user %>
+          </span>
+        <% end %>
+      </div>
   </div>
 <% end %>
 

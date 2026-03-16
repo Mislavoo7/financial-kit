@@ -74,3 +74,42 @@
            text-xl text-slate-300 transition group-hover:text-slate-500;
   }
 }
+
+.calculator-save-floating {
+  position: relative;
+  margin-top: 4px;
+  min-height: 64px;
+
+  &__button {
+    position: absolute;
+    width: 50%;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 52px;
+    padding: 0 18px;
+    border-radius: 16px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .calculator-save-floating {
+    min-height: auto;
+  }
+
+  .calculator-save-floating__button {
+    position: static;
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
