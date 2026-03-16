@@ -2,7 +2,12 @@
   <div class="featured-section">
     <div class="mb-16">
       <div class="content-wrapper">
-        <h2 class="featured-title"> <%= @legal_page.translate.title %> </h2>
+        <% translation = @legal_page.translate %>
+        <h2 class="featured-title"> <%= translation.title %> </h2>
+        <p>
+        <strong> <%= tf("legal_page_translation.updated_at") %>:  </strong>
+        <time datetime="<%= translation.updated_at.strftime("%Y-%m-%d") %>"> <%= translation.updated_at.strftime("%d.%m.%Y.") %> <time>
+        </p>
       </div>
     </div>
   </div>
@@ -12,7 +17,7 @@
       <div class="section-inner">
         <div class="content-wrapper">
           <div class="content">
-            <%= raw @legal_page.translate.content %>
+            <%= raw translation.content %>
           </div>
         </div>
       </div>

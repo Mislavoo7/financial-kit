@@ -131,6 +131,7 @@ de:
       legal_page_translation:
         title: "Titel"
         content: "Text"
+        updated_at: "Letzte Aktualisierung am"
       city_tax_rate:
         title: "Stadtname"
         lower_rate: "Niedrigerer Steuersatz"

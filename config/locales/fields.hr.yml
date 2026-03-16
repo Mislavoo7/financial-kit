@@ -131,6 +131,7 @@ hr:
       legal_page_translation:
         title: "Naslov"
         content: "Tekst"
+        updated_at: "Zadnje ažuriranje"
       city_tax_rate:
         title: "Ime grada"
         lower_rate: "Niža stopa"
