@@ -62,7 +62,7 @@ class SectionTest < ActiveSupport::TestCase
     create_section(1)
     create_section(3)
 
-    assert_equal [1, 2, 3], Section.pluck(:position)
+    assert_equal [ 1, 2, 3 ], Section.pluck(:position)
   end
 
   test "assigns position automatically when not provided" do
@@ -99,8 +99,8 @@ class SectionTest < ActiveSupport::TestCase
 
   test "allowed_types returns translated labels with values" do
     assert_equal [
-      [I18n.t("activerecord.attributes.section.section_types.simple", locale: "en"), "simple"],
-      [I18n.t("activerecord.attributes.section.section_types.gray_box", locale: "en"), "gray-box"]
+      [ I18n.t("activerecord.attributes.section.section_types.simple", locale: "en"), "simple" ],
+      [ I18n.t("activerecord.attributes.section.section_types.gray_box", locale: "en"), "gray-box" ]
     ], Section.allowed_types
   end
 

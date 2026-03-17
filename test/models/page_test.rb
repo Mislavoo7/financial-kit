@@ -46,7 +46,7 @@ class PageTest < ActiveSupport::TestCase
     create_page(1)
     create_page(3)
 
-    assert_equal [1, 2, 3], Page.pluck(:position)
+    assert_equal [ 1, 2, 3 ], Page.pluck(:position)
   end
 
   test "assigns position automatically when not provided" do
@@ -92,5 +92,4 @@ class PageTest < ActiveSupport::TestCase
 
     assert_equal page.seos.first, page.seo
   end
-
 end

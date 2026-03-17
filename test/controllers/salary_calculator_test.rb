@@ -148,5 +148,4 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
       city_tax_rate_id: nil
     }
   end
-
 end

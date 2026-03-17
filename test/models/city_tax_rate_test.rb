@@ -47,7 +47,7 @@ class CityTaxRateTest < ActiveSupport::TestCase
   end
 
   test "higher_rate must be greater than 0" do
-    [0, -0.01].each do |value|
+    [ 0, -0.01 ].each do |value|
       city_tax_rate = build_city_tax_rate(higher_rate: value)
 
       assert city_tax_rate.invalid?
@@ -56,7 +56,7 @@ class CityTaxRateTest < ActiveSupport::TestCase
   end
 
   test "lower_rate must be greater than 0" do
-    [0, -0.01].each do |value|
+    [ 0, -0.01 ].each do |value|
       city_tax_rate = build_city_tax_rate(higher_rate: value)
 
       assert city_tax_rate.invalid?
@@ -81,11 +81,11 @@ class CityTaxRateTest < ActiveSupport::TestCase
     osijek = CityTaxRate.create!(title: "Osijek", higher_rate: 0.30, lower_rate: 0.20)
     zagreb = CityTaxRate.create!(title: "Zagreb", higher_rate: 0.30, lower_rate: 0.20)
 
-    assert_equal [osijek, zadar, zagreb], CityTaxRate.all.to_a
+    assert_equal [ osijek, zadar, zagreb ], CityTaxRate.all.to_a
   end
 
   test "lower_rate must be less than higher_rate" do
-    [0.30, 0.35].each do |value|
+    [ 0.30, 0.35 ].each do |value|
       city_tax_rate = build_city_tax_rate(
         higher_rate: 0.30,
         lower_rate: value

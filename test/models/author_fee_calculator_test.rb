@@ -100,7 +100,7 @@ class AuthorFeeCalculatorTest < ActiveSupport::TestCase
 
   test "money_fields returns amount_in_cent" do
     calculator = build_author_fee_calculator
-    assert_equal [:amount_in_cent], calculator.money_fields
+    assert_equal [ :amount_in_cent ], calculator.money_fields
   end
 
   test "humanize_amount_in_cent returns formatted euro amount" do

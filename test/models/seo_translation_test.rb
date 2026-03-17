@@ -46,7 +46,7 @@ class SeoTranslationTest < ActiveSupport::TestCase
 
     seo = create_seo
 
-    assert_equal ["hr", "en", "de"], SeoTranslation.where(seo: seo).pluck(:locale)
+    assert_equal [ "hr", "en", "de" ], SeoTranslation.where(seo: seo).pluck(:locale)
   end
 
   test "belongs to a seo" do

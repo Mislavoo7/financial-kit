@@ -50,7 +50,7 @@ class LegalPageTranslationTest < ActiveSupport::TestCase
 
     legal_page = create_legal_page
 
-    assert_equal ["hr", "en", "de"], LegalPageTranslation.where(legal_page: legal_page).pluck(:locale)
+    assert_equal [ "hr", "en", "de" ], LegalPageTranslation.where(legal_page: legal_page).pluck(:locale)
   end
 
   test "can have rich text content" do

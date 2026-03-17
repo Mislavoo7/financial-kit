@@ -44,7 +44,7 @@ class LegalPageTest < ActiveSupport::TestCase
     create_legal_page(1)
     create_legal_page(3)
 
-    assert_equal [1, 2, 3], LegalPage.pluck(:position)
+    assert_equal [ 1, 2, 3 ], LegalPage.pluck(:position)
   end
 
   test "assigns position automatically when not provided" do

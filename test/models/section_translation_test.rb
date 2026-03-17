@@ -48,7 +48,7 @@ class SectionTranslationTest < ActiveSupport::TestCase
 
     section = create_section
 
-    assert_equal ["hr", "en", "de"], SectionTranslation.where(section: section).pluck(:locale)
+    assert_equal [ "hr", "en", "de" ], SectionTranslation.where(section: section).pluck(:locale)
   end
 
   test "can have rich text content" do

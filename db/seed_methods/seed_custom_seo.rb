@@ -110,5 +110,4 @@ def seed_custom_seo
       }
     }
   )
-
 end

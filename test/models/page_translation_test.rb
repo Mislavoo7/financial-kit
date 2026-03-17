@@ -50,7 +50,7 @@ class PageTranslationTest < ActiveSupport::TestCase
 
     page = create_page
 
-    assert_equal ["hr", "en", "de"], PageTranslation.where(page: page).pluck(:locale)
+    assert_equal [ "hr", "en", "de" ], PageTranslation.where(page: page).pluck(:locale)
   end
 
   test "belongs to a page" do

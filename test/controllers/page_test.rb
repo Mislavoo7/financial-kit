@@ -36,7 +36,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
         }
       }
     )
-
   end
 
   def create_home_page(position = nil)
@@ -111,7 +110,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     page.sections << hidden_section
     hidden_section.save!
 
-    [visible_section, hidden_section]
+    [ visible_section, hidden_section ]
   end
 
   def setup

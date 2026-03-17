@@ -60,7 +60,7 @@ class SeoTest < ActiveSupport::TestCase
     create_seo(1)
     create_seo(3)
 
-    assert_equal [1, 2, 3], Seo.pluck(:position)
+    assert_equal [ 1, 2, 3 ], Seo.pluck(:position)
   end
 
   test "can belong to a page" do

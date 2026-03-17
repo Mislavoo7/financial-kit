@@ -123,12 +123,12 @@ class CreditTest < ActiveSupport::TestCase
 
   test "ratio_fields returns interest_ratio" do
     credit = build_credit
-    assert_equal [:interest_ratio], credit.ratio_fields
+    assert_equal [ :interest_ratio ], credit.ratio_fields
   end
 
   test "money_fields returns amount_in_cent" do
     credit = build_credit
-    assert_equal [:amount_in_cent], credit.money_fields
+    assert_equal [ :amount_in_cent ], credit.money_fields
   end
 
   test "humanize_interest_ratio returns percent string" do

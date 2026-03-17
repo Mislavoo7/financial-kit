@@ -140,7 +140,7 @@ class SalaryCalculatorTest < ActiveSupport::TestCase
 
   test "money_fields returns amount_in_cent" do
     salary_calculator = build_salary_calculator
-    assert_equal [:amount_in_cent], salary_calculator.money_fields
+    assert_equal [ :amount_in_cent ], salary_calculator.money_fields
   end
 
   test "humanize_amount_in_cent returns formatted euro amount" do

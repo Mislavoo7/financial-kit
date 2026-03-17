@@ -2,7 +2,7 @@ class Admin::SeosController < Admin::BaseController
   before_action :set_seo, only: [ :edit, :update, :destroy ]
 
   def index
-    @seos = Seo.all 
+    @seos = Seo.all
   end
 
   def new

@@ -115,7 +115,7 @@ class User::PagesControllerTest < ActionDispatch::IntegrationTest
     page.sections << hidden_section
     hidden_section.save!
 
-    [visible_section, hidden_section]
+    [ visible_section, hidden_section ]
   end
 
   def setup
