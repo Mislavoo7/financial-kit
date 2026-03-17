@@ -10,6 +10,7 @@ en:
     salary_calculators: "Salary calculation"
     author_fee_calculators: "Author fee calculation"
     service_contract_calculators: "Service contract calculation"
+    pages: "Pages"
   public_nav:
     legal_pages: "Legals Pages"
   user_nav:

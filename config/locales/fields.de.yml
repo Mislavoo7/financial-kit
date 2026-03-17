@@ -137,6 +137,7 @@ de:
         lower_rate: "Niedrigerer Steuersatz"
         higher_rate: "Höherer Steuersatz"
       seo:
+        url: "URL für statische Seiten"
         image: "SEO-Bild"
         imageu: "SEO-Bild"
         generate_seo: "SEO generieren"
@@ -144,6 +145,8 @@ de:
         title: "SEO-Titel"
         description: "SEO-Beschreibung"
         keywords: "SEO-Schlüsselwörter"
+        url: "Benutzerdefinierte URL"
+        url_description: "Statische Seite, zu der diese Meta-Felder hinzugefügt werden"
     errors:
       models:
         city_tax_rate:

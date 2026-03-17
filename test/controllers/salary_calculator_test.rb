@@ -36,7 +36,19 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
-    @seo = @home_page.seo
+
+    @seo = Seo.create!(
+      seoable: nil,
+      seo_translations_attributes: {
+        "0" => {
+          title: "Salary SEO Title",
+          url: "/salary-calculators/new",
+          description: "Salary description",
+          keywords: "salary, calculator",
+          locale: "hr"
+        }
+      }
+    )
 
     @user = User.create!(
       email: "test@example.com",
@@ -46,14 +58,8 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
     @city_tax_rate = CityTaxRate.create!(
       title: "Osijek",
       higher_rate: 30,
-      lower_rate: 20,
+      lower_rate: 20
     )
-  end
-
-  test "new loads successfully" do
-    get new_salary_calculator_path
-    assert_includes response.body, "<title>Financial "
-    assert_response :success
   end
 
   test "create saves calculator and stores slug in cookie for guest" do
@@ -95,6 +101,15 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
+  test "SEO for salary calculator" do
+    get new_salary_calculator_path
+
+    assert_response :success
+    assert_includes response.body, "Salary SEO Title"
+    assert_includes response.body, "Salary description"
+  end
+
   private
 
   def valid_salary_calculator_params
@@ -133,4 +148,5 @@ class SalaryCalculatorsControllerTest < ActionDispatch::IntegrationTest
       city_tax_rate_id: nil
     }
   end
+
 end

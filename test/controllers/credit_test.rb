@@ -36,7 +36,19 @@ class CreditsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
-    @seo = @home_page.seo
+
+    @seo = Seo.create!(
+      seoable: nil,
+      seo_translations_attributes: {
+        "0" => {
+          title: "C SEO Title",
+          url: "/credits/new",
+          description: "C description",
+          keywords: "C, calculator",
+          locale: "hr"
+        }
+      }
+    )
 
     @user = User.create!(
       email: "test@example.com",
@@ -44,10 +56,12 @@ class CreditsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  test "new loads successfully" do
+  test "SEO for credit calculator" do
     get new_credit_path
-    assert_includes response.body, "<title>Financial "
+
     assert_response :success
+    assert_includes response.body, "C SEO Title"
+    assert_includes response.body, "C description"
   end
 
   test "create saves credit and stores slug in cookie for guest" do

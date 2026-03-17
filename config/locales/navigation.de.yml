@@ -10,6 +10,7 @@ de:
     salary_calculators: "Gehaltsberechnung"
     author_fee_calculators: "Berechnung des Autorenhonorars"
     service_contract_calculators: "Berechnung des Dienstvertrags"
+    pages: "Seiten"
   public_nav:
     legal_pages: "Rechtliche Seiten"
   user_nav:

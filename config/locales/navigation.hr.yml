@@ -10,6 +10,7 @@ hr:
     salary_calculators: "Izračun plaće"
     author_fee_calculators: "Izračun autorskog honorara"
     service_contract_calculators: "Izračun ugovora o djelu"
+    pages: "Stranice"
   public_nav:
     legal_pages: "Pravne stranice"
   user_nav:

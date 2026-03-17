@@ -36,7 +36,19 @@ class AuthorFeeCalculatorsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
-    @seo = @home_page.seo
+
+    @seo = Seo.create!(
+      seoable: nil,
+      seo_translations_attributes: {
+        "0" => {
+          title: "AF SEO Title",
+          url: "/author-fee-calculators/new",
+          description: "AF description",
+          keywords: "af, calculator",
+          locale: "hr"
+        }
+      }
+    )
 
     @user = User.create!(
       email: "test@example.com",
@@ -50,10 +62,12 @@ class AuthorFeeCalculatorsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  test "new loads successfully" do
+  test "SEO for author fee calculator" do
     get new_author_fee_calculator_path
-    assert_includes response.body, "<title>Financial "
+
     assert_response :success
+    assert_includes response.body, "AF SEO Title"
+    assert_includes response.body, "AF description"
   end
 
   test "create saves calculator and stores slug in cookie for guest" do

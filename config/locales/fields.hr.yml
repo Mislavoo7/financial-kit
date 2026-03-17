@@ -137,6 +137,7 @@ hr:
         lower_rate: "Niža stopa"
         higher_rate: "Viža stopa"
       seo:
+        url: "URL za statične stranice"
         image: "SEO slika"
         imageu: "SEO slika"
         generate_seo: "Generiraj SEO"
@@ -144,6 +145,8 @@ hr:
         title: "SEO naslov"
         description: "SEO opis"
         keywords: "SEO ključne riječi"
+        url: "Prilagođeni URL"
+        url_description: "Statička stranica kojoj će se dodati ova meta polja"
     errors:
       models:
         city_tax_rate:

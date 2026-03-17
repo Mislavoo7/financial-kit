@@ -49,6 +49,12 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_seos_path, class: "sidebar-link" do %>
+            <%= phosphor_icon "engine", options: { class: 'size-5 shrink-0' } %>
+            <%= t("admin_nav.seos") %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_root_path, class: "sidebar-link" do %>
             <%= phosphor_icon "house", options: { class: 'size-5 shrink-0' } %>
             <%= t("admin_nav.home") %>

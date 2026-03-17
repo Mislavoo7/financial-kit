@@ -1,0 +1,31 @@
+<li data-seos-id="<%= dom_id(seo) %>" class=" w-5/4 pb-4" data-seos-id="<%= dom_id(seo) %>"> 
+  <div class="flex items-center space-x-2">
+    <h2> <%= seo.translate.title %>  </h2>
+
+    <% if seo.seoable %>
+
+      <span class="inline-flex items-center gap-x-0.5 rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 inset-ring inset-ring-gray-500/10 dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20">
+        <%= t("admin_nav.#{seo.seoable_type.underscore.pluralize}") %>
+        | <%= seo.seoable.translate.title %> 
+      </span>  
+
+      <div class="text-gray-500">
+        <%= link_to t('edit'), [:edit, :admin, seo.seoable], class: "button is-white has-icon-right" %>
+      </div>
+    <% else %>
+<span class="inline-flex items-center gap-x-0.5 rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 inset-ring inset-ring-pink-700/10 dark:bg-pink-400/10 dark:text-pink-400 dark:inset-ring-pink-400/20">
+  <%= seo.translate.url %>
+</span>
+      <div class="text-gray-500">
+        <%= link_to t('edit'), edit_admin_seo_path(seo), class: "button is-white has-icon-right" %>
+      </div>
+      <div class="text-gray-500">
+        <%= link_to t('delete'), admin_seo_path(seo), class: "button is-white has-icon-right", method: :delete, data: { confirm: t('are_you_sure') }, remote: true %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <%= strip_tags(seo.translate.description) %>
+  <%= strip_tags(seo.translate.keywords) %>
+</li>

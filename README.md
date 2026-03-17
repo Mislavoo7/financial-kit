@@ -53,6 +53,12 @@ The CMS also includes a simple page builder.
 Admins can create and manage pages, add and edit page sections and manage legal pages (privacy policy, terms of service).
 This allows non-technical administrators to update public content without editing code. 
 
+### Custom SEO
+
+Pages and legal pages support nested SEO fields for managing meta tags. Calculators are implemented as static pages and do not include dynamic SEO configuration.
+
+To address this, the CMS includes a dedicated SEO section where admins can enter URLs and meta tags. This ensures that all static pages, can have meta tags.
+
 
 ---
 
@@ -238,8 +244,6 @@ bin/dev # to run the server locally
 
 - a city must be selected / only typing it wont select it (bug) 
 - add some cookie popup [tarteaucitron](https://tarteaucitron.io/) or so
-- add update_at to legal page
-- add SEO for pages with calculators
 - add GEO
 - polish validations (models)
 - improved UX/UI

@@ -137,6 +137,7 @@ en:
         lower_rate: "Lower Rate"
         higher_rate: "Higher Rate"
       seo:
+        url: "URL for static pages"
         image: "SEO Image"
         imageu: "SEO Image"
         generate_seo: "Generate SEO"
@@ -144,6 +145,8 @@ en:
         title: "SEO Title"
         description: "SEO Description"
         keywords: "SEO Keywords"
+        url: "Custom URL"
+        url_description: "Static page to which these meta fields will be added"
     errors:
       models:
         city_tax_rate:

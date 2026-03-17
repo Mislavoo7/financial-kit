@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_pages
   before_action :set_locale
   before_action :set_legal_pages
+  before_action :set_custom_seo
 
   # Skip CSRF protection for API requests
   skip_before_action :verify_authenticity_token, if: :json_request?
@@ -57,5 +58,10 @@ class ApplicationController < ActionController::Base
 
   def set_legal_pages
     @legal_pages = LegalPage.all_visible
+  end
+
+  def set_custom_seo
+    @seo = SeoTranslation.find_by_url(request.path)&.seo
+    @seo = SeoTranslation.find_by_url(request.url)&.seo if @seo.blank?
   end
 end

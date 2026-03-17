@@ -36,7 +36,19 @@ class ServiceContractCalculatorsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @home_page = create_home_page
     @about_page = create_about_page
-    @seo = @home_page.seo
+    @seo = Seo.create!(
+      seoable: nil,
+      seo_translations_attributes: {
+        "0" => {
+          title: "C SEO Title",
+          url: "/credits/new",
+          description: "service contract description",
+          keywords: "service contract, calculator",
+          locale: "hr"
+        }
+      }
+    )
+
 
     @user = User.create!(
       email: "test@example.com",
@@ -50,10 +62,12 @@ class ServiceContractCalculatorsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  test "new loads successfully" do
-    get new_service_contract_calculator_path
-    assert_includes response.body, "<title>Financial "
+  test "SEO for service contract calculator" do
+    get new_credit_path
+
     assert_response :success
+    assert_includes response.body, "service contract SEO Title"
+    assert_includes response.body, "service contract description"
   end
 
   test "create saves calculator and stores slug in cookie for guest" do

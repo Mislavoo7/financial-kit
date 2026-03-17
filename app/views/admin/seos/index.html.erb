@@ -1,0 +1,17 @@
+<% content_for :links do %>
+  <%= raw([
+    {title: t("admin_nav.seos"), url: "javascript:void(0);"},
+  ].to_json) %>
+<% end %>
+<div class="page">
+  <%= render "admin/shared/header", 
+    title: t('admin_nav.seos'), 
+    new_url: new_admin_seo_path, 
+    new_title:  t('new') %>
+
+  <ul class="pt-6">
+    <% @seos.each do |seo| %>
+      <%= render "admin/seos/seo", seo: seo %>
+    <% end %>
+  </ul>
+</div>
