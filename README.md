@@ -11,7 +11,34 @@ The application is deployed on Hetzner cloud infrastructure and is available on 
 
 # Screenshots
 
-TODO - add them
+![Financial Kit dashboard with Croatian financial calculators](<img width="1905" height="901" alt="hero" src="https://github.com/user-attachments/assets/9bfcc5fa-400f-474e-bce2-50c0b1edb924" />)
+*Main dashboard of Financial Kit – a Ruby on Rails application providing accurate financial calculators for Croatia, including salary (bruto/neto), loan, author fee, and service contract calculations.*
+
+![Loan calculator – monthly payment and interest breakdown](<img width="1905" height="3426" alt="credit" src="https://github.com/user-attachments/assets/8d1ecb27-9798-47c5-b7ee-a256fb5333f5" />)
+*Loan calculator with monthly payment estimation, interest calculation, and total repayment overview based on user-defined parameters.*
+
+![Salary calculator – bruto to net salary calculation Croatia](<img width="1905" height="1725" alt="salary" src="https://github.com/user-attachments/assets/77305041-d8fc-497b-8751-ec194babd73f" />)
+*Salary calculator for Croatia showing detailed bruto to net salary breakdown, including taxes, contributions, and final payout.*
+
+![Author fee calculator Croatia – net income and tax breakdown](<img width="1905" height="1533" alt="author" src="https://github.com/user-attachments/assets/dc7dc8d5-d4f5-44a4-89af-eabdf67e442a" />)
+*Author fee calculator with automatic tax and contribution calculations, providing a clear overview of net income from freelance/author contracts in Croatia.*
+
+![Service contract calculator Croatia – earnings and deductions](<img width="1905" height="1533" alt="contract" src="https://github.com/user-attachments/assets/65463541-5c2d-4d8d-a215-018e7ba78cc1" />)
+*Service contract (ugovor o djelu) calculator displaying full cost breakdown, including taxes, contributions, and final net amount.*
+
+## User
+![User authentication screen Financial Kit](<img width="1905" height="928" alt="user-login" src="https://github.com/user-attachments/assets/49db90dc-18da-44dc-9312-5bc3ec1bad05" />)
+*Authentication screen with secure login flow, providing access to user-specific financial tools and personalized dashboard.*
+
+![Financial Kit user dashboard – overview of saved calculations](<img width="1920" height="730" alt="user-dash" src="https://github.com/user-attachments/assets/d9a3af2b-e64c-42ce-8243-8086049d169c" />)
+*User dashboard displaying saved calculations, quick access to tools, and an overview of personal financial data.*
+
+![Financial Kit user dashboard mobile – overview of saved calculations](<img width="1124" height="1799" alt="user-dash-mob2" src="https://github.com/user-attachments/assets/98b8b561-4baa-449a-b018-6749c0359280" />)
+*Mobile User dashboard displaying saved calculations, quick access to tools, and an overview of personal financial data.*
+
+## Admin
+![Financial Kit admin dashboard – content and calculator management](![cms](https://github.com/user-attachments/assets/612de16f-91f5-4a50-b925-caf5b60f5db0))
+*Admin dashboard for managing calculators, content, and application data with role-based access control.*
 
 ---
 
