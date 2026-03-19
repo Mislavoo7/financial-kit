@@ -5,7 +5,7 @@ The application includes public pages with the four calculators, a user area whe
 
 The goal of the project was to build a complete Rails monolith that includes real-world features such as authentication, internationalization, testing, and a simple CMS.
 
-The application is deployed on Hetzner cloud infrastructure and is available on [this link](https://financialkit.eu/).
+The application is deployed on Hetzner cloud infrastructure and is available on [this link](https://financialkit.eu/de).
 
 ---
 
