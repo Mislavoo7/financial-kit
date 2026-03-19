@@ -15,7 +15,7 @@ module FinancialKit
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_paths += %W[#{config.root}/lib/modules]
-    config.assets.precompile += %w[admin.scss application.scss emails.css]
+    config.assets.precompile += %w[admin.scss admin.css application.scss emails.css]
 
 
     # Configuration for the application, engines, and railties goes here.
